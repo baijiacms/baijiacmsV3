@@ -1,0 +1,181 @@
+.table-responsive.panel-body{overflow:auto;}
+.table{table-layout:fixed;}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{vertical-align:middle;}
+
+.table>thead>tr>th{border-top:none;}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th{border-top:none;}
+@media screen and (max-width:767px){.tpl-calendar>div,.tpl-district-container>div{margin-bottom:10px;}}
+
+.navbar-inverse {
+  background-color: #FFF;
+  border-color: #5c90d2;
+  box-shadow: 0 1px 3px rgba(152, 152, 152, 0.51);
+}
+.navbar-inverse .navbar-nav>li>a {
+  color: #565656;
+}
+.navbar-inverse .navbar-nav>.active>a:hover {
+  color: #fff;
+  background-color: #4F7FBB;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus {
+  color: #fff;
+  background-color: #5c90d2;
+}
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+  color: #000;
+  background-color: transparent;
+}
+.big-menu .panel{margin-bottom:0; border-bottom:0; border-top-width:0; border-top-left-radius:0; border-top-right-radius:0; border-radius:0;box-shadow: 0 1px 5px rgba(152, 152, 152, 0.9);}
+#search-menu{box-shadow: 0 1px 3px rgba(152, 152, 152, 0.88);}
+.big-menu .panel .panel-heading{border-top-left-radius:0; border-top-right-radius:0; position:relative; overflow:hidden;}
+.big-menu .panel>.list-group:last-child .list-group-item:last-child{border-bottom-right-radius:0; border-bottom-left-radius:0; border-bottom:1px #DDD solid;}
+.big-menu .panel:first-child{border-top-width:1px; border-top-left-radius:3px; border-top-right-radius:3px;}
+.big-menu .panel:first-child .panel-heading{border-top-left-radius:3px; border-top-right-radius:3px;}
+.big-menu .panel:last-child{margin-bottom:10px; border-bottom-right-radius:4px; border-bottom-left-radius:4px;}
+.big-menu .panel:last-child>.list-group:last-child .list-group-item:last-child{border-bottom-right-radius:3px; border-bottom-left-radius:3px;}
+.big-menu .panel .panel-collapse{width:50px; height:38px; line-height:38px; position:absolute; top:0; right:0; color:#CCC; text-align:center; background:#EEE; border-left:1px #DDD solid;}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+/**/
+.history .img-list { margin: 4px; display: block; clear: both; list-style: outside none none; padding:0px;}
+.history .img-list .img-item { float: left; padding: 1px; cursor: pointer; position: relative;}
+.history .img-list .img-item .img-container { position: relative; width:75px; height:75px; text-align:center; background-color:#eee; background-size: contain; background-repeat: no-repeat; background-position: 50% 50%;}
+.history .img-list .img-item .img-container:hover .img-meta{display:none; }
+.history .img-list .img-item .img-container .img-meta { width:100%; position: absolute; bottom: 0; z-index:1; background:rgba(0,0,0,0.5); color:#eee;}
+.history .img-list .img-item .img-container .select-status {display:inline-block; width:50px; height:50px; position: absolute; bottom:0; right:0; z-index:2;}
+.history .img-list .img-item-selected .img-container .select-status {display:inline-block; width:50px; height:50px; position: absolute; bottom:0; right:0; background: url('../images/success-small.png') no-repeat right bottom; z-index:2;}
+.history .img-list .img-item-selected .img-container .img-meta {display:none;}
+.history .img-list .img-item .btnClose{text-align:right; position:absolute; top:-10px; right:-5px; display:none; z-index:10;}
+.history .img-list .img-item:hover .btnClose{display:block;}
+.history .img-list .img-item .btnClose a{display:inline-block; width:20px; height:20px; text-align:center; line-height:20px;color:#fff; background:rgba(0,0,0,.3); border-radius:50%;}
+.history .img-list .img-item .btnClose a i{font-size:14px; padding:3px;margin-top: 0;}
+.history .img-list .img-item .bthClose a:hover{background:rgba(0,0,0,1);}
+
+.history i{font-size:35px; margin-top:50px; color:#999;}
+.pagination { margin:0;}
+/*图文回复列表样式*/
+.reply .panel-group .panel:first-child{margin:0; border-bottom-left-radius:0; border-bottom-right-radius:0;}
+.reply .panel-group .panel:first-child .img{overflow:hidden; position:relative; height:160px; background-color:#ececec; color:#c0c0c0; text-align:center; line-height:132px;}
+.reply .panel-group .panel:first-child .img img{max-height:160px; max-width:100%; vertical-align:middle;}
+.reply .panel-group .panel:first-child .img span{display:block; position:absolute; bottom:0; left:0; height:28px; line-height:28px; width:100%; background:rgba(0,0,0,0.7); color:#fff; padding:0 10px;}
+.reply .panel-group .panel+.panel{border-radius:0; margin-top:0; border-top:0;}
+.reply .panel-group .panel+.panel .panel-body{height:104px; padding-right:105px; position:relative; overflow:hidden;}
+.reply .panel-group .panel+.panel .img{float:right; position:absolute; right:15px; top:12px; height:80px; width:80px; background-color:#ececec; color:#c0c0c0; line-height:80px; text-align:center; overflow:hidden;}
+.reply .panel-group .panel+.panel .img img{max-width:80px; max-height:80px; vertical-align:middle; border:0;}
+.reply .panel-group .panel+.panel .text h4{word-break:break-all; font-size:14px; line-height:1.5em; height:54px; overflow:hidden; text-overflow:ellipsis;}
+.reply .panel-group .panel-body .mask{position:absolute; width:100%; height:100%; line-height:104px; left:0; top:0; z-index:999; background-color:rgba(229, 229, 229, 0.85) !important; text-align:center; display:none;}
+.reply .panel-group .panel:first-child .panel-body .mask{line-height:160px;}
+.reply .panel-group .panel-body .mask a{color:#333; display:inline-block; margin:0 3px; cursor:pointer;}
+.reply .panel-group .panel-body:hover .mask{display:block;}
+.reply .panel-group .panel-body .default{ font-style:normal; font-size:16px;}
+.reply .panel-group .panel:last-child{margin-bottom:20px; border-bottom-left-radius:4px; border-bottom-right-radius:4px;}
+.reply .panel-group .panel:last-child .panel-body{padding:15px;}
+.reply .panel-group .panel-body .add{border:3px dotted #b8b8b8; height:72px; line-height:72px; text-align:center; cursor:pointer; border-radius:5px;}
+.reply .panel-group img{position:absolute; left:0; top:0; display:inline-block; width:100%; height:100%;}
+
+/*图文回复编辑样式*/
+.reply .aside .card{margin-top:80px; position:relative;}
+.reply .aside .panel-body{min-height:50px;}
+.reply .aside .arrow-left,.reply .aside .arrow-left:after{width: 0; height: 0; border-style: solid; border-width: 8px 10px 8px 0; border-color: transparent #d1d1d1 transparent transparent; position: absolute; left: -10px; top: 15px;}
+.reply .aside .arrow-left:after{content: ""; border-right-color: #fff; left: 1px; top: -8px;}
+.reply .aside .img{height:92px; text-align:center; position:relative; overflow:hidden; padding:0;}
+.reply .aside .img img{display:inline-block; max-width:100%; vertical-align:middle; margin:0; border:0;}
+.reply .aside .img h3{position:absolute; bottom:0; left:0; width:100%; text-align:center; z-index:2; color:#fff; background:rgba(51,51,51,0.5); padding:5px 15px; font-size:14px; line-height:1.5em; margin:0; cursor:pointer;}
+.reply .aside .img>span{display:block; border:1px solid #eee; height:100%; text-align:center; line-height:92px; cursor:pointer;}
+.reply .aside .img>span i{color:green;}
+/*导航栏公告样式*/
+.topbar-notice{cursor: pointer;}
+.topbar-notice .dropdown-menu{ left:-61px; padding:0;}
+.topbar-notice .topbar-notice-arrow,.topbar-notice .topbar-notice-arrow:after{width: 0; height: 0; border-style: solid; position: absolute; border-width: 0 8px 10px 8px; border-color:transparent transparent rgba(0,0,0,.4) transparent; left: 50%; top:-11px; margin-left:-9px;}
+.topbar-notice .topbar-notice-arrow:after{content: ""; border-bottom-color:#eaedf1; left:1px; top:1px;}
+.topbar-notice .topbar-notice-head{height:50px; padding:0 15px; font-size:14px; line-height:50px; background:#eaedf1; color:#333; border-top-left-radius:4px; border-top-right-radius:4px;}
+.topbar-notice .topbar-notice-body ul{margin:0; padding:0; list-style:none; height:305px; overflow-y:auto; background:#fff;}
+.topbar-notice .topbar-notice-body ul li a{display:block; width:100%; padding:10px; overflow:hidden; background-color:#fff;}
+.topbar-notice .topbar-notice-body ul li:hover a{background-color:#f2f2f2;}
+.topbar-notice .topbar-notice-body ul li a h3{font-size:14px; max-width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; height:20px; line-height:20px; margin:0;}
+.topbar-notice .topbar-notice-body ul li a .date{color:#333;}
+.topbar-notice .topbar-notice-body ul li{border-bottom:1px solid #eaedf1;}
+.topbar-notice .topbar-notice-footer{height:50px; line-height:50px; text-align:center;}
+
+/*新闻公告页面样式*/
+.notice-show .breadcrumb{padding-left:0;}
+.notice-show .category-btn{margin-bottom:10px;}
+.notice-show .panel{padding:0 50px;}
+.notice-show .panel .panel-heading{background-color:#fff; padding-left:0;}
+.notice-show h5{color:#428BCA; border-left:3px solid #428BCA; padding-left:15px;}
+.notice-show .small span{display:inline-block; margin:0 10px 0 0;}
+.notice-show ul{list-style:none; padding:0; margin:0;}
+.notice-show ul li{height:30px; line-height:30px; white-space:nowrap; overflow:hidden; padding-right:150px; position:relative;}
+.notice-show ul li a{display:inline-block; width:100%; overflow:hidden; text-overflow:ellipsis;}
+.notice-show .date{ position:absolute; right:0;}
+.notice-show h6{font-size:24px;}
+/*上传文件*/
+#modal-fileUploader .browser{color:#428bca;}
+#modal-fileUploader .browser .breadcrumb i{font-size:1em;}
+#modal-fileUploader .browser .breadcrumb a:hover{text-decoration:none; cursor:pointer;}
+#modal-fileUploader .browser .img-list { margin: 4px; display: block; clear: both;}
+#modal-fileUploader .browser .img-item { float: left; cursor: pointer; position:relative; z-index:1;}
+#modal-fileUploader .browser .img-item .img-container { position: relative; width:75px; height:75px; text-align:center; background-color:#eee; background-size: contain; background-repeat: no-repeat; background-position: 50% 50%;}
+#modal-fileUploader .browser .img-item .img-container:hover .img-meta{display:none; }
+#modal-fileUploader .browser .img-item .img-container .img-meta { width:100%; height:20px; position: absolute; bottom: 0; z-index:2; background:rgba(0,0,0,0.5); color:#eee; overflow:hidden;}
+#modal-fileUploader .browser .img-item .img-container .select-status {display:inline-block; width:50px; height:50px; position: absolute; bottom:0; right:0; z-index:2;}
+#modal-fileUploader .browser .img-item-selected .img-container .select-status {display:inline-block; width:50px; height:50px; position: absolute; bottom:0; right:0; background: url(../images/success-small.png) no-repeat right bottom; z-index:2;}
+#modal-fileUploader .browser .img-item-selected .img-container .img-meta {display:none;}
+#modal-fileUploader .browser .file-browser .img-item{margin:0 5px 5px 0;}
+#modal-fileUploader .browser .file-browser{ height:343px; overflow-y:auto; padding-top:10px;}
+#modal-fileUploader .browser .thumbnail{display:block;float:left;width:73px;height:73px;margin:0 5px 5px 0; cursor:pointer;}
+#modal-fileUploader .browser .thumbnail:hover{border-color:#428bca;}
+#modal-fileUploader .browser span{display:block;height:20px;overflow:hidden; text-align:center;}
+#modal-fileUploader .browser img{width:98px;}
+#modal-fileUploader .browser i{display:block;font-size:40px;padding:5px 13px 0 13px;}
+#modal-fileUploader .btnClose{text-align:right; position:absolute; top:-10px; right:-5px; display:none; z-index:10;}
+#modal-fileUploader .img-item:hover .btnClose{display:block;}
+#modal-fileUploader .btnClose a{display:inline-block; width:20px; height:20px; text-align:center; line-height:20px;color:#fff; background:rgba(0,0,0,.3); border-radius:50%;}
+#modal-fileUploader .btnClose a i{font-size:14px; padding:3px;}
+#modal-fileUploader .bthClose a:hover{background:rgba(0,0,0,1);}
+#modal-fileUploader .crawler .crawler-img{width:250px; height:150px; position:relative; text-align:center; overflow:hidden; margin:10px 0; background-color:#efefef; background-size: contain; background-repeat: no-repeat; background-position: 50% 50%;}
+#modal-fileUploader .crawler .crawler-img span{position:absolute; left:0; bottom:0; display:inline-block; width:100%; height:30px; line-height:30px; background:rgba(0,0,0,0.2); color:#eee;}
+#modal-fileUploader .form-group{margin-left:0;; margin-right:0;}
+#modal-fileUploader .row{margin-top: 5px; height: 250px; }
+/*多图上传*/
+.multi-img-details{margin-top:.5em;}
+.multi-img-details .multi-item{height: 150px; max-width: 150px; position:relative; float: left; margin-right: 18px;}
+.multi-img-details .multi-item img{max-width: 150px; max-height: 150px;}
+.multi-img-details .multi-item em{position:absolute; top: 0; right: -14px;}
+
+.modal-dialog .avatar-browser{min-height:480px;line-height:0;color:#428bca;}
+.modal-dialog .avatar-browser .thumbnail{display:block;float:left;width:100px;height:100px;margin-right:13px;cursor:pointer;overflow:hidden;}
+.modal-dialog .avatar-browser .thumbnail:hover{border-color:#428bca;}
+
+#modal-wechat-fileUploader .browser{color:#428bca;}
+#modal-wechat-fileUploader .browser .breadcrumb i{font-size:1em;}
+#modal-wechat-fileUploader .browser .breadcrumb a:hover{text-decoration:none; cursor:pointer;}
+#modal-wechat-fileUploader .browser .img-list { margin: 4px; display: block; clear: both;}
+#modal-wechat-fileUploader .browser .img-item { float: left; cursor: pointer; position:relative; z-index:1;}
+#modal-wechat-fileUploader .browser .img-item .img-container { position: relative; width:76px; height:76px; text-align:center; background-color:#eee; background-size: contain; background-repeat: no-repeat; background-position: 50% 50%;}
+#modal-wechat-fileUploader .browser .img-item .img-container:hover .img-meta{display:none; }
+#modal-wechat-fileUploader .browser .img-item .img-container .img-meta { width:100%; height:20px; position: absolute; bottom: 0; z-index:2; background:rgba(0,0,0,0.5); color:#eee; overflow:hidden;}
+#modal-wechat-fileUploader .browser .img-item .img-container .select-status {display:inline-block; width:50px; height:50px; position: absolute; bottom:0; right:0; z-index:2;}
+#modal-wechat-fileUploader .browser .img-item-selected .img-container .select-status {display:inline-block; width:50px; height:50px; position: absolute; bottom:0; right:0; background: url(../images/success-small.png) no-repeat right bottom; z-index:2;}
+#modal-wechat-fileUploader .browser .img-item-selected .img-container .img-meta {display:none;}
+#modal-wechat-fileUploader .browser .file-browser .img-item{margin:0 5px 5px 0;}
+#modal-wechat-fileUploader .browser .file-browser{ height:343px; overflow-y:auto; padding-top:10px;}
+#modal-wechat-fileUploader .browser .thumbnail{display:block;float:left;width:73px;height:73px;margin:0 5px 5px 0; cursor:pointer;}
+#modal-wechat-fileUploader .browser .thumbnail:hover{border-color:#428bca;}
+#modal-wechat-fileUploader .browser span{display:block;height:20px;overflow:hidden; text-align:center;}
+#modal-wechat-fileUploader .browser img{width:98px;}
+#modal-wechat-fileUploader .browser i{display:block;font-size:40px;padding:5px 13px 0 13px;}
+#modal-wechat-fileUploader .btnClose{text-align:right; position:absolute; top:-10px; right:-5px; display:none; z-index:10;}
+#modal-wechat-fileUploader .img-item:hover .btnClose{display:block;}
+#modal-wechat-fileUploader .btnClose a{display:inline-block; width:20px; height:20px; text-align:center; line-height:20px;color:#fff; background:rgba(0,0,0,.3); border-radius:50%;}
+#modal-wechat-fileUploader .btnClose a i{font-size:14px; padding:3px;}
+#modal-wechat-fileUploader .bthClose a:hover{background:rgba(0,0,0,1);}
+#modal-wechat-fileUploader .crawler .crawler-img{width:250px; height:150px; position:relative; text-align:center; overflow:hidden; margin:10px 0; background-color:#efefef; background-size: contain; background-repeat: no-repeat; background-position: 50% 50%;}
+#modal-wechat-fileUploader .crawler .crawler-img span{position:absolute; left:0; bottom:0; display:inline-block; width:100%; height:30px; line-height:30px; background:rgba(0,0,0,0.2); color:#eee;}
+#modal-wechat-fileUploader .form-group{margin-left:0;; margin-right:0;}
+#modal-wechat-fileUploader .row{margin-top: 5px; height: 250px; }
+#modal-wechat-fileUploader .background-audio{background:url(../images/icon_audio.png);}
+.browser .pagination { margin:0;}

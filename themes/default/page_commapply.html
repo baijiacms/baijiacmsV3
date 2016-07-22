@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>我的佣金</title>
+    <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fd.css">
+    <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/normalize.css">
+       <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fcommom.css">
+
+</head>
+<body class="body-gray">
+
+
+    <!--submit errow tip begin-->
+    <div data-alert class="alert-box alert" id="errerMsg" style="display: none;"><a href="#" class="close">&times;</a></div>
+    <!--submit errow tip end-->
+
+    <!--topbar begin-->
+    <div class="fixed">
+        <nav class="tab-bar">
+            <section class="left-small">
+                <a href="<?php  echo create_url('mobile',array('name' => 'fenxiao','do' => 'commission'))?>" class="menu-icon"><span></span></a>
+            </section>
+            <section class="middle tab-bar-section">
+                <h1 class="title">提取佣金</h1>
+            </section>
+        </nav>
+    </div>
+    <!--topbar end-->
+    <!--content begin-->
+    <div class="panel extract">
+        <div class="commision-total"><span class="span-title">可提现金额</span><span class="number">¥<?php echo $commissioningpe;?></span></div>
+        
+        <div class="panel extract-account">
+            <ul class="side-nav">
+                
+                <li class="account-none"><span style="line-height: 45px;font-size: 18px;float: left;color: #999;"><span style="margin-left:10px">用户名：<?php echo $member['realname'];?>
+                	<br/>付款方式：<?php if(empty($outgoldinfo['outgold_paytype'])||$outgoldinfo['outgold_paytype']==1){ ?>银行卡<br/>收款银行：<?php echo $outgoldinfo['outgold_bankname']; ?>
+                	<br/>收款人姓名：<?php echo $outgoldinfo['outgold_bankcardname'];?>
+                	<br/>收款人账号：<?php echo $outgoldinfo['outgold_bankcardcode'];?><?php  } ?> 
+                	<?php  if($outgoldinfo['outgold_paytype']==2){ ?>支付宝<br/>支付宝账户：<?php echo $outgoldinfo['outgold_alipay'];?><?php  } ?>
+                	<?php  if($outgoldinfo['outgold_paytype']==3){ ?>微信号<br/>微信账户：<?php echo $outgoldinfo['outgold_weixin'];?><?php  } ?><br/></span></span></li>
+                
+            </ul>
+        </div>
+      
+        <a href="<?php  echo create_url('mobile',array('name' => 'fenxiao','do' => 'commission','op'=>'applyed'))?>" class="button [radius round] red">立即申请</a>
+        
+        
+        	<table class="table table-hover" style="width:100%">
+			<thead class="navbar-inner" >
+								<tr>
+									<th style="text-align: center;">订单号</th>
+									<th style="text-align: center;">级数</th>
+									<th style="text-align: center;">佣金</th>
+								</tr>
+									</thead>
+										<tbody>
+									<?php foreach($list as $v){ ?>
+								<tr>
+									<td style="text-align: center;">
+											<?php echo $v['ordersn']; ?>
+									</td>
+									<td style="text-align: center;">
+											<?php echo $v['level']; ?>
+										
+									</td>
+									<td style="text-align: center;">
+										<?php echo $v['commission']; ?>
+									</td>
+								</tr>
+									
+							<?php } ?>
+											</tbody>
+	
+		
+		</table>
+        
+    </div>
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	
+

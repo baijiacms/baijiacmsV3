@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>我的佣金</title>
+    <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fd.css">
+    <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fcommom.css">
+	    <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/ds4.css">
+		<link href="__RESOURCE__/recouse/css/bottom.css" rel="stylesheet" type="text/css" />
+    <script src="__RESOURCE__/recouse/js/jquery.js"></script>
+    <script src="__RESOURCE__/recouse/js/foundation.js"></script>
+    <script src="__RESOURCE__/recouse/js/foundation.tab.js"></script>
+    <script src="__RESOURCE__/recouse/js/foundation.accordion.js"></script>
+    <script src="__RESOURCE__/recouse/js/func.js"></script>
+</head>
+<body>
+    <div class="mask"></div>
+  
+    <div class="bro-spare">
+        <p class="tip-txt"><i class="icon-money"></i>可提现佣金余额</p>
+        <span class="number-big"><?php echo $commissioningpe;?></span>
+        <p class="field-2">已打款佣金总额：<big>¥<?php echo $commissioned;?></big></p>
+    </div>
+    <ul class="maneylist" style="display: ;">
+    <li class="maneylist-li">
+            <a  class="a-personal">
+                <i class="icon-money-circle"></i>
+                <span class="text">未付款订单佣金</span>
+                <span class="money-number">¥<?php echo $commission4_1;?></span>
+            </a>
+        </li>
+           <li class="maneylist-li">
+            <a  class="a-personal">
+                <i class="icon-money-circle"></i>
+                <span class="text">已付款订单佣金</span>
+                <span class="money-number">¥<?php echo $commission5_1;?></span>
+            </a>
+        </li>
+      
+          <li class="maneylist-li">
+            <a  class="a-personal">
+                <i class="icon-money-circle"></i>
+                <span class="text">已发货订单佣金</span>
+                <span class="money-number">¥<?php echo $commission6_1;?></span>
+            </a>
+        </li>
+           
+           <li class="maneylist-li">
+            <a  class="a-personal">
+                <i class="icon-money-circle"></i>
+                <span class="text">已完成订单佣金</span>
+                <span class="money-number">¥<?php echo $commission7;?></span>
+            </a>
+        </li>
+        
+             
+        
+              <li class="maneylist-li">
+            <a  class="a-personal">
+                <i class="icon-money-circle"></i>
+                <span class="text">待审核订单佣金</span>
+                <span class="money-number">¥<?php echo $commission9_1;?></span>
+            </a>
+        </li>
+          <li class="maneylist-li">
+									            <a  class="a-personal">
+									                <i class="icon-money-circle"></i>
+									                <span class="text">无效佣金</span>
+									                <span class="money-number">¥<?php echo $commission3;?></span>
+							 </li>
+    
+   
+   
+    
+           
+    </ul>
+    <!--list end-->
+<?php  $_CMS['module']='shopwap'; ?>
+    <div class="bro-extract-btn">
+	 <a href="<?php  echo create_url('mobile',array('name' => 'fenxiao','do' => 'commission','op'=>'commissionDetail'))?>" class="button [radius round] gray">佣金明细</a>
+        <a href="<?php  echo create_url('mobile',array('name' => 'fenxiao','do' => 'commission','op'=>'commapply'))?>" class="button [radius round] red">申请提现</a>
+		
+    </div>
+
+    <!--help begin-->
+    <div class="bro-help">
+        <h3>推广的订单完成后，就显示在可提现佣金。订单被关闭或是审核无效就是无效佣金。</h3>
+        <ul class="bro-help-list"><!--href="javascript:void(0)" onclick="showShare()"-->
+            <li class="bro-help-list-li"><a class="bro-help-list-a" href="<?php  echo mobile_url('shopindex')?>"><i class="icon-share-circle"></i><span>分享商城很重要</span><i class="arrow"></i></a></li>
+        </ul>
+    </div>
+    <!--help end-->
+
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

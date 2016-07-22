@@ -1,0 +1,36 @@
+body{padding:0; background:#F9F9F9;}
+.list-main{overflow:hidden; padding:0 30px;}
+.menu-button{width:20%; height:100%; background:#EEE; position:fixed; left:0; overflow-y:scroll;}
+.menu-button li{position:relative;}
+.menu-button li a{display:block; text-decoration:none; color:#666; font-size:12px; height:40px; line-height:40px; color:#666; text-align:right; padding-right:10px; cursor:pointer;}
+.menu-button li .active{background:#BBB; color:#FFF; border-bottom:1px #BBB solid;}
+.menu-button li .img-circle{display:none; position:absolute; right:0; top:0; height:15px; line-height:15px; width:15px; text-align:center; font-size:10px; background:#E03939; color:#FFF;}
+.menu-list{overflow-y:scroll;}
+.menu-list ul{margin:0;}
+.menu-list li{padding:10px 0; border-bottom:1px #DDD solid; height:80px; overflow:hidden;}
+.menu-list li .menu-pic img{width:100px; height:80px;}
+.menu-list li .menu-detail{width:45%; overflow:hidden;}
+.menu-list li .menu-detail span{display:block; height:20px; line-height:20px; overflow:hidden; padding-left:10px;}
+.menu-list li .title{font-size:16px; font-weight:bold;}
+.menu-list li .price{color:red; font-size:14px; margin-top:5px;}
+.menu-list li .click{color:#999; font-size:14px; margin-top:18px;}
+.menu-list-button{background:#DDD; color:#666; height:25px; line-height:25px; width:25px; font-size:25px; text-align:center; cursor:pointer;}
+.menu-list-num{font-size:14px; padding:5px 0; color:#666; text-align:center; }
+.order-hd{margin:0 10px; font-size:14px; color:#CCC; height:35px; line-height:35px; overflow:hidden;}
+.order-hd .pull-right{font-size:20px; color:red; font-weight:bold;}
+.order-hd .pull-right em{font-style:normal; font-weight:normal; font-size:14px; color:#CCC;}
+.order-detail{border:1px #DDD solid; background:#FFF; margin:0 10px; margin-top:-5px; padding:0 10px; color:#666;}
+.order-detail-hd{height:40px; line-height:40px; border-bottom:1px #DDD solid;}
+.order-detail-hd .pull-left{font-weight:bold;}
+.order-detail-list{}
+.order-detail-list li{padding:10px 0; border-bottom:1px #DDD solid; overflow:hidden;}
+.order-detail-list .pull-right{}
+.order-detail-list .pull-right span{display:inline-block; vertical-align: -webkit-baseline-middle;}
+.order-detail-list .pull-right .menu-list-num{width:30px; padding:0 !important;}
+.order-detail-list .pull-left .title{font-size:14px; font-weight:bold;}
+.order-detail-list .pull-left .price{color:red; font-size:12px;}
+.myinfo{margin-top:10px; overflow:hidden;}
+.myinfo .form-table{margin-top:10px;}
+.mymember{overflow:hidden; background:#5bb75b; border:1px #51a351 solid; border-top:0; padding:0 10px; height:40px; line-height:40px; margin:0 10px 0 10px; font-size:16px; color:#FFF;}
+.mymember .pull-right button{margin-top:-5px;}
+

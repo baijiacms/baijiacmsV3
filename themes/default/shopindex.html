@@ -1,0 +1,244 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+    <title><?php echo $cfg['shop_title'] ?></title>
+         <meta name="Description" content="<?php  echo $cfg['shop_description'];?>"/> 
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<meta name="format-detection" content="telephone=no" />
+  <script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>
+  <script language="javascript" src="__RESOURCE__/plus/js/jquery.gcjs.js"></script>
+      <link href="__RESOURCE__/plus/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/imgsrc/designer.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/style.css">
+<link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/bootstrap.min.css">
+<style>
+body {margin:0px; background:#f9f9f9; }
+.fe-mod:hover{border:2px dashed rgba(0,0,0,0); cursor:default;}
+.fe-mod,.fe-mod:hover {border:0px;}
+.fe-mod-cube td {height:auto;}
+</style>
+<?php include themePage('weixinshare');?>
+</head><body>
+	
+<?php  	if($isfollow==false){ ?>
+
+<style>
+.mui-bar-tab {display: table;width: 100%;height: 50px;padding: 0;table-layout: fixed;border-top: 0;border-bottom: 0;}
+.mui-bar {position: fixed;right: 0;left: 0;z-index: 10;height: 44px;padding-right: 10px;padding-left: 10px;filter:alpha(opacity=50); background:rgba(49, 48, 48, 0.5) none repeat scroll 0 0 !important;border-bottom: 0;-webkit-backface-visibility: hidden;backface-visibility: hidden;}
+.mui-btn {position: relative;top: 7px;z-index: 20;padding: 6px 12px 7px;margin-top: 0;font-weight: 400;}
+.mui-btn-warning {color: #fff;background-color: #f0ad4e;border: 1px solid #f0ad4e;float: right;margin-right: 5px;font-size: 15px;line-height: 21px;}
+</style>
+   <nav class="mui-bar mui-bar-tab" style="z-index:99999;font-family: Helvetica,STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial;">
+                <img src="<?php if(empty($fans['avatar'])){ ?>__RESOURCE__/images/yh.png<?php }else{ ?><?php echo $fans['avatar'];?><?php } ?>" style="width:30px;height:30px;float:left;margin:5px;">
+                <div style="color:#ffffff;font-size:12px;font-weight:500;line-height:20px;float:left;margin-top: 5px;"><span style="color:#31FF00;font-size:13px;"><?php echo $fans['nickname'];?></span><br>您还未关注<?php echo $settings['weixinname'];?>！</div>
+                <button onClick="location.href='<?php echo $settings['weixin_guanzhu'];?>';" class="mui-btn mui-btn-warning" style="float:right;margin-right:10px;font-size:15px;">点击关注</button>
+            </nav>
+   
+  <?php  } ?>
+	
+	   <?php  if(count($advs)>0) {  ?>
+	<div ng-repeat="Item in Items" class="fe-mod-repeat ng-scope">
+           <div  class="fe-mod-parent ng-scope" id="M1464832819062" mid="M1464832819062" on-finish-render-filters=""><div class="fe-mod fe-mod-2 ng-scope" ng-class="{'fe-mod-select':Item.id == focus}">
+    <div class="ng-hide" style="line-height: 40px; text-align: center; color: #999; font-size: 16px;" ng-show="Item.data == ''"></div>
+    <!-- ngIf: !show -->
+    <!-- ngIf: show --><div class="ng-scope" ng-if="show">
+        <div style="visibility: visible;" class="swipe">
+            <div style="width:<?php  echo 1350*count($advs);  ?>px;" class="swipe-wrap">
+            	      <?php  if(is_array($advs)) { foreach($advs as $adv) { ?>
+                <!-- ngRepeat: d in Item.data --><li data-index="0" style="width: 1350px; left: 0px; transition-duration: 0ms; transform: translateX(1350px);" class="ng-scope" ng-repeat="d in Item.data">
+                    <a href="<?php  if(empty($adv['link'])) { ?>#<?php  } else { ?><?php  echo $adv['link'];?><?php  } ?>"><img style="max-width: 1350px;" src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $adv['thumb'];?>" ng-src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $adv['thumb'];?>"></a>
+                </li>        <?php  } } ?>
+            </div>
+        </div>
+        <ul style="text-align: center;" class="fe-mod-2-dots" ng-style="{'text-align':Item.params.align}" ng-show="Item.data.length > 1"> 
+            <?php  if(is_array($advs)) { foreach($advs as $adv) { ?><li class="ng-scope" ng-repeat="d in Item.data" style="display:inline-block; list-style: none;">
+                <a style="opacity: 0.4;" class="shape" ng-class="{'shape':$index == 0,'':show}" ng-style="{'background-color':Item.params.bgcolor}"></a>
+            </li> <?php   }} ?>
+            
+        </ul>
+    </div><!-- end ngIf: show -->
+</div></div>
+        </div>
+        <?php   } ?>
+        
+        
+        <div ng-repeat="Item in Items" class="fe-mod-repeat ng-scope">
+        <div class="fe-mod-parent ng-scope" id="M1464832824103" mid="M1464832824103" on-finish-render-filters=""><div class="fe-mod fe-mod-4 ng-scope" ng-class="{'fe-mod-select':Item.id == focus}" ng-style="{'background-color':Item.params.bgcolor}">
+    <form class="ng-pristine ng-valid" action="mobile.php" method="get">
+      	<input type="hidden" name="beid" value="<?php  echo $_CMS['beid'];?>"/>
+            <input type="hidden" name="mod" value="mobile"/>
+            <input type="hidden" name="do" value="goodlist"/>
+            <input type="hidden" name="name" value="shopwap"/>
+        <div class="fe-mod-4-con" ng-style="{'border-color':Item.params.bordercolor}">
+            <input class="fe-mod-4-ico" value="" ng-class="{'fe-mod-4-2-ico':Item.params.style == 'style2'}" type="submit">
+            <div class="fe-mod-4-blank" ng-class="{'fe-mod-4-2-blank':Item.params.style == 'style2'}">
+                <input class="fe-mod_4-input ng-pristine ng-untouched ng-valid" name="keyword" placeholder="搜索：输入关键字在店内搜索" ng-model="searchkey" ng-style="{'color':Item.params.color}">
+            </div>
+        </div>
+    </form>
+</div></div>
+        </div>
+        
+        
+        
+        
+        
+        <div ng-repeat="Item in Items" class="fe-mod-repeat ng-scope">
+            <div  class="fe-mod-parent ng-scope" id="M1464833476899" mid="M1464833476899" on-finish-render-filters=""><div style="background-color: rgb(255, 255, 255);" class="fe-mod fe-mod-12 ng-scope" ng-class="{'fe-mod-select':Item.id == focus}" ng-style="{'background-color':Item.params.bgcolor}">
+    <!-- ngRepeat: menu in Item.data --><div class="ng-scope" ng-repeat="menu in Item.data" ng-hide="$index == 4 &amp;&amp; Item.params.num == '25%'">
+        <a href="<?php  echo mobile_url('goodlist')?>">
+            <div style="width: 25%;" class="fe-mod-12-nav" ng-style="{'width':Item.params.num}">
+                <div class="fe-mod-12-img">
+                    <img style="border-radius: 0px; height: 309px;" src="__RESOURCE__/images/t1.jpg" ng-src="__RESOURCE__/images/t1.png" ng-style="{'border-radius':Item.params.style}">
+                </div>
+                <div class="fe-mod-12-text ng-binding" ng-style="{'color':menu.color}">全部商品</div>
+            </div>
+        </a>
+    </div><!-- end ngRepeat: menu in Item.data --><div class="ng-scope" ng-repeat="menu in Item.data" ng-hide="$index == 4 &amp;&amp; Item.params.num == '25%'">
+        <a href="<?php  echo mobile_url('myorder',array('status'=>99))?>">
+            <div style="width: 25%;" class="fe-mod-12-nav" ng-style="{'width':Item.params.num}">
+                <div class="fe-mod-12-img">
+                    <img style="border-radius: 0px; height: 309px;" src="__RESOURCE__/images/t6.png" ng-src="__RESOURCE__/images/t6.png" ng-style="{'border-radius':Item.params.style}">
+                </div>
+                <div class="fe-mod-12-text ng-binding" ng-style="{'color':menu.color}">我的订单</div>
+            </div>
+        </a>
+    </div><!-- end ngRepeat: menu in Item.data --><div class="ng-scope" ng-repeat="menu in Item.data" ng-hide="$index == 4 &amp;&amp; Item.params.num == '25%'">
+        <a href="<?php  echo mobile_url('mycart')?>">
+            <div style="width: 25%;" class="fe-mod-12-nav" ng-style="{'width':Item.params.num}">
+                <div class="fe-mod-12-img">
+                    <img style="border-radius: 0px; height: 309px;" src="__RESOURCE__/images/t3.png" ng-src="__RESOURCE__/images/t3.png" ng-style="{'border-radius':Item.params.style}">
+                </div>
+                <div class="fe-mod-12-text ng-binding" ng-style="{'color':menu.color}">购物车</div>
+            </div>
+        </a>
+    </div><!-- end ngRepeat: menu in Item.data --><div class="ng-scope" ng-repeat="menu in Item.data" ng-hide="$index == 4 &amp;&amp; Item.params.num == '25%'">
+        <a href="<?php  echo mobile_url('fansindex')?>">
+            <div style="width: 25%;" class="fe-mod-12-nav" ng-style="{'width':Item.params.num}">
+                <div class="fe-mod-12-img">
+                    <img style="border-radius: 0px; height: 309px;" src="__RESOURCE__/images/t4.png" ng-src="__RESOURCE__/images/t4.png" ng-style="{'border-radius':Item.params.style}">
+                </div>
+                <div class="fe-mod-12-text ng-binding" ng-style="{'color':menu.color}">用户中心</div>
+            </div>
+        </a>
+    </div>
+</div></div>
+        </div>
+        
+           <?php if($showhot){ ?>
+        <div ng-repeat="Item in Items" class="fe-mod-repeat ng-scope">
+   <div  class="fe-mod-parent ng-scope" id="M1464832831542" mid="M1464832831542" on-finish-render-filters=""><div class="fe-mod fe-mod-8 ng-scope" ng-class="{'fe-mod-select':Item.id == focus}" ng-style="{'background-color':Item.params.bgcolor}">
+    <div class="fe-mod-8-title ng-binding" ng-show="Item.params.showtitle == 0" ng-style="{'color':Item.params.titlecolor,'background-color':Item.params.bgcolor}">热卖推荐</div>
+
+    <!-- 默认两种样式 -->
+
+    	
+    	        <?php foreach($category as $row){ ?>
+
+                        <?php foreach($row['list'] as $item){ ?>
+                        <?php if($item['isrecommand']==1&&$item['ishot']==1){ ?>
+        <!-- ngRepeat: good in Item.data --><div class="ng-scope" ng-repeat="good in Item.data">
+            <div style="width: 49.5%;" class="fe-mod-8-good" ng-style="{'width':Item.params.style}">
+                <a href="<?php echo mobile_url('detail', array('id' => $item['id']))?>">
+                    <div class="fe-mod-8-main">
+                        <div class="fe-mod-8-main-img">
+                            <img style="height: 652px;" src="<?php echo ATTACHMENT_WEBROOT;?><?php echo $item['thumb']?>" ng-src="<?php echo ATTACHMENT_WEBROOT;?><?php echo $item['thumb']?>" class="goodimg">
+                            <div class="saleimg sale-rx" ng-class="Item.params.option"></div>
+                            <div class="fe-mod-8-main-price ng-binding" ng-show="Item.params.price != 0">￥ <?php echo $item['marketprice'];?> <?php if(!empty($item['productprice'])){?><span class="ng-binding" style="text-decoration: line-through; font-size: 12px; color: #eee;">￥<?php echo $item['productprice'];?></span><?php } ?></div>
+                        </div>
+                        <div class="fe-mod-8-main-name" ng-show="Item.params.showname == 1">
+                            <div class="fe-mod-8-main-name-buy buy-4" ng-class="Item.params.buysub" ng-show="Item.params.buysub"></div>
+                            <div class="fe-mod-8-main-name-name ng-binding"><?php echo $item['title'];?></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+           <?php } ?>
+                        <?php } ?>
+                        <?php } ?>
+        
+        </div>
+                <?php } ?>
+        
+           <?php foreach($category as $row){ ?>
+        <div ng-repeat="Item in Items" class="fe-mod-repeat ng-scope">
+         <div  class="fe-mod-parent ng-scope" id="M1464832918275" mid="M1464832918275" on-finish-render-filters=""><div class="fe-mod fe-mod-8 ng-scope" ng-class="{'fe-mod-select':Item.id == focus}" ng-style="{'background-color':Item.params.bgcolor}">
+    <div class="fe-mod-8-title ng-binding" ng-show="Item.params.showtitle == 0" style="height:25px" ng-style="{'color':Item.params.titlecolor,'background-color':Item.params.bgcolor}"><div style="border-left: 4px solid #f60;float: left;height: 25px;"></div>&nbsp;<?php echo $row['name'];?><a style="float: right;" href="<?php  echo mobile_url('goodlist', array('pcate' => $row['id']));?>"" style="color:#333;font-size: 12px">更多&gt;&gt;</a></div>
+     <!-- 默认两种样式 -->
+    <div ng-show="Item.params.style != 'hp'">
+        <!-- ngRepeat: good in Item.data -->
+                <?php foreach($row['list'] as $item){ ?>
+        <div class="ng-scope" ng-repeat="good in Item.data">
+            <div style="width: 49.5%;" class="fe-mod-8-good" ng-style="{'width':Item.params.style}">
+                <a href="<?php echo mobile_url('detail', array('id' => $item['id']))?>">
+                    <div class="fe-mod-8-main">
+                        <div class="fe-mod-8-main-img">
+                            <img style="height: 652px;" src="<?php echo ATTACHMENT_WEBROOT;?><?php echo $item['thumb']?>" ng-src="<?php echo ATTACHMENT_WEBROOT;?><?php echo $item['thumb']?>" class="goodimg">
+                            <div class="saleimg <?php if(!empty($item['istime'])){?>sale-xs<?php }else {?><?php if(!empty($item['issendfree'])){?>sale-by<?php }else{?><?php if(!empty($item['isnew'])){?>sale-xp<?php }?><?php }?><?php }?>" ng-class="Item.params.option"></div>
+                            <div class="fe-mod-8-main-price ng-binding" ng-show="Item.params.price != 0">￥<?php echo $item['marketprice'];?><?php if(!empty($item['productprice'])){?><span class="ng-binding" style="text-decoration: line-through; font-size: 12px; color: #eee;" ng-show="true">￥<?php echo $item['productprice'];?></span><?php }?></div>
+                        </div>
+                        <div class="fe-mod-8-main-name" ng-show="Item.params.showname == 1">
+                            <div class="fe-mod-8-main-name-buy buy-4" ng-class="Item.params.buysub" ng-show="Item.params.buysub"></div>
+                            <div class="fe-mod-8-main-name-name ng-binding"><?php echo $item['title'];?></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+              <?php } ?>
+        <!-- end ngRepeat: good in Item.data --><!-- end ngRepeat: good in Item.data --> 
+    </div>
+</div></div>
+        </div>        <?php } ?>
+        
+	<script type="text/javascript" src="__RESOURCE__/plus/imgsrc/angular.min.js"></script>
+<script type="text/javascript" src="__RESOURCE__/plus/imgsrc/hhSwipe.js?x=123456"></script>
+	<script type="text/javascript">
+    function initswipe(jobj){
+        var bullets = jobj.next().get(0).getElementsByTagName('a');
+        var banner = Swipe(jobj.get(0), {
+            auto: 4000,
+            continuous: true,
+            disableScroll:false,
+            callback: function(pos) {
+                var i = bullets.length;
+                while (i--) {
+                    $(bullets[i]).css("opacity",0.4);
+                }
+                $(bullets[pos]).css("opacity",0.6);
+            }
+        })
+    }
+   
+                $('.fe-mod-2 .swipe').each(function(){
+                        initswipe($(this));
+                 });
+                 $('.fe-mod-8-main-img img').each(function(){
+                     $(this).height($(this).width());    
+                 });
+                 $('.fe-mod-12 img').each(function(){
+                     $(this).height($(this).width());    
+                 });
+                 $('.fe-mod-cube table  tr').each(function(){
+                 	if( $(this).children().length<=0){
+                 		$(this).html('<td></td>');
+                 	}
+                 });
+</script>
+	
+
+<?php include themePage('footer');?>
+
+ 	<?php  if(!empty($cfg['shop_kf_qq'])){ ?>
+       
+  	
+         	
+         	<div class="fe-floatico fe-floatico-right" style="position: fixed; width: 60px; top: 300px;min-height: 10px;right: 0px;z-index: 1000;box-sizing: border-box;" ng-style="{'width':pages[0].params.floatwidth,'top':pages[0].params.floattop}" ng-class="{'fe-floatico-right':pages[0].params.floatstyle=='right'}" ng-show="pages[0].params.floatico==1">
+            <a href="http://wpa.qq.com/msgrd?v=3&uin=<?php  echo $cfg['shop_kf_qq']; ?>&site=qq&menu=yes" target="_parent">
+                <img src=" <?php echo RESOURCE_ROOT;?>addons/common/image/qq.png" ng-src="<?php echo RESOURCE_ROOT;?>addons/common/image/qq.png" style="width:100%;">
+            </a>
+        </div>
+         	    	<?php  } ?>
+<?php  include page('footer');?>	

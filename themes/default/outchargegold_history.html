@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+       <link href="__RESOURCE__/plus/css/font-awesome.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+        <meta name="format-detection" content="telephone=no" />
+  <script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>
+  <script language="javascript" src="__RESOURCE__/plus/js/jquery.gcjs.js"></script>
+          <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/static/css/style.css">
+          
+<title>提现记录</title>
+<style type="text/css">
+    body {margin:0px; background:#eee; font-family:'微软雅黑'; -moz-appearance:none;}
+    .credit_list {height:40px; width:94%; background:#fff; padding:10px 3%;margin-top:5px;}
+    
+    .credit_list .info {height:40px; width:72%; float:left;  font-size:16px; color:#666; line-height:20px; text-align:left;}
+    .credit_list .info span {font-size:14px; color:#999;}
+    .credit_list .num {height:40px; border-left:1px solid #eaeaea; width:20%;line-height:40px; float:right; text-align:right; font-size:16px; color:#666;}
+    .credit_list .num span {font-size:14px; color:#999;}
+    .credit_tab {height:30px; margin:5px; border:1px solid #ff6801; border-radius:5px; overflow:hidden;font-size:13px;background:#fff;padding-right: -2px;}
+    .credit_nav {height:30px; width:50%;  background:#fff; color:#666; text-align:center; line-height:30px; float:left;}
+    .credit_navon {color:#fff; background:#ff6801;}
+    .credit_no {height:100px; width:100%; margin:50px 0px 60px; color:#ccc; font-size:12px; text-align:center;}
+    #credit_loading { padding:10px;color:#666;text-align: center;}
+
+</style>
+    </head>
+    <body>
+
+<div class="page_topbar"  style="background: #008cd7;">
+    <a href="javascript:;" class="back" onclick="history.back()"   style="color: #fff;"><i class="fa fa-angle-left"></i></a>
+    <div class="title"   style="color: #fff;">充值记录</div>
+</div>
+<div id="container">
+	
+      	<?php  if(!empty($list)){ ?>		
+     
+      	<?php foreach($list as $v){ ?>		
+    	 <div class="credit_list">
+        <div class="info">
+            <span>
+                提现金额  
+                 
+                 
+               <?php echo $v['fee'] ?> 元</span>
+            <br><span><?php echo date('Y-m-d H:i:s',$v['createtime']) ?>	</span></div>
+        <div class="num">
+             
+            <span>			<?php if($v['status']==0){ ?>	
+										待审核
+										    <?php }  ?>			
+										    		<?php if($v['status']==1){ ?>	
+										已打款
+										    <?php }  ?>	
+										    		<?php if($v['status']==-1){ ?>	
+										审核失败
+										    <?php }  ?>	</span>
+           
+           
+           
+           
+           
+        </div>
+         </div>
+   
+        <?php }  ?>		
+        <?php }  ?>		
+        
+        	<?php  if(empty($list)){ ?>	
+        	    <div class="credit_list">
+        <div class="info">
+           您还没有提现记录！
+        </div>
+        
+    </div>
+              <?php }  ?>		
+    
+    </div>
+
+<?php  include page('footer');?>	
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>

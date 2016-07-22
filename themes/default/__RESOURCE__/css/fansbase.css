@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+body {
+    color: #333;
+}
+
+.ptd10{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.bbottom{
+    border-bottom: 1px #eee solid;
+}
+
+.bright{
+    border-right: 1px #eee solid;
+}
+
+
+.container{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.fxjumbotron{
+    background-color: #F7762E;
+    margin-bottom: 0px;
+}
+
+.fxjumbotron p{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.fxjumbotron strong{
+    font-size: 60px;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+.fxjumbotron a{
+    margin-top: 15px;
+}
+
+
+.fxi1{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 75px;
+    background-color: #ff9a00;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.fxi2{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 75px;
+    background-color: #98cd32;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.fxi3{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 75px;
+    background-color: #5601d7;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.fxi4{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 75px;
+    background-color: #55bcf4;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.fxi5{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 75px;
+    background-color: #ed56a0;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.fxi6{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 75px;
+    background-color: #ff9a00;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.fxd{
+    width: 80px;
+    margin: 15px auto;
+    text-align: center;
+    height: 125px;
+}
+
+.fxd p{
+    margin-bottom: 5px;
+}
+
+.fxd span{
+    font-size: 12px;
+    color: #cecece;
+}
+
+.fxd b{
+    font-size: 12px;
+    color: #ff000a;
+}
+
+
+

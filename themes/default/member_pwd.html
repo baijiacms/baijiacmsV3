@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+    		<title>修改密码</title>
+        <meta charset="utf-8">
+            <link href="__RESOURCE__/plus/css/font-awesome.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+        <meta name="format-detection" content="telephone=no" />
+			  <script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>
+  			<script language="javascript" src="__RESOURCE__/plus/js/jquery.gcjs.js"></script>
+        <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/style_normal.css">
+    </head>
+    <body>
+<style type="text/css">
+    body {margin:0px; background:#efefef; font-family:'微软雅黑'; -moz-appearance:none;}
+    .info_main {height:auto;  background:#fff; margin-top:14px; border-bottom:1px solid #e8e8e8; border-top:1px solid #e8e8e8;}
+    .info_main .line {margin:0 10px; height:40px; border-bottom:1px solid #e8e8e8; line-height:40px; color:#999;}
+    .info_main .line .title {height:40px; width:80px; line-height:40px; color:#444; float:left; font-size:16px;}
+    .info_main .line .info { width:100%;float:right;margin-left:-80px; }
+    .info_main .line .inner { margin-left:80px; }
+    .info_main .line .inner input {height:40px; width:100%;display:block; padding:0px; margin:0px; border:0px; float:left; font-size:16px;}
+    .info_main .line .inner .user_sex {line-height:40px;}
+    .info_sub {height:44px; margin:14px 5px; background:#31cd00; border-radius:4px; text-align:center; font-size:16px; line-height:44px; color:#fff;}
+    .select { border:1px solid #ccc;height:25px;}
+</style>
+				<form  method="post" >
+<div id="container"></div>
+    <div class="page_topbar" style="background: #008cd7;"  >
+    <a href="javascript:;" class="back" onclick="history.back()"  style="color: #fff;text-align:center;"><i class="fa fa-angle-left"></i></a>
+    <div class="title" style="color: #fff;text-align:center;">我的资料</div>
+</div>
+    <div class="info_main">
+
+       	<?php if(!empty($memberinfo['mobile'])){?><div class="line"><div class="title">手机号</div><div class='info'><div class='inner'><?php echo $memberinfo['mobile'];?></div></div></div><?php }?>
+        <div class="line"><div class="title">原密码</div><div class='info'><div class='inner'><input type="password" id='oldpwd' name='oldpwd' placeholder="请输入原密码"  value="" /></div></div></div>
+        <div class="line"><div class="title">新密码</div><div class='info'><div class='inner'><input type="password" id='pwd' name='pwd' placeholder="请输入新密码"  value="" /></div></div></div>
+    </div>
+    <div class="info_sub" onclick="submitRegister();" id="submitRegister">确认修改</div>
+        <button type="submit" id='submit'  name="submit" value="yes" style="display:none" >x</button>
+    	</form>
+    <script>
+	
+
+	function submitRegister() {
+var password = $('input[name=oldpwd]').val().trim();
+	if (!/^.{6,16}/.test(password)) {
+		alert('请正确输入原始密码，不能少于6位');
+		return false;
+	}
+	var password = $('input[name=pwd]').val().trim();
+	if (!/^.{6,16}/.test(password)) {
+		alert('请正确设置新密码，不能少于6位');
+		return false;
+	}
+		$('#submit').click();
+	
+}
+	
+	</script>
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

@@ -1,0 +1,43 @@
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>专属二维码</title>
+     <link href="__RESOURCE__/recouse/css/bottom.css" rel="stylesheet" type="text/css" />
+ <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fd.css">
+  <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fcommom.css">
+</head>
+
+<body class="body-gray" >
+
+    <!--topbar begin-->
+    <div >
+        <nav class="tab-bar">
+            <section class="left-small">
+                <a href="javascript:history.back();" class="menu-icon"><span></span></a>
+            </section>
+            <section class="middle tab-bar-section">
+                <h1 class="title">长按二维码可保存到手机</h1>
+            </section>
+        </nav>
+    </div>
+    <!--topbar end-->
+    <!--content begin-->
+    <div class="qrcode">
+        <img src="<?php echo $qrurl;?>?time=<?php echo time();?>">
+        <!-- <a class="qrcode-address" href="#">可转发朋友圈或是印宣传单上</a>
+        <a href="#" class="qrcode-a">长按二维码可保存到手机</a>-->
+
+    </div>
+    <!--content end-->
+	</div>
+	
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

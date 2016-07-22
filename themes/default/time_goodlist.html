@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>限时秒杀</title>
+    
+    	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link href="__RESOURCE__/recouse/css/reset.css" rel="stylesheet" type="text/css" />
+	<link href="__RESOURCE__/recouse/css/search_new.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/xmapp.css"/>
+	<link href="__RESOURCE__/recouse/css/bjcommon.css?x=4454" rel="stylesheet" type="text/css" />
+	<link href="__RESOURCE__/recouse/css/bjlist.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style=" margin:0 auto;">
+
+
+
+
+		<div class="tab">
+			
+			<!--Tab 标签end-->
+
+<!-- 分类浏览begin -->
+<!-- 排序begin -->
+
+
+<div>
+<img style="max-width: 100%;height: auto;width: auto\9;vertical-align:bottom;vertical-align:top;" src="__RESOURCE__/recouse/images/mstop.jpg">
+</div>
+
+<!-- 排序end -->
+    <div style="padding-top:10px;"></div>
+	
+	
+	<div class="os_panel">
+              
+                    <ul class="os_box_list" id="m2Con">
+               <?php  if(is_array($list)) { foreach($list as $item) { ?>
+                          <li>
+						  
+
+						  
+						  
+                              <a href="<?php  echo mobile_url('detail', array('id' => $item['id']))?>" class="item">
+							  
+							  			
+                                 
+                                  <div class="img"><img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $item['thumb'];?>"  onload="setLoadTime1();"></div>
+								  
+								  
+         
+
+								  
+                                  <div class="txt"><?php echo $item['title']?></div>
+								  <div class="buy">
+                                      <span class="price"><strong><em>¥<?php  echo $item['marketprice'];?></em></strong><del>¥ <?php  echo $item['productprice'];?></del></span>
+                                    
+                                  </div>
+								  	
+                                  
+                                
+							
+                              </a>
+                          </li>
+                 	  <?php  } } ?>
+                   </ul>
+                  
+               </div>
+	
+	
+	
+	
+	
+
+
+
+
+<!-- 分类浏览end -->
+		</div>
+	</div>
+	<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

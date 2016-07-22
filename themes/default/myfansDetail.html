@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title> <?php  if($level==1) { ?>一级<?php  } ?><?php  if($level==2) { ?>二级<?php  } ?>
+        <?php  if($level==3) { ?>三级<?php  } ?>会员名单</title>
+    <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fd.css">
+    <link href="__RESOURCE__recouse/css/bottom.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fcommom.css">
+    <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/pr4.css">
+
+    <style>
+        .tabBox {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .tabBox .hd {
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            overflow: hidden;
+            background: #ffffff;
+            padding-bottom: 5px;
+
+        }
+
+        .tabBox .hd li a {
+            border-bottom: 2px solid #eee;
+            display: block;
+            height: 38px;
+            line-height: 38px;
+        }
+
+        .tabBox .hd ul li {
+            float: left;
+            width: 33.333333%;
+            vertical-align: top;
+            text-align: center;
+            list-style: none;
+
+        }
+
+        .tabBox .hd ul li.on a {
+            color: #B63B34;
+            display: block;
+            height: 38px;
+            line-height: 38px;
+            border-bottom: 2px solid #B63B34;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="tabBox">
+    <div class="hd">
+        <ul style="margin-right: 0px;margin-left: 0px;">
+            <li <?php  if($level==1) { ?>class="on"<?php  } ?>><a href="<?php  echo create_url('mobile',array('name' => 'fenxiao','do' => 'myfansDetail','level'=>1))?>">一级粉丝</a></li>
+            <li <?php  if($level==2) { ?>class="on"<?php  } ?>><a href="<?php  echo create_url('mobile',array('name' => 'fenxiao','do' => 'myfansDetail','level'=>2))?>">二级粉丝</a></li>
+            <li <?php  if($level==3) { ?>class="on"<?php  } ?>><a href="<?php  echo create_url('mobile',array('name' => 'fenxiao','do' => 'myfansDetail','level'=>3))?>">三级粉丝</a></li>
+        </ul>
+    </div>
+</div>
+
+<?php  if(empty($fansall)) { ?>
+
+<div class="disorder-none"><i class="icon-none"></i><span class="nonetext">您还没有 <?php  if($level==1) { ?>一级<?php  } ?><?php  if($level==2) { ?>二级<?php  } ?>  <?php  if($level==3) { ?>三级<?php  } ?>会员！</span>
+</div>
+
+
+<?php  }else{ ?>
+<div class="list-myorder" style="margin-top:10px;">
+
+
+    <ul class="ul-product">
+
+
+        <?php  if(is_array($fansall)) { foreach($fansall as $fans) { ?>
+        <li>
+        	 	
+                <span class="pic">
+                    <img src="<?php  if(empty($fans['avatar'])) { ?>__RESOURCE__/style/images/yh.png<?php  }else{ ?><?php  echo $fans['avatar'] ?><?php  } ?>"></span>
+
+            <div class="text">
+                <span class="pro-name">昵称：<?php  echo $fans['nickname'] ?></span>
+                <?php  echo date('Y-m-d', $fans['createtime']) ?>
+                <div class="pro-pric"><span>关注时间：</span> <?php  echo date('Y-m-d', $fans['createtime']) ?></div>
+                <div class="pro-pric"><span>推荐上级：</span><?php  $parent_member=member_get($fans['parentid']); ?>
+                    <?php echo empty($parent_member['nickname'])?$parent_member['mobile']:$parent_member['nickname']  ?>
+                </div>
+
+            </div>
+
+
+        </li>
+        <?php  } } ?>
+
+
+    </ul>
+
+
+</div>
+<?php  } ?>
+<?php  echo  $pager; ?>
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

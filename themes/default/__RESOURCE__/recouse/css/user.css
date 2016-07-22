@@ -1,0 +1,148 @@
+/*index579161314799754*/
+@charset "utf-8";
+/*用户中心登录页begin*/
+body{
+	background-color: #eee;
+	color: #444;
+}
+a{
+	color: #444;
+}
+.login .form{
+	width: 282px;
+	margin: 0 auto;
+	padding: 50px 19px;
+	overflow: hidden;
+}
+.login .sign{
+	margin-bottom: 14px;
+}
+.sign #btn_moblogin{
+	line-height: 34px;
+	font-size: 12px;
+	color: #a1a1a1;
+	background-color: transparent;
+	float: right;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+.login .user-info{
+	width: 282px;
+	height: 42px;
+	background: url(../images/login.png) no-repeat;
+}
+.user-info.name{
+	margin-bottom: 10px;
+	background-position: -19px -113px;
+}
+.user-info.pwd{
+	margin-bottom: 14px;
+	background-position: -19px -165px;
+}
+.login .user-info input{
+	width: 241px;
+	height: 42px;
+	padding-left: 41px;
+	font-size: 12px;
+	color: #afafaf;
+	background-color: transparent;
+	line-height: 42px;
+}
+.login .enter input{
+	width: 280px;
+	height: 40px;
+	margin: 0 auto 24px;
+	background: url(../images/login.png) no-repeat -20px -221px;
+}
+.login li .auto{
+	color: #7d7d7d;
+	vertical-align: top;
+	line-height: 34px;
+	float: left;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+.auto .check{
+	width: 18px;
+	height: 18px;
+	background: url(../images/login.png) no-repeat -28px -293px;
+	margin: 8px 5px auto 9px;
+}
+.login li .signup{
+	width: 82px;
+	height: 34px;
+	color: #7c7c7c;
+	background: url(../images/login.png) no-repeat -219px -285px;
+	line-height: 34px;
+	text-align: center;
+	float: right;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+.login .sinn{
+	width: 242px;
+	height: 46px;
+	margin: 40px auto 0;
+	background: url(../images/login.png) no-repeat -39px -362px;
+}
+.login .sinn a{
+	height: 46px;
+	float: left;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+.login .sinn a.alipay{
+	width: 56px;
+	margin-left: 29px;
+}
+.login .sinn a.sina{
+	width: 41px;
+	margin: 0 29px 0 31px;
+}
+.login .sinn a.qq{
+	width: 37px;
+}
+
+/*用户中心登录页end*/
+
+
+/*用户中心首页begin*/
+/*顶部信息begin*/
+.user{margin:0 10px;overflow: hidden;}
+.order h2{margin-top:10px;margin-bottom:3px;}
+strong{font-weight:normal;color:#e70e00;}
+.more{display:block;border:8px solid transparent;border-left-color:#b8b8b8;}
+.inner{display:block;border:7px solid transparent;border-left-color:#fff;}
+.user .info{padding-top:20px;font:14px/1.5;position: relative;top: 0;left: 0;}
+.info li{float:left;display:inline;width:200px;height:30px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+.info li strong{color:#f60900;font-weight:normal;}
+.info .rank-logo{width: 72px;height: 72px;display: block;position: absolute;top: 35px;left: 200px;background: url(../images/rank-icon.png) no-repeat -228px 0;}
+.info .go-home{position: absolute;top: 125px;left: 200px;}
+.info .ad-area{width: 100px;height: 100px;display: block;position: absolute;top: 35px;left: 200px;overflow: hidden;}
+.info .ad-area img{width: 100px;height: 100px;}
+/*顶部信息end*/
+/*订单管理begin*/
+.order{margin-bottom:18px;}
+.order ul{border:1px solid #c8c8c8;border-radius:5px;background-color:#fff;}
+.order li{height:39px;line-height:39px;position:relative;top:0;left:0;}
+.order li a{display:block;margin:0 20px;border-top:1px dotted #9d9d9d;}
+.order li a.first{border-top:none;}
+.order li a.link{border-top:none;}
+.order.management{padding-top: 10px;border-top: 1px solid #c9c9c9;}
+.order .pending{margin-bottom:10px;}
+.order .pending li a{border-top:none;}
+.order li .more{position:absolute;top:11px;right:4%;}
+.order li .inner{position:absolute;top:-7px;right:-5px;}
+/*订单管理end*/
+/*账户管理样式same as订单管理*/
+/*退出登录 btn begin*/
+.quit .btn{display:block;width:100%;height: 40px;line-height: 40px;text-align: center;margin-bottom:30px;font-size:14px;font-weight:normal;font-family:微软雅黑;letter-spacing:3px;background:none;background-color:#F7762E;border:none;border-radius:0;color: #fff;border-radius:5px;}
+/*退出登录 btn end*/
+/*用户中心首页end*/
+
+/*以下为屏蔽user.css对页脚的样式影响*/
+.foot .bottom .inner{border: none;}

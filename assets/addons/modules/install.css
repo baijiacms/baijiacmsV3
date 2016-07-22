@@ -1,0 +1,127 @@
+﻿@charset "utf-8";
+
+*{
+	padding:0px;
+	margin:0px;
+	font-family:宋体,Verdana, Arial, Helvetica, sans-serif;
+}
+html{
+	background:#6699CC;
+}
+
+body{
+	padding-top:0px;
+	padding-bottom:20px;
+	font-size:12px;
+	background:#FFFFFF;
+	width:830px; 
+	margin:6px auto;
+	padding-top:18px;
+	border:5px solid #F9F2DD;
+}
+
+a{
+	color:#06C;
+}
+a:hover{
+	color:#F30;
+}
+
+.boxcenter{
+	margin:0px auto;
+}
+
+
+.butbox{
+	width:760px;
+	text-align:center;
+	margin-top:20px;
+}
+
+.nextbut{
+	width:104px;
+	height:34px;
+	border:none;
+	background:url(images/but_next.gif) no-repeat;
+	cursor:pointer;
+}
+.setupbut{
+	width:104px;
+	height:34px;
+	border:none;
+	background:url(images/but_setup.gif) no-repeat;
+	cursor:pointer;
+}
+.backbut{
+	width:104px;
+	height:34px;
+	border:none;
+	background:url(images/but_back.gif) no-repeat;
+	cursor:pointer;
+}
+
+
+.pact{
+	width:730px;
+	margin:15px auto;
+	color:#888;
+	line-height:200%;
+	overflow:auto;
+}
+.pact h4{
+	color:#666;
+	font-size:12px;
+}
+.pact p{
+	text-indent:30px;
+}
+.readpact{
+	width:760px;
+	padding-top:20px;
+	text-align:center;
+	border-top:1px solid #DDD;
+	font-size:14px;
+	letter-spacing:2px;
+}
+* html .readpact input{
+	margin:-1px 10px 2px 0px;
+}
+.readpact input[type="checkbox"]{
+	margin: -1px 10px 0 0px;
+}
+
+.twbox{
+	border:1px solid #DDD;
+	font-size:12px;
+	overflow:hidden;
+	margin:8px auto;
+
+
+}
+
+.td1 {
+	background:#FFC;
+}
+.td2 {
+	BACKGROUND: #ffffff;
+}
+
+.twbox tbody {
+	overflow:hidden;
+	text-align:left;
+	height:25px;
+}
+
+
+.twbox tbody tr td{
+	padding:7px;
+	border-bottom:1px solid #EEE;
+	color:#333;
+}
+
+.textipt{
+	padding:4px;
+	border:1px solid #AAA;
+	font-size:12px;
+	color:#000;
+}

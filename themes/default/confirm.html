@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+ 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+        <meta name="format-detection" content="telephone=no" />      
+         <title>订单确认</title>
+         
+          <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/stylev2s.css?x=1">
+          <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/stylev2.css?x=1">
+          
+          <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/font/font.css">
+  <script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>
+    </head>
+    
+    <body>
+    	 <form id='formorder' name="input" onsubmit="return check()" method="post">
+<div class='fui-page-group'><div class='fui-page order-create-page'>
+    <div class="fui-header" style="background: #008cd7;">
+        <div class="fui-header-left">
+           &nbsp;
+        </div>	
+        <div class="title" style="color: #fff;">确认订单</div>
+        <div class="fui-header-right" >&nbsp;</div>
+    </div>
+    <div class='fui-content  navbar'>
+
+        
+                <!--地址选择-->
+        <div class="fui-list-group" id='addressInfo' data-addressid="0">
+            <a  class="fui-list external"
+                                href="<?php  echo mobile_url('address',array('from'=>'confirm','returnurl'=>urlencode($returnurl)))?>"
+                            data-nocache="true">
+            <div class="fui-list-media">
+                <i class="icon icon-location"></i>
+            </div>
+            <div class="fui-list-inner" >
+            	    <?php  if(!empty($defaultAddress)) { ?>
+            	          <input type="hidden" name="address" value="<?php  echo $defaultAddress['id'];?>" />
+                <div class="title has-address"><span class='realname'><?php  echo $defaultAddress['realname'];?></span> <span class='mobile'><?php  echo $defaultAddress['mobile'];?></span></div>
+            <div class="text has-address" ><span class='address address_item'><?php  echo $defaultAddress['province'];?> <?php  echo $defaultAddress['city'];?> <?php  echo $defaultAddress['area'];?> <?php  echo $defaultAddress['address'];?></span></div>
+       
+               <?php  } else { ?>
+        <div class="text no-address" ><i class="icon icon-add"></i> 添加收货地址</div>
+              <?php  } ?>
+</div>
+<div class="fui-list-angle">
+    <div class="angle"></div>
+</div>
+</a>
+</div>
+
+ <?php  if($has_be_goods==true) { ?>
+<div class="fui-list-group" >
+
+ 	<?php $be_all_price=0; if(is_array($be_allgoods)) { $be_price=0;$be_count=0;foreach($be_allgoods as $item) { $be_count=$be_count+$item['total'];$be_price=$be_price+$item['totalprice']; ?>
+        			<?php $be_all_price=$be_all_price+$item['totalprice'];?>
+    <div class="fui-list goods-item">
+        <div class="fui-list-media">
+            <a href="<?php  echo mobile_url('detail',array('id'=>$item['id']))?>">
+                <img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $item['thumb']?>" class="round">
+            </a>
+        </div>
+        <div class="fui-list-inner">
+            <a href="<?php  echo mobile_url('detail',array('id'=>$item['id']))?>">
+                <div class="text">
+                                    <?php  echo $item['title'];?>              </div>
+                                    <?php  if(!empty($item['optionname'])) { ?>
+                                       <div class="text">
+                 <?php  echo $item['optionname'];?>
+                </div><?php  } ?>
+                                    
+                            </a>
+        </div>
+        <div class='fui-list-angle'>
+            <span class="price ">￥<span class='marketprice'><?php  echo $item['marketprice'];?></span></span>
+            <span class="total">
+                      x<?php  echo $item['total'];?>
+        
+        </span>
+    </div>
+
+</div>
+
+       	<?php  } } ?>
+       	  <?php  } ?> 
+<div class='fui-cell-group'>
+        <div class="fui-cell">
+        <div class="fui-cell-info" style="text-align: right;">共 <span id='goodscount' class='text-danger'><?php  echo $be_count;?></span> 件商品 合计：<span class="text-danger">￥<span class='goodsprice'><?php  echo $be_price;?></soan></span></div>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+<div class="fui-cell-group sm ">
+    <div class="fui-cell">
+        <div class="fui-cell-info"><input type="text" class="fui-input"  name="remark" id='remark' placeholder="买家留言(选填)" maxlength="50"></div>
+    </div>
+</div>
+
+<div class="fui-cell-group sm">
+
+    <div class="fui-cell">
+        <div class="fui-cell-label" >商品小计</div>
+        <div class="fui-cell-info"></div>
+        <div class="fui-cell-remark noremark">￥<span class='goodsprice'><?php  echo $be_price;?></span></div>
+            <span class='goodspricex' style="display:none"><?php  echo $item['totalprice'];?></span>
+    </div>
+    
+    <div class="fui-cell">
+        <div class="fui-cell-label" >配送方式</div>
+        <div class="fui-cell-info"><select id="be_dispatch" name="be_dispatch" onchange='oncheckboxchange();'>
+			  <?php  if(is_array($be_dispatch)) { foreach($be_dispatch as $d) { ?>
+  										<option value="<?php  echo $d['id'];?>" title="<?php echo $is_be_send_free==1?0:$d['price'];?>"><?php  echo $d['dname'];?>[快递<?php echo $is_be_send_free==1?0:$d['price'];?>元]</option>
+                        <?php  } } ?>
+				                 
+                  	                   </select></div>
+    </div>
+    
+      <div class="fui-cell">
+        <div class="fui-cell-label" >运费</div>
+        <div class="fui-cell-info"></div>
+        <div class="fui-cell-remark noremark">￥<span class='goodsprice' id="be_kuaidiprice"><?php  echo $be_price;?></span></div>
+    </div>
+
+       
+</div>
+
+</div>
+
+
+<div class="fui-navbar order-create-checkout">
+    <a href="javascript:;" class="nav-item total">
+        <p>需付：<span class="text-danger ">￥<span class="totalprice" id='totalprice'><?php  echo $totalprice;?></span></span></p>
+    </a>
+    <a href="javascript:;" onclick="document.getElementById('submit').click();" class="nav-item btn btn-danger buybtn">立即支付</a>
+    
+        <button type="submit" id='submit'  name="submit" value="yes" style="display:none" >x</button>
+</div>
+</form>
+
+        <script language='javascript'>
+    
+	
+            function check(){
+            	 	<?php  if(empty($item['isverify'])){ ?>
+                if($(".address_item").length<=0){
+                    alert("请添加收货地址!");
+                    return false;
+                }      
+                <?php  }else{ ?>
+                	  if($("#verify_address_name").val()==''){
+                    alert("请添加联系人!");
+                    return false;
+                }   
+                  if($("#verify_address_tell").val()==''){
+                    alert("请添加联系电话!");
+                    return false;
+                }        
+                	<?php } ?>
+               	<?php  if($_CMS['custom']=='custom_0710'){ ?>
+                		    if($("#sendtime").val()==''||$("#sendtime").val()==0){
+                    alert("请选择配送时间段!");
+                      return false;
+                   }
+                		<?php } ?>
+          
+                 	return true;
+            }
+       
+            function oncheckboxchange(){
+                var price = 0;
+                $(".goodspricex").each(function(){
+                    price+=parseFloat($(this).html());
+                });
+            
+              
+                var dispatchprice1=0;
+                var dispatchprice2=0;
+                
+               
+                	  	<?php if($has_be_goods==true){ ?>
+                	  var dispatch_options=document.getElementById('be_dispatch').options;
+             for(var i=0;i<dispatch_options.length;i++)
+                {
+                		if(dispatch_options[i].value==document.getElementById('be_dispatch').value)
+             				{
+             					dispatchprice2=dispatch_options[i].title;
+             							dispatchprice2=parseFloat(dispatchprice2);
+             				}
+                }
+                   	<?php } ?>
+                	
+              //  var dispatchpricestr="(商品合计："+parseFloat(price)+"";
+              var dispatchpricestr="";
+     
+                		  	  	<?php if($has_be_goods==true){ ?>
+                  if(( parseFloat(dispatchprice2))>0)
+                {
+                	  	$("#be_kuaidiprice").html(parseFloat(dispatchprice2));
+                }else
+                	{
+                		$("#be_kuaidiprice").html(0);
+                	}
+                	<?php } ?>
+                	var totalprice=parseFloat(price) ;
+            	var totalprice=totalprice + parseFloat(dispatchprice1);
+            	var totalprice=totalprice+ parseFloat(dispatchprice2);
+            
+                 $("#totalprice").html(totalprice.toFixed(2));    
+ 
+                
+            }
+            
+            
+            oncheckboxchange();
+            javascript:window.history.forward(1);
+ </script>
+            
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

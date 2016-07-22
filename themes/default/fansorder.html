@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<title>我推荐的订单</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__RESOURCE__/style/css/oder.css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta name="mobileOptimized" content="width" />
+<meta name="handheldFriendly" content="true" />
+<meta http-equiv="Cache-Control" content="max-age=0" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="__RESOURCE__/recouse/css/bottom.css" rel="stylesheet" type="text/css" />
+ <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fd.css">
+ <link rel="stylesheet" type="text/css" href="__RESOURCE__/recouse/css/fcommom.css">
+
+</head>
+
+<body  class="body-gray my-memvers">
+
+    <!--count-->
+    <section class="member-count">
+        <h2 class="member-count-title"><i class="icon-chunk-gray"><i class="icon-chunk-blue"></i></i><span>推荐订单数据</span></h2>
+        <div class="row member-count-row">
+            <div class="small-4 columns member-count-column"><span class="member-count-label">今日新增</span><em class="member-count-number"><?php echo $countToday;?></em></div>
+            <div class="small-4 columns member-count-column"><span class="member-count-label">昨日新增</span><em class="member-count-number"><?php echo $countYestay;?></em></div>
+            <div class="small-4 columns member-count-column"><span class="member-count-label">订单总数</span><em class="member-count-number"><?php echo $allcount;?></em></div>
+        </div>
+    </section>
+    <!--count-->
+
+	
+	    <section class="member-browse">
+        <h2 class="member-browse-title"><i class="icon-chunk-gray"><i class="icon-chunk-blue"></i></i><span>详细订单记录</span></h2>
+		
+        <ul class="member-browse-ul">
+            <?php if(empty($list)){ ?>
+				<p >暂无</p>
+			    <?php }else{ ?>
+			     <?php foreach($list as $order){ ?>
+            <li class="member-browse-li">
+                <div class="row member-browse-summey">
+                    <a class="member-browse-summey-info" href="#" >                 
+                        <div class="member-browse-nt">                           
+                            <span class="member-browse-name" style="font-weight:bold;"><?php echo $order['level'];?>级订单：<?php echo$order['ordersn'];?><span class="pro-price">【
+<?php  if($order['status'] == 0) { ?><span class="text-warning" >待付款</span><?php  } ?>
+						<?php  if($order['status'] == 1) { ?><span class="text-danger" >待发货</span><?php  } ?>
+						<?php  if($order['status'] == 2) { ?><span class="text-warning">待收货</span><?php  } ?>
+						<?php  if($order['status'] == 3) { ?><span class="text-success" >已完成</span><?php  } ?>
+						<?php  if($order['status'] == -1) { ?><span class="text-success">已关闭</span><?php  } ?>
+						<?php  if($order['status'] == -2) { ?><span class="text-danger">退款中</span><?php  } ?>
+						<?php  if($order['status'] == -3) { ?><span class="text-danger">换货中</span><?php  } ?>
+						<?php  if($order['status'] == -4) { ?><span class="text-danger">退货中</span><?php  } ?>
+						<?php  if($order['status'] == -5) { ?><span class="text-success">已退货</span><?php  } ?>
+						<?php  if($order['status'] == -6) { ?><span class="text-success">已退款</span><?php  } ?>
+                             】</span></span>
+                        </div>
+                    </a>                   
+                </div>
+               <?php foreach($order['fenxiao_order'] as $v){ ?>
+                <div class="member-browser-pro-list" >
+                    
+                    <a class="member-browser-pro-a" href="#"><span class="pro-img">
+                        <img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $v['attachment'];?>"></span><p class="pro-info"><span class="pro-name" style="color:#999;"><?php  echo $v['title'].$v['id'];?></span><span class="pro-price">预估佣金：<strong>+<?php  echo $v['commission'.$order['level']];?></strong></span><span class="pro-price">&nbsp;&nbsp;&nbsp;&nbsp;数量：<strong><?php  echo $v['total'];?></strong></span></p>
+                    </a>
+                    
+                </div>
+             <?php } ?>
+				
+				
+				     <div class="row member-browse-summey">
+                    <a class="member-browse-summey-info" href="#" >                 
+                        <div class="member-browse-nt">                           
+                            <span class="member-browse-name" style="color:#999;">收货人：<?php  echo $order['realname'];?>&nbsp;&nbsp;&nbsp;&nbsp;金额：<?php  echo $order['price'];?>&nbsp;&nbsp;&nbsp;&nbsp;日期：<?php  echo date('Y-m-d',$order['createtime2']);?></span>
+                        </div>
+                    </a>                   
+                </div>
+				
+            </li>
+	<?php } ?>
+			
+	   <?php } ?>
+			
+			
+            
+        </ul>
+    </section>
+	<?php echo  $pager; ?>
+</div>
+	
+
+<?php  $_CMS['module']='shopwap'; ?>
+
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

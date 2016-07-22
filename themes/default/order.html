@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="__RESOURCE__/plus/css/font-awesome.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+        <meta name="format-detection" content="telephone=no" />
+     
+         <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/style_normal.css">
+    </head>
+    <body>
+
+<title>我的订单</title>
+<style type="text/css">
+    body {margin:0px; background:#efefef; -moz-appearance:none; -webkit-appearance: none;}
+    .order_topbar {height:44px; width:100%; background:#fff; border-bottom:1px solid #e3e3e3;}
+    .order_topbar .nav {height:44px; width:20%; line-height:44px; text-align:center; font-size:14px; float:left; color:#666;}
+    .order_topbar .on {height:42px; color:#ff771b; border-bottom:2px solid #ff771b;}
+    .order_noinfo {height:20px; width:150px; background:url(img/order_img1.png) top center no-repeat; margin:50px auto 0px; padding-top:100px; line-height:20px; font-size:14px; text-align:center; color:#c9c9c9;}
+    .order_main {height:auto; width:94%; background:#fff; padding:0px 3%; margin-top:16px; border-bottom:1px solid #e2e2e2; border-top:1px solid #e2e2e2;}
+    .order_main .title {height:42px; width:100%; border-bottom:1px solid #e2e2e2; font-size:14px; line-height:42px; color:#666;}
+    .order_main .title span {height:42px; width:auto; float:right; color:#ff771b;}
+   
+
+    .order_main .good {height:50px; width:100%; padding:10px 0px; border-bottom:1px solid #eaeaea;}
+    .order_main .good .img {height:50px; width:50px; float:left;}
+    .order_main .good  .img img {height:100%; width:100%;}
+    .order_main .good  .info {width:100%;float:left; margin-left:-50px;margin-right:-60px;}
+    .order_main .good .info .inner { margin-left:60px;margin-right:60px; }
+    .order_main .good .info .inner .name {height:32px; width:100%; float:left; font-size:12px; color:#555;overflow:hidden;}
+    .order_main .good .info .inner .option {height:18px; width:100%; float:left; font-size:12px; color:#888;overflow:hidden;word-break: break-all}
+    .order_main .good span { color:#666;}
+    .order_main .good  .price { float:right;width:60px;;height:54px;margin-left:-60px;;}
+    .order_main .good  .price .pnum { height:20px;width:100%;text-align:right;font-size:14px; }
+    .order_main .good  .price .num { height:20px;width:100%;text-align:right;}
+    .order_main .info1 {height:42px; width:100%; border-bottom:1px solid #e2e2e2; font-size:14px; color:#999; line-height:42px; text-align:right;}
+    .order_main .info1 span {color:#666;}
+
+    .order_main .sub {height:50px; width:100%;}
+    .order_main .sub1 {height:30px; width:auto; padding:0px 10px; border:1px solid #ff771b; float:right; border-radius:5px; line-height:30px; font-size:14px; margin:10px 5px 10px 0px; color:#fff; background:#ff771b;}
+    .order_main .sub2 {height:30px; width:auto; padding:0px 10px; border:1px solid #5f6e8b; float:right; border-radius:5px; line-height:30px; font-size:14px; margin:10px 5px 10px 0px; color:#5f6e8b;}
+    select { width:80px;height:30px;position:absolute;left:0; filter:alpha(Opacity=0); opacity: 0;-webkit-appearance: none;background:#fff; -webkit-tap-highlight-color: transparent };
+    .order_no {height:40px; width:100%;  padding-top:180px; margin:50px 0px;}
+
+    .order_no {height:100px; width:100%; margin:50px 0px 60px; color:#ccc; font-size:12px; text-align:center;}
+    .order_no_menu {height:40px; width:100%; text-align:center;}
+    .order_no_nav {height:38px;padding:10px; width:100px; background:#eee; border:1px solid #d4d4d4; border-radius:5px; text-align:center; line-height:38px; color:#666;}
+    #order_loading { width:94%;padding:10px;color:#666;text-align: center;}
+
+</style>
+<div id='container'>
+	<div class="page_topbar" style="background: #008cd7;">
+    <a href="javascript:;" class="back"  style="color: #fff;" onclick="location.href='<?php  echo mobile_url('fansindex')?>';"><i  style="color: #fff;"  class="fa fa-angle-left"></i></a>
+    <div class="title"  style="color: #fff;" >我的订单</div>
+</div>
+
+
+<div class="order_topbar">
+                <div class="nav <?php  if($status==99) { ?>on<?php  } ?>" data-status="" onclick="location.href='<?php  echo mobile_url('myorder',array('status'=>99))?>'">全部</div>
+        <div class="nav <?php  if($status==0) { ?>on<?php  } ?>" data-status="0" onclick="location.href='<?php  echo mobile_url('myorder',array('status'=>0,'tstatus'=>1))?>'">待付款</div>
+        <div class="nav <?php  if($status==1) { ?>on<?php  } ?>" data-status="1" onclick="location.href='<?php  echo mobile_url('myorder',array('status'=>1))?>'">待发货</div>
+        <div class="nav <?php  if($status==2) { ?>on<?php  } ?>" data-status="2" onclick="location.href='<?php  echo mobile_url('myorder',array('status'=>2))?>'">待收货</div>
+        <div class="nav <?php  if($status==-5) { ?>on<?php  } ?>" data-status="-5" onclick="location.href='<?php  echo mobile_url('myorder',array('status'=>-5))?>'">退换货</div>
+            </div>
+            
+            
+            <?php  $nodate=true;if(is_array($list)&&count($list)>0) { foreach($list as $item) { ?>
+<?php  if((!empty($item['is_system'])||!empty($item['is_be']))&&(empty($item['status'])||$item['status']==-1)) {$nodate=false; ?>
+            
+            <div class="order_main" data-orderid="6">
+        <div class="title">订单编号：<?php  echo $item['ordersn'];?><span><?php  echo getOrderStatusStr(1,$item['status'],0);?></span></div>
+         <?php  $price=0; if(is_array($item['goods'])) { foreach($item['goods'] as $goods) { ?>
+         
+        <div class="good">
+            <div class="img" onclick="location.href='<?php  echo mobile_url('detail', array('id' => $goods['goodsid']))?>'"><img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $goods['thumb'];?>"></div>
+            <div class="info" onclick="location.href='<?php  echo mobile_url('detail', array('id' => $goods['goodsid']))?>'">
+                <div class="inner">
+                       <div class="name"><?php  echo $goods['title'];?></div>     
+                       <div class="option"><?php  if(!empty($goods['optionname'])) { ?>规格：<?php echo $goods['optionname']; ?><?php  } ?></div>
+                </div>
+            </div>
+            <div class="price">
+                <div class="pnum"><span class="price">￥<?php  echo $goods['price'];?></span></div>
+                <div class="pnum"><span class="total">×<?php  echo $goods['total'];?></span></div>
+            </div>
+        </div>
+              	<?php  } } ?>
+        
+        <div class="info1">共 <?php  echo count($item['goods']);?> 件商品&nbsp;快递：<span>￥<?php echo $item['dispatchprice'];?></span>&nbsp;订单金额：<span>￥<?php echo $item['price'];?></span></div>
+        <div class="sub">
+
+  
+		<?php  if($item['status']==0) { ?>
+		    <div class="sub1"  onclick="location.href='<?php  echo mobile_url('pay', array('orderid' => $item['id'], 'topay' => '1'))?>';">订单付款</div>
+
+                   <div class="sub2 order_delete"  onclick="if(confirm('确定此关闭订单吗？')){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'orderclose','orderid' => $item['id']))?>';}">关闭订单</div>
+ <?php  }?>
+                 <div class="sub1" style="border: 1px solid green;background: green;"  onclick="location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'detail','orderid' => $item['id']))?>';">订单详情</div>
+
+        </div>
+    </div>
+            
+            
+            	<?php  } ?>
+            	
+            	
+            	
+            	
+            	<?php  if($item['status']==1) { if(!empty($item['is_system'])){  ?>
+            			<?php
+							if($status==99
+							||($status==1&&$item['zong_status']==0)
+							||($status==2&&$item['zong_status']==2)
+							||($status==3&&$item['zong_status']==3)
+								||($status==-1&&$item['zong_status']==-1)
+							||($status==-2&&$item['zong_status']==-2)
+								||($status==-5&&($item['zong_status']<=-2||$item['zong_hasrest']>=1)))
+							 {$nodate=false;
+							?>
+            <div class="order_main" data-orderid="6">
+        <div class="title">订单编号：<?php  echo $item['zong_ordersn'];?><span>
+        	  		<?php  if($item['zong_hasrest']==1) { ?>部分退换货
+        	  				<?php  }else{  ?>
+        	<?php  echo getOrderStatusStr(2,$item['zong_status'],1);?>
+        		<?php  }  ?>
+        	</span></div>
+         <?php  $goodcount=0;  if(is_array($item['goods'])) { foreach($item['goods'] as $goods) { if(!empty($goods['is_system'])){ $goodcount=$goodcount+1; ?>
+         
+        <div class="good">
+            <div class="img" onclick="location.href='<?php  echo mobile_url('detail', array('id' => $goods['goodsid']))?>'"><img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $goods['thumb'];?>"></div>
+            <div class="info" onclick="location.href='<?php  echo mobile_url('detail', array('id' => $goods['goodsid']))?>'">
+                <div class="inner">
+                       <div class="name"><?php  echo $goods['title'];?></div>     
+                       <div class="option"><?php  if(!empty($goods['optionname'])) { ?>规格：<?php echo $goods['optionname']; ?><?php  } ?></div>
+                </div>
+            </div>
+            <div class="price">
+                <div class="pnum"><span class="price">￥<?php  echo $goods['price'];?></span></div>
+                <div class="pnum"><span class="total">×<?php  echo $goods['total'];?></span></div>
+            </div>
+        </div>
+              	<?php  }} } ?>
+        
+        <div class="info1">共 <?php  echo count($item['goods']);?> 件商品&nbsp;快递：<span>￥<?php echo $item['zong_dispatchprice'];?></span>&nbsp;订单金额：<span>￥<?php echo $item['zong_goodsprice'];?></span></div>
+        <div class="sub">
+        	  <div class="sub1" style="border: 1px solid green;background: green;"  onclick="location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'detail','orderid' => $item['id'],'is_system'=>1))?>';">订单详情</div>
+
+        	     		<?php  if($item['zong_status']==2) { ?>
+                  <div class="sub1 order_complate"  onclick="if(confirm('确认收货？')){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'zong_confirm','orderid' => $item['id']))?>';}">确认收货</div>
+	<?php  }  ?>
+            	<?php if($_CMS['addons_bj_hx']){ if($item['zong_status']!=3&&$item['zong_status']>0&&!empty($item['isverify'])) { ?>
+     <div class="sub1" style="border: 1px solid green;background: green;" onclick="location.href='<?php  echo create_url('mobile',array('name' => 'bj_hx','do' => 'verifyshow','orderid' => $item['id']))?>'">订单消费码</div>
+     
+     <div class="sub1" style="border: 1px solid green;background: green;" onclick="location.href='<?php  echo create_url('mobile',array('name' => 'bj_hx','do' => 'sendweixin','orderid' => $item['id']))?>'">发送到微信</div>
+				<?php  } } ?>
+		
+                 
+        </div>
+    </div>
+            <?php } ?>	
+            
+            	<?php  } } ?>
+            	
+            	
+            	
+            	
+            	
+            	
+            	<?php  if($item['status']==1) { if(!empty($item['is_be'])){  ?>
+            		<?php
+							if($status==99
+							||($status==1&&$item['be_status']==0)
+							||($status==2&&$item['be_status']==2)
+							||($status==3&&$item['be_status']==3)
+								||($status==-1&&$item['be_status']==-1)
+							||($status==-2&&$item['be_status']==-2)
+								||($status==-5&&($item['be_status']<=-2||$item['be_hasrest']>=1)))
+							 {$nodate=false;
+							?>
+            <div class="order_main" data-orderid="6">
+        <div class="title">订单编号：<?php  echo $item['be_ordersn'];?><span>
+        			<?php  if($item['be_hasrest']==1) { ?>部分退换货
+        	  				<?php  }else{  ?>
+        	<?php  echo getOrderStatusStr(2,$item['be_status'],1);?><?php  } ?></span></div>
+         <?php  $goodcount=0; if(is_array($item['goods'])) { foreach($item['goods'] as $goods) { if(empty($goods['is_system'])){ $goodcount=$goodcount+1; ?>
+         
+        <div class="good">
+            <div class="img" onclick="location.href='<?php  echo mobile_url('detail', array('id' => $goods['goodsid']))?>'"><img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $goods['thumb'];?>"></div>
+            <div class="info" onclick="location.href='<?php  echo mobile_url('detail', array('id' => $goods['goodsid']))?>'">
+                <div class="inner">
+                       <div class="name"><?php  echo $goods['title'];?></div>     
+                       <div class="option"><?php  if(!empty($goods['optionname'])) { ?>规格：<?php echo $goods['optionname']; ?><?php  } ?></div>
+                </div>
+            </div>
+            <div class="price">
+                <div class="pnum"><span class="price">￥<?php  echo $goods['price'];?></span></div>
+                <div class="pnum"><span class="total">×<?php  echo $goods['total'];?></span></div>
+            </div>
+        </div>
+              	<?php  }} } ?>
+        
+        <div class="info1">共 <?php  echo $goodcount;?> 件商品&nbsp;快递：<span>￥<?php echo $item['be_dispatchprice'];?></span>&nbsp;订单金额：<span>￥<?php echo $item['be_goodsprice'];?></span></div>
+        <div class="sub">
+        	                   <div class="sub1" style="border: 1px solid green;background: green;"  onclick="location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'detail','orderid' => $item['id'],'is_be'=>1))?>';">订单详情</div>
+        	     
+        	     		<?php  if($item['be_status']==2) { ?>
+        	      <div class="sub1 order_complate"  onclick="if(confirm('确认收货？')){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'be_confirm','orderid' => $item['id']))?>';}">确认收货</div>
+            	
+            			<?php  } ?>
+            	<?php if($_CMS['addons_bj_hx']){ if($item['be_status']!=3&&$item['be_status']>0&&!empty($item['isverify'])) { ?>
+     <div class="sub1" style="border: 1px solid green;background: green;" onclick="location.href='<?php  echo create_url('mobile',array('name' => 'bj_hx','do' => 'verifyshow','orderid' => $item['id']))?>'">订单消费码</div>
+     
+     <div class="sub1" style="border: 1px solid green;background: green;" onclick="location.href='<?php  echo create_url('mobile',array('name' => 'bj_hx','do' => 'sendweixin','orderid' => $item['id']))?>'">发送到微信</div>
+				<?php  } } ?>
+		
+
+
+        </div>
+    </div>
+                 <?php } ?>	
+            
+            	<?php  } } ?>
+            	
+            	
+            	
+            	
+            	
+	<?php  } } ?>
+            
+            
+            <?php  if($nodate==true) { ?>
+            <div id="order_container"><div class="order_no"><i class="fa fa-file-text-o" style="font-size:100px;"></i><br><span style="line-height:18px; font-size:16px;">您还没有相关订单</span><br><br>可以去看看哪些想买的</div>
+    <div class="order_no_menu">
+
+        <span class="order_no_nav" onclick="location.href='<?php  echo mobile_url('shopindex')?>'">随便逛逛</span>
+    </div>
+
+    
+    </div><?php  } ?>
+    
+	</div>
+
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

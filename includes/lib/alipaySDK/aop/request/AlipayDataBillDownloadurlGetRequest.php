@@ -1,0 +1,110 @@
+<?php
+/**
+ * ALIPAY API: alipay.data.bill.downloadurl.get request
+ *
+ * @author auto create
+ * @since 1.0, 2014-06-12 17:17:00
+ */
+class AlipayDataBillDownloadurlGetRequest
+{
+	/** 
+	 * 账单时间：日账单格式为yyyy-MM-dd,月账单格式为yyyy-MM
+	 **/
+	private $billDate;
+	
+	/** 
+	 * 账单类型，目前支持的类型有：air
+	 **/
+	private $billType;
+
+	private $apiParas = array();
+	private $terminalType;
+	private $terminalInfo;
+	private $prodCode;
+	private $apiVersion="1.0";
+	private $notifyUrl;
+
+	
+	public function setBillDate($billDate)
+	{
+		$this->billDate = $billDate;
+		$this->apiParas["bill_date"] = $billDate;
+	}
+
+	public function getBillDate()
+	{
+		return $this->billDate;
+	}
+
+	public function setBillType($billType)
+	{
+		$this->billType = $billType;
+		$this->apiParas["bill_type"] = $billType;
+	}
+
+	public function getBillType()
+	{
+		return $this->billType;
+	}
+
+	public function getApiMethodName()
+	{
+		return "alipay.data.bill.downloadurl.get";
+	}
+
+	public function setNotifyUrl($notifyUrl)
+	{
+		$this->notifyUrl=$notifyUrl;
+	}
+
+	public function getNotifyUrl()
+	{
+		return $this->notifyUrl;
+	}
+
+	public function getApiParas()
+	{
+		return $this->apiParas;
+	}
+
+	public function getTerminalType()
+	{
+		return $this->terminalType;
+	}
+
+	public function setTerminalType($terminalType)
+	{
+		$this->terminalType = $terminalType;
+	}
+
+	public function getTerminalInfo()
+	{
+		return $this->terminalInfo;
+	}
+
+	public function setTerminalInfo($terminalInfo)
+	{
+		$this->terminalInfo = $terminalInfo;
+	}
+
+	public function getProdCode()
+	{
+		return $this->prodCode;
+	}
+
+	public function setProdCode($prodCode)
+	{
+		$this->prodCode = $prodCode;
+	}
+
+	public function setApiVersion($apiVersion)
+	{
+		$this->apiVersion=$apiVersion;
+	}
+
+	public function getApiVersion()
+	{
+		return $this->apiVersion;
+	}
+
+}

@@ -1,0 +1,1 @@
+<?php include WEB_ROOT.'/system/bj_tbk/template/mobile/weixinshare.php';?>

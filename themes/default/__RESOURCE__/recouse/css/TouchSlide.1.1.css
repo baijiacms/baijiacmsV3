@@ -1,0 +1,25 @@
+/*index632261453889132*/
+/* 效果导航 */
+.effectNav{ margin-top:10px;  border-top:1px solid #666; background:#999; padding-bottom:10px;  }
+.effectNav h3{ padding:0 10px; background:#ddd; background:#333; color:#fff;  }
+.effectNav ul{ font-size:0;  }
+.effectNav li{ display:inline-block; font-size:12px; padding:0 10px; margin:10px 0 0 10px;  background:#cdcdcd;  }
+.effectNav li.new{ background:#fce8cd;  }
+.focus{ max-width:100%; height:auto;  margin:0 auto; position:relative; overflow:hidden;   }
+.focus .hd{ width:100%; height:11px;  position:absolute; z-index:1; bottom:10px; text-align:center;  }
+.focus .hd ul{ display:inline-block; height:5px; padding:3px 5px; font-size:0; vertical-align:top;
+}
+.focus .hd ul li{ display:inline-block; width:25px; height:4px; background:#8C8C8C; margin:0 5px;  vertical-align:top; overflow:hidden;   }
+.focus .hd ul .on{ background:#F60;  }
+.focus .bd{ position:relative; z-index:0;text-align:center; }
+.focus .bd li img{height:200px}
+@media only screen and (max-width:470px) and (min-width:270px) {
+.focus .bd li img{ 
+height: expression(this.width > 200 ? this.height = this.height * 200 / this.width : "auto");
+width: expression(this.width > 300 ? "300px" : "auto");
+max-width:300px;
+}
+}@media only screen and (min-width:480px) {
+.focus .bd li img{height:300px}
+}
+.focus .bd li a{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */  }

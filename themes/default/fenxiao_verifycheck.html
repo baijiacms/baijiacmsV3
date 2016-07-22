@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>订单详情</title>
+<meta charset="utf-8">
+ <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+<script type="text/javascript" src="__RESOURCE__/script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__RESOURCE__/script/common.js"></script>
+<link type="text/css" rel="stylesheet" href="__RESOURCE__/mobile/style/bootstrap.css">
+<script type="text/javascript" src="__RESOURCE__/script/bootstrap.js"></script>
+<script type="text/javascript" src="__RESOURCE__/script/angular.min.js"></script>
+<link type="text/css" rel="stylesheet" href="__RESOURCE__/recouse/css/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet" href="__RESOURCE__/mobile/style/common.mobile.css">
+<script type="text/javascript" src="__RESOURCE__/script/cascade.js"></script>
+<script type="text/javascript" src="__RESOURCE__/mobile/script/jquery.touchwipe.js"></script>
+<script type="text/javascript" src="__RESOURCE__/mobile/script/swipe.js"></script>
+<style type='text/css'>
+    #poptip { position: fixed; top:40%;left:50%;width:160px;margin-left:-80px;height: 27px;background:#000; opacity: 0.7;filter:alpha(opacity=0.7); color:#fff;z-index: 999;  border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;}
+#poptip_content { position: fixed; top:40%;left:50%;width:160px;margin-left:-80px; height: 27px; color:#fff;text-align:center;font-size:14px;z-index: 9909}
+</style>
+<script language='javascript'>
+    function tip(msg,autoClose){
+     var div = $("#poptip");
+     var content =$("#poptip_content");
+     if(div.length<=0){
+         div = $("<div id='poptip'></div>").appendTo(document.body);
+         content =$("<div id='poptip_content'>" + msg + "</div>").appendTo(document.body);
+     }
+     else{
+         content.html(msg);
+         content.show(); div.show();
+     }
+     if(autoClose) {
+        setTimeout(function(){
+            content.fadeOut(500);
+            div.fadeOut(500);
+
+        },1000);
+     }
+}
+function tip_close(){
+    $("#poptip").fadeOut(500);
+     $("#poptip_content").fadeOut(500);
+}
+    </script>
+</head>
+
+
+<style>
+
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{width:100%; margin-bottom:0; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
+
+input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{height:30px;}
+
+.input-append, .input-prepend{width:100%; margin-bottom:0;}
+
+select{padding:0 5px; line-height:28px; -webkit-appearance:button;}
+
+.checkbox.inline{margin-top:0;}
+
+.checkbox.inline + .checkbox.inline {margin-left:0;}
+
+.checkbox input[type="checkbox"]{filter:alpha(opacity:0); opacity:0;}
+
+.file{position:relative;}
+
+.file input[type="file"]{position:absolute; top:0; left:0; width:100%; filter:alpha(opacity:0); opacity:0;}
+
+.file button{width:100%; text-align:left;}
+
+.form-item{border-left:3px #ED2F2F solid; padding-left:10px; height:30px; line-height:30px; background:#F7F7F7; margin-bottom:10px;}
+
+</style>
+
+
+<link type="text/css" rel="stylesheet" href="__RESOURCE__/mobile/style/style.css">
+
+<body>
+<div class="head">
+
+	<span class="title">订单详情</span>
+</div>
+ 
+<div class="myoder" style='padding-bottom: 10px;'>
+	<div class="myoder-hd">
+		<span class="pull-left">订单编号：<?php  echo $item['ordersn'];?></span>
+		<span class="pull-right"><?php  echo date('Y-m-d H:i', $item['createtime'])?></span>
+	</div>
+    
+	<?php  if(is_array($goods)) { foreach($goods as $g) { ?>
+	<div >
+	<img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $g['thumb'];?>" width="160">
+		<div class="pull-left">
+			<div class="name"><?php  echo $g['title'];?></div>
+			<div class="price">
+				<span><?php  echo $g['marketprice'];?> 元<?php  if($g['unit']) { ?> / <?php  echo $g['unit'];?><?php  } ?></span>
+				<span class="num">数量：<?php  echo $g['total'];?><?php  if($g['unit']) { ?> <?php  echo $g['unit'];?><?php  } ?></span>
+			
+			</div>
+		</div>
+	</div>
+	<?php  } } ?>
+	<div class="myoder-express">
+		<span class="express-company">状态</span>
+		<span class="express-num">
+					<?php  if($item['status'] == 0) { ?><span class="text-warning" >待付款</span><?php  } ?>
+						<?php  if($item['status'] == 1) { ?><span class="text-danger" >待核销</span><?php  } ?>
+						<?php  if($item['status'] == 2) { ?><span class="text-warning">待核销</span><?php  } ?>
+						<?php  if($item['status'] == 3) { ?><span class="text-success" >已核销</span><?php  } ?>
+						<?php  if($item['status'] == -1) { ?><span class="text-success">已关闭</span><?php  } ?>
+						<?php  if($item['status'] == -2) { ?><span class="text-danger">退款中</span><?php  } ?>
+						<?php  if($item['status'] == -3) { ?><span class="text-danger">换货中</span><?php  } ?>
+						<?php  if($item['status'] == -4) { ?><span class="text-danger">退货中</span><?php  } ?>
+						<?php  if($item['status'] == -5) { ?><span class="text-success">已退货</span><?php  } ?>
+						<?php  if($item['status'] == -6) { ?><span class="text-success">已退款</span><?php  } ?>
+						
+		</span>
+	</div>
+
+	    <?php  if($item['hasbonus']>0) { ?>
+		<div class="myoder-express">
+		<span class="express-company">优惠券</span>
+		<span class="express-num"><?php 	 foreach ($bonuslist as $bonus) {echo $bonus['type_name']."(".$bonus['bonus_sn'].")&nbsp;&nbsp;&nbsp;";}?></span>
+	</div>
+		<?php  } ?>
+	
+                    
+		 </span>
+	</div>
+    
+	
+   
+	<div class="myoder-total" style='margin-bottom:30px;'>
+		<span>共计：<span class="false">
+                     <?php  if($item['dispatchprice']<=0) { ?>
+                        <?php  echo $item['price'];?> 元
+                        <?php  } else { ?>
+                        <?php  echo $item['price'];?> 元 (含运费 <?php  echo $item['dispatchprice'];?> 元) 
+                        <?php  } ?>
+                    </span>
+                         <?php  if($item['hasbonus']>0) { ?>
+                      <span style="color:green"> ( 已优惠：<?php  echo $item['bonusprice'];?> 元)</span>
+                        <?php  }  ?></span>
+
+		
+				 	<?php  if($item['status']!=3&&$item['status']>0&&!empty($item['isverify'])) { ?>
+		 	&nbsp;&nbsp;<a href="<?php  echo create_url('mobile',array('name' => 'fenxiao','do' => 'verifyuse','ordersn' => $item['ordersn']))?>" class="btn btn-danger pull-right btn-sm" >确认使用</a>
+		<?php  } ?>
+		
+			<?php  if($item['status']==3) { ?><span class="text-success">已核销</span>
+		<?php  } ?>
+	</div>
+</div>
+ 
+ 
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>
+<?php  include page('footer');?>	

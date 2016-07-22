@@ -1,0 +1,87 @@
+/*index652421217206856*/
+@charset "utf-8";/*预设的通用样式begin*/
+body{font:14px/1.5 宋体;color:#2b2b2b;background-color:#f2f2f2;}
+a{color:#2b2b2b;text-decoration:none;}
+a:hover{text-decoration:none;}
+.clearfix:after{clear:both;display:block;content:"...";visibility:hidden;height:0;font-size:0;}
+.clearfix{*zoom:1;}
+/*预设的通用样式end*/
+/*整页样式begin*/
+.pending-order{width:90%;margin:0 auto;}
+strong{font-weight:normal;color:#ff0400;}
+.more{display:block;position:absolute;border:8px solid transparent;border-left-color:#b8b8b8;}
+.inner{display:block;position:absolute;border:7px solid transparent;border-left-color:#fff;}
+/*整页样式end*/
+/*顶部标题begin*/
+.pending-order h2{font-size:16px;padding-top:24px;padding-bottom:12px;margin-bottom:20px;border-bottom:1px solid #ccc;}
+/*顶部标题end*/
+/*订单列表begin*/
+.pending-order .list{margin-top:70px;}
+.list li{border:1px solid #c9c9c9;border-radius:5px;background-color:#fff;margin-bottom:20px;}
+.list li a:before,.list li a:after{border:none;}
+/*订单基本信息begin*/
+.list .info{width:98%;height:120px;margin:0 auto;padding-top:12px;position:relative;top:0;left:0;}
+.info .trace input{width:80px;height:27px;color:#fff;line-height:22px;position:absolute;top:90px;right:20px;display:inline-block;text-align:center;box-sizing:content-box;border:none;font-family:微软雅黑;letter-spacing:1px;background-color:#F7762E;}
+.info .touch{display:block;}
+.info p{margin-left:2%;margin-bottom:10px;}
+.info .id{margin-bottom:8px;}
+.info .price{margin-bottom:10px;}
+.info .btn-pay .pay-btn{top:90px;right:20px;background:none;background-color:#F7762E;border:none;border-radius:0;}
+.total .package{display:inline-block;}
+.total .num-pro{display:inline-block;}
+.info .more{top:40px;right:2%;}
+.info .more .inner{top:-7px;right:-5px;}
+.info .shipped{color:#F7762E;}
+/*订单基本信息end*/
+/*红包信息begin*/
+.list .bonus{width:98%;height:185px;margin:0 auto;padding-top:12px;position:relative;top:0;left:0;}
+.bonus .trace input{width:80px;height:27px;color:#fff;line-height:22px;position:absolute;top:90px;right:20px;display:inline-block;text-align:center;box-sizing:content-box;border:none;font-family:微软雅黑;letter-spacing:1px;background-color:#F7762E;}
+.bonus .touch{display:block;}
+.bonus p{margin-left:2%;margin-bottom:10px;}
+.bonus .id{margin-bottom:8px;}
+.bonus .price{margin-bottom:10px;}
+.bonus .btn-pay .pay-btn{top:90px;right:20px;background:none;background-color:#F7762E;border:none;border-radius:0;}
+.total .package{display:inline-block;}
+.total .num-pro{display:inline-block;}
+.bonus .more{top:40px;right:2%;}
+.bonus .more .inner{top:-7px;right:-5px;}
+.bonus .shipped{color:#F7762E;}
+.addBouns {
+    border:1px solid #c9c9c9;border-radius:5px;background-color:#fff;margin-bottom:20px;
+}
+.addBouns .bonus_sn {
+    border: 1px solid #E0E1E3;
+    border-radius: 0;
+    box-shadow: none;
+	width:100px;
+	height:27px;
+	line-height:27px;
+	text-indent: 5px;
+	font-size: 14px;
+}
+.addBouns .sub_btn{
+    background-color: #F7762E;
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: none;
+    color: #FFFFFF;
+    font-family: 微软雅黑;
+    height: 29px;
+    width: 94px;
+}
+/*红包信息end*/
+/*客服begin*/
+.list .kefu{width:98%;height:auto;margin:0 auto;padding-top:12px;position:relative;top:0;left:0;}
+.kefu p{margin-left:2%;margin-bottom:10px;color:#F7762E;}
+/*客服end*/
+/*订单商品图片begin*/
+.list li .product{width:98%;margin:0 auto;height:69px;text-align:center;overflow:hidden;}
+.list .product a{display:inline-block;margin-left:5%;margin-top:12px;}
+.product a.first{margin-left:0;}
+.product a img{width:41px;height:41px;border:1px solid #626262;}
+/*订单商品图片end*/
+/*待付款订单列表end*/
+/*已关闭订单begin*/
+.list .close{height:50px;width:98%;margin:0 auto;border-top:1px dotted #ccc;position:relative;top:0;left:0;margin-left:2%;padding-top:11px;}
+.close a{display:inline-block;width:80px;height:27px;color:#fff;line-height:27px;text-align:center;background-color:#F7762E;border-radius:5px;}
+/*已关闭订单end*/

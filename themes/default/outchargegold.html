@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+       <link href="__RESOURCE__/plus/css/font-awesome.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+        <meta name="format-detection" content="telephone=no" />
+     
+  <script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>
+  <script language="javascript" src="__RESOURCE__/plus/js/jquery.gcjs.js"></script>
+          <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/static/css/style.css">
+          
+          
+<title>余额提现</title><style type="text/css">
+body {margin:0px; background:#efefef; -moz-appearance:none;}
+input {-webkit-appearance:none; outline:none;}
+.balance_img {height:80px; width:80px; margin:70px auto 0px; background:#ffb400; border-radius:40px; color:#fff; font-size:70px; text-align:center; line-height:90px;}
+.balance_text {height:20px; width:100%; margin-top:16px; text-align:center; line-height:20px; font-size:16px; color:#666;}
+.balance_num {height:24px; width:100%; margin-top:10px; text-align:center; line-height:24px; font-size:22px; color:#444;}
+.balance_list {height:auto; width:100%; text-align:center; color:#92b5d6; font-size:16px; margin-top:80px;}
+.balance_sub1 {height:44px; margin:14px 5px; background:#31cd00; border-radius:4px; text-align:center; font-size:16px; line-height:44px; color:#fff;}
+.balance_sub2 {height:44px; margin:14px 5px; background:#f49c06; border-radius:4px; text-align:center; font-size:16px; line-height:44px; color:#fff;}
+.balance_sub3 {height:44px; margin:14px 5px;background:#e2cb04; border-radius:4px; text-align:center; font-size:16px; line-height:44px; color:#fff;}
+
+</style>
+    </head>
+    <body>
+
+ <form class="form-horizontal img-rounded" role="form" method="post" >
+<div id="container">
+ <div class="balance_img"><i class="fa fa-cny"></i></div>
+   <div class="balance_text">您的当前余额</div>
+   <div class="balance_num">¥<?php  echo $member['gold'];?></span></div>
+   <div class="balance_num" style="height:30px;">
+   <input type="text" name="charge" id="money" value='' style="width:90%; height:38px; font-size:20px; margin:auto; border:1px solid #eee; padding:0px 2%; text-align:center;" placeholder="请输入提现的金额"/></div>
+   <div class="button balance_sub1" onclick="document.getElementById('btsubmit').click();">确认提现</div>
+   
+	<button type="submit" name="submit" id="btsubmit" value="submit"  style="display:none">申请提现</button>
+<div class="balance_sub3" onclick="location.href='<?php  echo mobile_url('outchargegold',array('op'=>'history'))?>'">提现记录</div>
+
+   <div class="balance_num" style="font-size:18px">已提现金额：¥ <?php  echo $member['outgold'];?></span></div>
+   <div class="balance_num" style="font-size:18px">申请中金额：¥ <?php  echo $applygold;?></span></div>
+</form>
+
+<?php  include page('footer');?>	
+<?php include themePage('footer');?>
+<?php include themePage('weixinshare');?>

@@ -1,0 +1,328 @@
+/*index579161314799754*/
+@charset "utf-8";
+
+/*预设的通用样式begin*/
+body{
+	font: 14px/1.5 微软雅黑;
+}
+.safety{
+	color: #6c6c6c;
+}
+a{
+	color: #6c6c6c;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+.clearfix:after{
+	clear:both;
+	display: block;
+	content: "...";
+	visibility: hidden;
+	height: 0;
+	font-size: 0;
+}
+.clearfix{
+	*zoom:1;
+}
+.mbt10 {margin-bottom:10px;}
+.mbt20 {margin-bottom:20px;margin-top:20px;}
+/*预设的通用样式end*/
+
+
+/*页面整体&公共样式begin*/
+.safety,.safety .tab-label,.tab-content{margin: 0 auto;}
+@media(max-width: 640px){
+	.safety,.safety .cutline{width: 300px;}
+	.safety .tab-label,.tab-content{width: 192px;}
+}
+@media(min-width: 641px){
+	.safety,.safety .cutline{width: 600px;}
+	.safety .tab-label,.tab-content{width: 384px;}
+}
+/*页面整体&公共样式end*/
+
+
+/*顶部标签begin*/
+.safety .tab-label{
+	padding-top: 25px;
+}
+.tab-label a{
+	display: inline-block;
+	font-size: 15px;
+}
+.tab-label a.on{
+	color: #434343;
+	border-bottom: 2px solid #F7762E;
+}
+@media(max-width: 640px){
+	.tab-label .login{float: left;}
+	.tab-label .pay{float: right;}
+}
+@media(min-width: 641px){
+	.tab-label a{margin-left: 65px;margin-right: 65px;}
+}
+.safety .cutline{
+	height: 0;
+	font-size: 0;
+	border-bottom: 1px dotted #d2d2d2;
+	margin-top: -1px;
+	margin-bottom: 18px;
+}
+/*顶部标签end*/
+
+
+/*登录密码设置区域begin*/
+.safety .code-area p{
+	margin-bottom: 6px;
+}
+.safety .code-area input{
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #e0e1e3;
+	border-radius: 0;
+	box-shadow: none;
+	margin-bottom: 15px;
+}
+@media(max-width: 640px){
+	.safety .code-area input{width: 190px;}
+}
+@media(min-width: 641px){
+	.safety .code-area input{width: 380px;}
+}
+.safety .confirm{
+	text-align: center;
+}
+.confirm input{
+	width: 94px;
+	height: 29px;
+	background-color: #F7762E;
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 29px;
+	font-family: 微软雅黑;
+	box-shadow: none;
+	border: none;
+}
+/*登录密码设置区域end*/
+
+
+/*支付密码设置首页begin*/
+.safety .pay-index p{
+	height: 28px;
+	line-height: 28px;
+}
+.safety .pay-index input{
+	border: 1px solid #e0e1e3;
+	border-radius: 0;
+	box-shadow: none;
+}
+@media(max-width: 640px){
+	.pay-index .pass{width: 190px;}
+}
+@media(min-width: 641px){
+	.pay-index .pass{width: 380px;}
+}
+/*支付密码设置首页end*/
+
+
+/*找回支付密码页begin*/
+.safety .headline{
+	width: 300px;
+	margin: 0 auto 20px;
+	padding-top: 27px;
+	padding-bottom: 3px;
+	color: #474747;
+	border-bottom: 1px dotted #d2d2d2;
+}
+.safety .headline p{
+	font-size: 15px;
+	font-weight: bold;
+}
+.safety .content.find{
+	width: 300px;
+	margin: 0 auto;
+}
+.content.find .bind{
+	margin-bottom: 17px;
+}
+.content.find .bind .phone{
+	float: left;
+	display: inline-block;
+	line-height: 29px;
+}
+.content.find .bind .msg-btn,.content.find .bind .msg-btn1{
+	float: right;
+	display: inline-block;
+	width: 99px;
+	height: 29px;
+	line-height: 29px;
+	background-color: #3596db;
+	color: #fff;
+	font-size: 12px;
+	font-family: 微软雅黑;
+	text-align: center;
+	border: none;
+}
+.content.find .check{
+	margin-bottom: 30px;
+}
+.content.find .check p{
+	margin-bottom: 7px;
+}
+.content.find .check .msg-check{
+	width: 297px;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #dee3e7;
+	border-radius: 0;
+	box-shadow: none;
+}
+.content .next-step{
+	width: 94px;
+	height: 29px;
+	line-height: 29px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 5px;
+	background-color: #e94d37;
+	color: #fff;
+	font-family: 微软雅黑;
+	box-shadow: none;
+	border: none;
+}
+.safety .content.site{
+	width: 300px;
+	margin: 0 auto;
+}
+.content.site .site-tip{
+	margin-bottom: 14px;
+}
+.content.site .new-code{
+	margin-bottom: 6px;
+}
+.content.site .pass{
+	border: 1px solid #dfe3e6;
+	width: 297px;
+	height: 28px;
+	line-height: 28px;
+	margin-bottom: 20px;
+	border-radius: 0;
+	box-shadow: none;
+}
+.content.site .show{
+	vertical-align: top;
+	margin: 3px 5px 30px 0;
+}
+.content.site .show-tip{
+	color: #ababab;
+}
+.safety .content.success{
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 70px;
+	text-align: center;
+}
+.content.success i{
+	display: inline-block;
+	width: 26px;
+	height: 26px;
+	margin-right: 6px;
+	background: url(../images/safepass-success.png) no-repeat 0 0;
+	vertical-align: top;
+	margin-bottom: 30px;
+}
+.content.success p{
+	display: inline-block;
+	font-size: 20px;
+	color: #ee454c;
+}
+/*找回支付密码页end*/
+
+
+/*修改支付密码页begin*/
+@media(max-width: 640px){
+	.safety .headline.edit{width: 300px;}
+}
+@media(min-width: 641px){
+	.safety .headline.edit{width: 600px;}
+}
+.safety .headline.edit{
+	margin: 0 auto 30px;
+}
+.safety .filter{
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+.safety .safe-tip{
+	width: 272px;
+	height: 148px;
+	margin: 0 auto;
+	position: fixed;
+	top: 25%;
+	left: 50%;
+	margin-left: -136px;
+}
+.safe-tip span{
+	display: inline-block;
+	height: 31px;
+	width: 34px;
+	background: url(../images/safe-tip.png) no-repeat -5px -143px;
+	position: relative;
+	top: 2px;
+	left: -1px;
+	z-index: 200;
+}
+.safe-tip .inner{
+	width: 250px;
+	height: 125px;
+	padding: 6px;
+	background-color: #000;
+	background: url(../images/safe-tip.png) no-repeat 0 0;
+	position: absolute;
+	top: 11px;
+	right: 0;
+	z-index: 199;
+	border-radius: 7px;
+}
+.safe-tip .inner p{
+	margin-left: 15px;
+	margin-right: 10px;
+	color: #d5d5d5;
+}
+.safe-tip .inner .tip{
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+.safe-tip .inner strong{
+	font-weight: normal;
+	color: #c4864d;
+}
+.hide{
+	display:none;
+}
+#btn{
+	width: 94px;
+	height: 29px;
+	background-color: #F7762E;
+	color: white;
+	border-radius: 5px;
+	font-family: 微软雅黑;
+	box-shadow: none;
+	border: none;
+}
+.align{
+	text-align: center;
+}
+
+
+/*修改支付密码页end*/

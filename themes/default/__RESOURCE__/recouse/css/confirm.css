@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body, section, article, nav, header,table,textarea,input, footer, form, div, em, span, a, label, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select th,i{ margin: 0; padding: 0; font-size:medium;vertical-align:middle; font-style: normal; font-weight:normal;font-size:14px;}
+body, select, input, option {  font-family: "Microsoft YaHei",Arial,Simsun; }
+body{color: #555; font-size:14px; background:#E6E6E6}
+form{border:0;margin:0;padding:1px}
+img{border:0;vertical-align:middle}
+textarea{width:95%;}
+body > header, body > section { clear: both; }
+input{ vertical-align:middle}
+li { list-style-type: none; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+a:link{color: #444; text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0); }
+a:active{color: #0a0a0a; text-decoration:none;}
+a:visited{color: #444; text-decoration:none;}
+body{ background:#E6E6E6;}
+
+body > header { width:100%; height:40px; line-height:40px; background:#1c5f97; text-align:center; font-size:18px; position:relative; color:#FFF;}
+body > header a.back{ display:block; width:45px; height:40px; background:url(../images/arrow_right.png) no-repeat center center; background-size:10px; position:absolute;top:0px; left:0px;}
+body > section{ padding:0px 10px;}
+
+.carFoot{ position:fixed; left:0px; bottom:0px; width:100%; height:35px; background:#fff; padding:10px 0px}
+.carFoot > a{ display:inline-block; float:right; padding:0 33px; text-align:center; height:35px; line-height:35px; margin-right:10px; color:#fff; background:#e4393c; font-size:16px; border:none; border-radius:5px}
+.carFoot p{ padding-left:20px; line-height:16px; font-size:14px; color:#222}
+.carFoot p i.price{ font-size:18px; color:#ea6390}
+.carFoot p em{ font-size:13px; color:#666}
+.carFoot p i{ font-size:16px;}
+.accounts{ padding:10px;}
+.accounts .infobox{ border-radius:5px; overflow:hidden; margin-bottom:10px;background:#fff;}
+.accounts .infobox h2{ line-height:30px; background:#F5F4F4; padding:0 15px; border-radius:5px 5px 0px 0px; font-size:15px; color:#000}
+.accounts .infobox p{  border-bottom:1px solid #ccc; padding:10px 15px; line-height:18px; font-size:14px; background:url(../images/arrow-right.png) no-repeat right center; background-size:14px }
+.accounts .infobox  a{display:block;}
+.accounts .infobox p:last-child{border:none}
+.payStyle li{border-bottom:1px solid #ccc; padding:10px 15px; line-height:18px; font-size:14px; }
+.payStyle li label{ display:block;}
+.payStyle li label input{ margin-right:20px;}
+.payStyle li label input.checked{ background-image:url(../images/checked.png);}
+.payStyle li label  img{ vertical-align:middle; margin-right:10px; width:18px;}
+.payStyle li:last-child{ border:none}
+.orderMoney li{border-bottom:1px dashed  #ccc; padding:10px 15px; line-height:18px; font-size:14px;}
+.orderMoney li a{ display:block;}
+.orderMoney li span{ float:right;}
+.orderMoney li:last-child{ border:none}
+.otherInfo { height:auto;}
+.otherInfoCurrent{ height:auto;}
+.otherInfo li{border-bottom:1px dashed #ccc; padding:10px 15px; line-height:18px; font-size:14px;}
+.otherInfo li a{ display:block;}
+.otherInfo li:first-child{ background:url(../images/arrow-right.png) no-repeat right center; background-size:14px}
+.otherInfo li input{ margin-left:10px; border:none; vertical-align:middle}
+.otherInfoCurrent li:first-child{ background:url(../images/arrow-up-current.png) no-repeat right center; background-size:18px}
+.otherInfo li:last-child{ border:none}
+.orderFoot{ margin-top:10px; border-top:1px dashed #ccc;padding:10px 15px; padding-bottom:5px; line-height:18px; background:url(../images/arrow-up.png) no-repeat right 20px; background-size:25px}
+.orderFoot label{ display:inline-block; background:url(../images/icon_msg.png) no-repeat left center; background-size:15px; padding-left:20px;}
+.orderFoot input{ display:inline-block; border:none; margin-left:10px;}
+
+
+
+
+.my-memvers .member-browse{margin-top:10px;margin-bottom:10px;padding:0 15px;background:#fff;border-radius:5px;}
+.my-memvers .member-browse-title{padding:10px 0;border-bottom:1px solid #ebebeb;font-size:16px;color:#333;}
+.my-memvers .member-browse-title .icon-chunk-gray{display:inline-block;width:4px;height:20px;background:#ccc; border-bottom-left-radius:2px;border-bottom-right-radius:2px;}
+.my-memvers .member-browse-title .icon-chunk-blue{display:inline-block;width:4px;height:15px;background:#45a5cf;border-top-left-radius:2px;border-top-right-radius:2px; vertical-align:top;}
+.my-memvers .member-browse-title span{margin:0 0 0 0px;}
+.my-memvers .member-browse-summey-info{float:left;}
+.my-memvers .member-browse-ul{list-style:none;margin:0;}
+.my-memvers .member-browse-li{padding:10px 0;border-bottom:1px solid #ebebeb;}
+.my-memvers .member-browse-li:last-child{border-bottom:0;}
+
+.member-browser-pro-list{margin:0px 0 0 0px;}
+.member-browser-pro-a{display:block;padding:3px 0;}
+.member-browser-pro-a:before,
+.member-browser-pro-a:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.member-browser-pro-a:active{background:#f1f1f1;}
+.member-browser-pro-a .pro-img{float:left;margin-right:10px;}
+.member-browser-pro-a .pro-img img{width:60px;height:60px;}
+.member-browser-pro-a .pro-info{display:block;margin:0;overflow:hidden;}
+.member-browser-pro-a .pro-name{display:block;line-height:20px;font-size:14px;color:#333;}
+.member-browser-pro-a .pro-price{font-size:12px;color:#999;}
+.member-browser-pro-a .pro-price strong{font-size:12px;color:#f37872;}

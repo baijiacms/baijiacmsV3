@@ -1,0 +1,767 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><?php  echo $goods['title'];?></title>
+   <meta name="Description" content="<?php  echo $goods['description'];?>"/> 
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="__RESOURCE__/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__RESOURCE__/css/base.css?v=2">
+    <link rel="stylesheet" href="__RESOURCE__/css/iconfont.css"/>
+    <script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__RESOURCE__/js/TouchSlide.1.1.js"></script>
+            <link href="__RESOURCE__/plus/js/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+            
+           <link href="__RESOURCE__/plus/css/font-awesome.min.css" rel="stylesheet">
+<script src="__RESOURCE__/plus/js/star-rating.js" type="text/javascript"></script>
+     <style>
+    	.tabBox .bd li img {
+    display: block;
+    width: 100%;
+}
+   .level {
+    width: 200px;
+    float: right;
+    margin-left: -100px;
+    text-align: right;
+    height: 30px;
+    line-height: 30px;
+    color: #ff6600;
+}
+    	</style>
+<?php include themePage('weixinshare');?>
+</head>
+<script>
+	function loadfinish()
+{
+       var bd = document.getElementById("tabBox1-bd");
+                bd.parentNode.style.height = bd.children[0].children[0].offsetHeight + "px";
+                bd.parentNode.style.transition = "200ms";
+}
+	</script>
+<body onload="loadfinish()">
+
+    <div class="container">
+        <div class="row">
+            <!-- banner轮播Start -->
+            <div id="focus" class="focus">
+                <div class="hd">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="bd">
+                    <ul>
+                        <?php  if(is_array($piclist)) { foreach($piclist as $row) { ?>
+                        <li><img
+                                src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $row['attachment'];?>"/>
+                        </li>
+                        <?php  } } ?>
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript">
+                TouchSlide({
+                    slideCell: "#focus",
+                    titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+                    mainCell: ".bd ul",
+                    delayTime: 600,
+                    interTime: 4000,
+                    effect: "leftLoop",
+                    autoPlay: true,//自动播放
+                    autoPage: true, //自动分页
+                    switchLoad: "_src" //切换加载，真实图片路径为"_src"
+                });
+            </script>
+            <!-- banner轮播End -->
+            <div class="goodtitle bb1">
+                <div class="col-xs-8">
+                    <?php  echo $goods['title'];?>
+                </div>
+                 <?php  if($_CMS['addons_bj_tbk']){if($bj_tbk_member_relect['isagent']) { ?>
+                <div class="col-xs-4 bl1">
+                    <a type="button" class="btn btn-danger btn-block" href="javascript:;" onclick="	document.getElementById('mcover').style.display='block';">我要分销</a>
+                </div>
+                   <?php  }} ?>
+            </div>
+
+            <div class="goodprice col-xs-12">
+                ￥<strong id="marketprice"><?php  echo $marketprice;?></strong>
+                <?php  if($goods['issendfree']==1) { ?>
+                <span>包邮商品</span>
+                <?php  } ?>
+            </div>
+            <?php  if($marketprice < $productprice) { ?>
+            <div class="goodpricedel col-xs-12 bb1">
+                价格
+                <del id="productprice"><?php  echo $productprice;?></del>
+            </div>
+            <?php  } ?>
+
+            <?php  if($goods['istime']==1) { ?>
+            <div class="col-xs-12 bb1 lh50">
+                <i class="iconfont bjicon-clock" style="color:#F7762E;"></i>
+                <em id="time_<?php  echo $goods['id'];?>"><?php  echo $goods['timelaststr'];?></em>
+                <?php  if($stock!=-1) { ?>
+               <span class="pull-right">还剩：<strong><?php  echo $stock;?>
+               </strong><?php  } ?>
+               </span>
+            </div>
+            <?php  } ?>
+
+            <div class="goodxl col-xs-12 bb1 lh50">
+                <div class="col-xs-6" style="padding-left: 0px;">
+                    <i class="iconfont bjicon-database"></i>销量：<?php  echo $goods['sales'];?>
+                </div>
+                <div class="col-xs-6" style="padding-right: 0px">
+                   <span class="pull-right">
+                    <?php  if(!empty($goods['goodssn'])){ ?>   货号：<?php  echo $goods['goodssn'];?>  <?php  } ?>  
+                   </span>
+                </div>
+            </div>
+
+            <?php  if($_CMS['addons_bj_hx']){if($goods['isverify']==1){ ?>
+                <div class="col-xs-10" style="padding-top: 15px;padding-bottom: 15px;line-height: 24px;"> 提货门店：
+                    <?php  if(is_array($bj_hx_verify_goods)) { foreach($bj_hx_verify_goods as $row) { ?>
+                    <?php  echo $row['vname']; ?>&nbsp;&nbsp;&nbsp;
+                    <?php  } } ?>
+                </div>
+                <div class="col-xs-2" style="padding-top: 15px;padding-bottom: 15px;line-height: 24px;">
+                    <a class="pull-right" href="<?php  echo create_url('mobile',array('name' => 'bj_hx','do' => 'verifyshopindex'));?>">
+                        <i class="iconfont bjicon-iconfontdizhi"></i>
+                    </a>
+                </div>
+            <?php  }  ?>
+            <?php  }  ?>
+
+
+        <?php  if(is_array($bonus_type)) { foreach($bonus_type as $row) { ?>
+            <div class="goodyh col-xs-12 lh50">
+                <i class="iconfont bjicon-tag"></i>  <?php  echo $row['type_name'] ?>
+            </div>
+        <?php  } } ?>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="border-top: 15px solid #eee;border-bottom: 15px solid #eee;">
+            <div class="col-xs-12 lh50">
+                <a href="#" data-toggle="modal" data-target="#xzmodal" id="xzsp">请点击选择商品规格和数量
+                    <span class="pull-right pr15" ><i class="iconfont bjicon-sortright"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="border-bottom: 15px solid #eee;">
+            <div class="media pt15 pb15 pl15">
+                <div class="media-left">
+                    <a href="#">
+                        <img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $goods['thumb'] ?>"
+                             class="media-object img-circle" style="width:50px;height: 50px">
+                    </a>
+                </div>
+                <div class="media-body" style="padding-top: 5px">
+                    <h4 class="media-heading"><?php  echo $cfg['shop_title'];?></h4>
+                    <span style="color: #BEBEBE">全部商品<?php  echo $allgoods  ?>款</span>
+                </div>
+            </div>
+            <div class="col-xs-6 pb15">
+            	
+        
+                <a href="<?php  echo mobile_url('goodlist')?>" role="button" class="btn btn-default btn-block"
+                   style="width: 97%">
+                    <i class="iconfont bjicon-shangpin1"></i>查看全部商品
+                </a>
+            </div>
+            <div class="col-xs-6 pb15">
+                <a href="<?php  echo mobile_url('shopindex')?>" role="button"
+                   class="btn btn-default btn-block pull-right" style="width: 97%">
+                    <i class="iconfont bjicon-iconcaidanshouye"></i>进入商城首页
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding-left: 0px;padding-right: 0px;overflow: hidden;">
+        <!-- 商品详情和评价 Start  -->
+        <div id="tabBox1" class="tabBox">
+            <div class="hd">
+                <ul  style="padding-bottom:100px;">
+                    <li><a href="javascript:void(0)">商品详情</a></li>
+                    <li><a href="javascript:void(0)">客户评价</a></li>
+                    <li><a href="javascript:void(0)">同类推荐</a></li>
+                </ul>
+            </div>
+            <div class="bd" id="tabBox1-bd" style="overflow: hidden;"><!-- 添加id，js用到 -->
+                <div class="con" style="overflow: hidden;"><!-- 高度自适应需添加外层 -->
+                    <ul  style="padding-bottom:100px;">
+                        <li>
+                        	<?php  echo preg_replace('/__ATTACHMENT__/',ATTACHMENT_WEBROOT, $goods['content']);?>
+	
+                        </li>
+                    </ul>
+                </div>
+                <div class="con"><!-- 高度自适应需添加外层 -->
+                    <ul style="padding-bottom:100px;">
+                        <?php  if(is_array($comments)) { foreach($comments as $row) { ?>
+                        <li style="margin: 15px;border-bottom: 1px dashed #eee;">
+                            <h4 style="display: inline" style="font-size:12px;">
+                                <?php  if(empty($row['comment_nickname'])){echo  empty($row['nickname'])?hidtel($row['mobile']):$row['nickname'];}else{ echo $row['comment_nickname'];} ?>:<div class="level">
+                            <?php if($row['rate']>=1){?><i class="fa fa-star"></i><?php }?>
+                            <?php if($row['rate']>=2){?><i class="fa fa-star"></i><?php }?>
+                            <?php if($row['rate']>=3){?><i class="fa fa-star"></i><?php }?>
+                            <?php if($row['rate']>=4){?><i class="fa fa-star"></i><?php }?>
+                            <?php if($row['rate']>=5){?><i class="fa fa-star"></i><?php }?>
+                            </div>
+                              
+                                 </h4>
+
+                            <p style="font-size:18px;margin-top:10px;">
+                               <?php  echo $row['comment'] ?></p> 
+                                 <p style="height:30px;line-height: 30px;">时间：<?php  echo date('Y-m-d H:i:s', $row['createtime'])?></p> 
+                        </li>
+                     
+                        <?php  } ?>    <div class="myoder" style="text-align:center;color:#aaa;padding:30px;">
+                           
+                        </div> <?php  } ?>
+                        <?php  if(empty($comments)) { ?>
+                        <div class="myoder" style="text-align:center;color:#aaa;padding:100px;">
+                            暂时没有任何评论!
+                        </div>
+                        <?php  } ?>
+                    </ul>
+                </div>
+                <div class="con">
+                    <div class="col-xs-12 tltj">
+                             <?php  if(is_array($ccategoods)) { foreach($ccategoods as $row) { ?>
+                     <a href="<?php echo mobile_url('detail', array('id' => $row['id']))?>" class="item">      <div class="col-xs-6 col-sm-4">
+                            <div class="thumbnail">
+                                <img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $row['thumb'] ?>" style="width:300px;">
+                                <div class="caption" style="padding: 9px 0 9px 0">
+                                    <h6><?php  echo $row['title'] ?></h6>
+                                    <span>￥<?php  echo $row['marketprice'] ?></span>
+                                    <del>￥<?php  echo $row['productprice'] ?></del>
+                                </div>
+                            </div>
+                        </div></a>
+      <?php  }} ?> <?php  if(empty($ccategoods)) { ?>
+                        <div class="myoder" style="text-align:center;color:#aaa;padding:100px;">
+                            没有可推荐同类商品!
+                        </div>
+                        <?php  } ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--商品详情和评价 End  -->
+    </div>
+<div class="modal" id="xzmodal" tabindex="-1" aria-labelledby="myModalLabel" role="dialog" style="top:auto">
+    <div class="modal-dialog">
+        <div class="media" style="padding-left: 15px;position: relative;margin-bottom: -74px;z-index: 2000;">
+            <div class="media-left">
+                <img class="img-thumbnail media-object" src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $goods['thumb'] ?>" style="width:80px;height:80px">
+            </div>
+            <div class="media-body">
+               <div class="media-heading" style="padding-top: 30px">
+                   <p style="color: #F7762E;font-size: 16px">
+                       ￥<strong id="marketprice2"><?php  echo $marketprice;?></strong>
+                   </p>
+                   <p>
+                       <?php  if($stock!=-1) { ?>
+                       库存:<strong id="goodstotail"><?php  echo $stock;?></strong>
+                       <?php  }else{ ?>库存:0<?php  } ?>
+                   </p>
+               </div>
+            </div>
+            <div class="media-right">
+                <button style="padding-top: 28px;padding-right: 10px;line-height: 30px" type="button" class="close" data-dismiss="modal"><i class="iconfont bjicon-removecircleo"></i></button>
+            </div>
+        </div>
+
+        <div class="modal-content">
+            <div class="modal-header" style="height: 80px;border: none">
+
+            </div>
+            <div class="modal-body" >
+
+                <form action="javascript:addToCart(6)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY">
+                    <?php  if($goods['hasoption']==1) { ?>
+                    <?php  if(is_array($specs)) { foreach($specs as $spec) { ?>
+                    <input type='hidden' name="optionid[]" class='optionid optionid_<?php  echo $spec['id'];?>'
+                    value="" title="<?php  echo $spec['title'];?>">
+                    <div id='option_group' class='detail-group' style="margin-top:10px;">
+
+                        <div class="detail-group">
+
+                            <p style='margin-left:10px;padding:0'><?php  echo $spec['title'];?>:</p>
+                            <span style="float:left;margin-left:8px;" class='options options_<?php  echo $spec['id'];?>'
+                            specid='<?php  echo $spec['id'];?>'>
+
+                            <?php  if(is_array($spec['items'])) { foreach($spec['items'] as $o) { ?>
+
+                            <?php  if(empty($o['thumb'])) { ?>
+                            <span class="property option option_<?php  echo $spec['id'];?>"
+                                  specid='<?php  echo $spec['id'];?>' oid="<?php  echo $o['id'];?>"
+                            sel='false'><?php  echo $o['title'];?></span>
+                            <?php  } else { ?>
+                            <span class="propertyimg optionimg option_img_<?php  echo $spec['id'];?> "
+                                  oid="<?php  echo $o['id'];?>" specid='<?php  echo $spec['id'];?>'
+                            sel='false'><img
+                                src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $_W['attachurl'].$o['thumb']?>"
+                                width='50' height='50' title="<?php  echo $o['title'];?>"/></span>
+                            <?php  } ?>
+
+                            <?php  } } ?>
+                            </span>
+                        </div>
+                    </div>
+                    <?php  } } ?>
+                    <?php  } ?>
+
+<?php if($_CMS['custom']=='custom_0710'&&$hassendtime)
+   	{ ?>    <?php  if(is_array($sendtimelist)) {?>
+     <div id='option_group' class='detail-group' style="margin-top:10px;">
+
+                  <input type="hidden" id="optiontime" name="optiontime" value=""/>
+                        <div class="detail-group">
+
+                            <p style='margin-left:10px;padding:0'>配送时间段：</p>
+                            <span style="float:left;margin-left:8px;" class='options options_sendtime'
+                            specid='sendtime'>
+                            <?php   foreach($sendtimelist as $sendtime) { ?>
+<?php //style="background:#edeeef;border:1px solid #edeeef" ?>
+                            <span class="property option option_sendtime" 
+                                  specid='sendtime' oid="<?php  echo $sendtime['id'];?>"
+                            sel='false'><?php echo $sendtime['start_hour'].':'.$sendtime['start_minute']; ?>&nbsp;~&nbsp;<?php echo $sendtime['end_hour'].':'.$sendtime['end_minute']; ?></span>
+                       
+
+                            <?php  } ?>
+                            </span>
+                        </div>
+                    </div>
+    <?php  } ?>   <?php  } ?>
+                    <div class="goods_number clearfix">
+                        <p class="name">购买数量：</p>
+
+
+						<div class="input-group" style="width:100px;height:20px;float:right" >
+						    <span class="input-group-btn">
+						        <button type="button" value="-" class="btn btn-default" onClick="chgNum(-1);" style="height:20px;line-height:5px">-</button>
+						    </span>
+						    <input type="text" class="form-control" id="total" name="number" value="1" style="width:60px;height:20px;line-height:20px;text-align: center;"/>
+						     <span class="input-group-btn">
+						        <button type="button" value="+" class="btn btn-default" onClick="chgNum(1);" style="height:20px;line-height:5px">+</button>
+						    </span>
+						</div>
+                       
+                    </div>
+                </form>
+                <input type="hidden" id="optionid" name="optionid" value=""/>
+            </div>
+            <div class="modal-footer" style="border: none;padding:15px 0 0 0;">
+            	<?php  if(empty($goods['isverify'])){ ?>
+                <div class="col-xs-6" style="padding-left: 0px;padding-right: 0px;">
+                    <a style="background-color:#ff7d00;color: #ffffff " class="btn btn-default btn-block bradius0 ptb10" href="javascript:void()" onclick='addtocart()'>加入购物车</a>
+                </div>
+                <?php  } ?>
+                <div class="col-xs-6" style="padding-left: 0px;padding-right: 0px;<?php  echo !empty($goods['isverify'])?'width:99%;':''; ?>">
+                	  <?php  if($goods['hasoption']==1&&is_array($specs)) { ?>
+                   
+                    <a style="color:#ffffff;" class="btn btn-danger btn-block bradius0 ptb10" href="javascript:void()" onclick='buy(0)'>立即购买</a>
+                    <?php  }else{ ?>
+                    <a style="color:#ffffff;" class="btn btn-danger btn-block bradius0 ptb10" href="javascript:void()" onclick='buy(0)'>立即购买</a>
+                      <?php } ?>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+</div>
+
+<div class="btn_wrap btn_wrap_fixed" id="btnTools">
+    <input type="hidden" id="favoriteId" value=""/>
+     <a class="btn_fav" href="<?php  echo mobile_url('fansindex')?>" ><i></i></a>
+    <div class="btn_col">   	 
+    	 	<?php  if(empty($goods['isverify'])){ ?>
+        <a class="btn btn_cart" href="javascript:void()" onclick='addtocart(1)'>加入购物车</a>
+ 		<?php  } ?>
+        <a class="btn btn_buy" style="	<?php  echo !empty($goods['isverify'])?'width:99%':''; ?>" href="javascript:void()" onclick='buy(1)'>立即购买</a>
+    </div>
+
+    <a class="cart_wrap" href="<?php  echo mobile_url('mycart')?>">
+        <i class="i_cart" id="cartNum"></i>        
+            <i class="add_num">111</i>
+    </a>
+</div>
+
+
+<script type="text/javascript" src="__RESOURCE__/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    //立即购买
+    var hasoption = <?php echo $goods['hasoption']=='1'?'true':'false'?>;
+    function buy(haswindows){
+        var ret = option_selected();
+        var val = $("#xzmodal").attr("class");
+        var array = val.split(" ");
+        if(haswindows==1)
+        {
+        	          $('#xzmodal').modal('show');
+        	          return;
+        }
+        
+       <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
+ 	{ ?>
+ 		
+ 	<?php }?>
+        
+        if(ret.no!=''){
+            if(array[1] == "in"){
+                tip("请选择" + ret.no + "!",true);
+            }else{
+                $('#xzmodal').modal('show');
+            }
+            return;
+        }
+             <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
+ 	{ ?>
+if($("#optiontime").val()=='')
+{
+  tip("请选择时间段!",true);
+	return false;
+}
+  <?php  } ?>
+        var total = $("#total").val();
+        <?php  if($stock!=-1) { ?>
+        if(total>parseInt($("#goodstotail").html()))
+        {
+            tip("最多只能购买" + parseInt($("#goodstotail").html()) + "件!",true);
+            return;
+
+        }
+        <?php  } ?>
+        var total = $("#total").val();
+        location.href = '<?php  echo mobile_url('confirm',array('id'=>$goods['id']),true);?>'+"&optionid=" + $("#optionid").val()+"&optiontime=" +$("#optiontime").val()+ "&total=" + total;
+    }
+
+    //添加到购物车
+    function addtocart(haswindows){
+        var ret = option_selected();
+        var val = $("#xzmodal").attr("class");
+        var array = val.split(" ");
+         if(haswindows==1)
+        {
+        	          $('#xzmodal').modal('show');
+        	          return;
+        }
+        if(ret.no!=''){
+            if(array[1] == "in"){
+                tip("请选择" + ret.no + "!",true);
+            }else{
+                $('#xzmodal').modal('show');
+            }
+            return;
+        };
+
+      <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
+ 	{ ?>
+if($("#optiontime").val()=='')
+{
+  tip("请选择时间段!",true);
+	return false;
+}
+  <?php  } ?>
+        var total = $("#total").val();
+        <?php  if($stock!=-1) { ?>
+        if(total>parseInt($("#goodstotail").html()))
+        {
+            tip("最多只能购买" + parseInt($("#goodstotail").html()) + "件!",true);
+            return;
+
+        };  	<?php  } ?>
+
+        tip("正在处理数据...");
+        var url = '<?php  echo mobile_url('mycart',array('op'=>'add','id'=>$goods['id']),true);?>' +"&optionid=" + $("#optionid").val()+"&optiontime=" +$("#optiontime").val()+ + "&total=" + total;
+        $.getJSON(url, function(s){
+            if(s.result==0){
+                tip("只能购买 " + s.maxbuy + " 件!");
+            }else{
+                tip_close();
+                tip("已加入购物车!");
+                //alert("已加入购物车!");
+                $('#globalId').css({'width':'22px', 'height':'16px', 'line-height':'16px'}).html(s.total).animate({'width':'15px', 'height':'16px', 'line-height':'20px'}, 'slow');
+                $('#carId').css({'width':'22px', 'height':'16px', 'line-height':'16px'}).html(s.total).animate({'width':'15px', 'height':'16px', 'line-height':'20px'}, 'slow');
+            };
+        });
+    }
+     <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
+ 	{ ?>
+ 		
+    function option_selected(){
+
+        var ret= {
+            no: "",
+            all: []
+        };
+        if(!hasoption){
+            return ret;
+        }
+        $(".optionid").each(function(){
+            ret.all.push($(this).val());
+            if($(this).val()==''){
+                ret.no = $(this).attr("title");
+                return false;
+            }
+        });
+        return ret;
+    }
+
+ 	<?php }?>
+    function option_selected(){
+
+        var ret= {
+            no: "",
+            all: []
+        };
+        if(!hasoption){
+            return ret;
+        }
+        $(".optionid").each(function(){
+            ret.all.push($(this).val());
+            if($(this).val()==''){
+                ret.no = $(this).attr("title");
+                return false;
+            }
+        });
+        return ret;
+    }
+</script>
+
+<!--规格选择JS Start-->
+<script type="text/javascript">
+    var options =<?php  echo json_encode($options)?>;
+    var specs =<?php  echo json_encode($specs)?>;
+    var hasoption = <?php echo $goods['hasoption']=='1'?'true':'false'?>;
+
+
+    $(".option,.optionimg").click(function () {
+        var specid = $(this).attr("specid");
+        var oid = $(this).attr("oid");
+
+
+        $(".options_" + specid + "  span").removeClass("current").attr("sel", "false");
+        $(this).addClass("current").attr("sel", "true");
+     
+     
+      <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
+ 	{ ?>
+if(specid=='sendtime')
+{
+	 $("#optiontime").val(oid);
+	return false;
+}
+  <?php  } ?>
+  
+     
+        $(".optionid_" + specid).val(oid);
+        var optionid = "";
+        var stock = 0;
+        var marketprice = 0;
+        var productprice = 0;
+        var ret = option_selected();
+      
+        if (ret.no == '') {
+            var len = options.length;
+            for (var i = 0; i < len; i++) {
+                var o = options[i];
+
+                var ids = ret.all.join("_");
+
+                if (o.specs == ids) {
+                    optionid = o.id;
+                    stock = o.stock;
+                    marketprice = o.marketprice;
+                    productprice = o.productprice;
+                    break;
+                }
+
+            }
+            $("#optionid").val(optionid);
+            <?php  if($stock!=-1) { ?>
+            $("#goodstotail").html(stock);
+            <?php  } ?>
+            $("#marketprice").html(marketprice);
+            $("#marketprice2").html(marketprice);
+
+            $("#productprice").html(productprice);
+            if (productprice <= 0) {
+                $("#productpricecontainer").hide();
+            }
+            else {
+                $("#productpricecontainer").show();
+            }
+        }
+    });
+</script>
+<!--规格选择JS End-->
+
+
+
+    <!--商品评价、详情、同类推荐JS Start-->
+    <script type="text/javascript">
+        TouchSlide({
+            slideCell: "#tabBox1",
+
+            endFun: function (i) { //高度自适应
+                var bd = document.getElementById("tabBox1-bd");
+                bd.parentNode.style.height = bd.children[i].children[0].offsetHeight + "px";
+               if (i > 0)bd.parentNode.style.transition = "200ms";//添加动画效果
+            }
+
+        });</script>
+    <!--商品评价、详情、同类推荐JS End-->
+
+
+
+
+    <!--秒杀倒计时JS satart-->
+    <script language='javascript'>
+        var total_time_<?php  echo $goods['id'];?> = <?php  echo $goods['timelast'];?>;
+        var int_time_<?php  echo $goods['id'];?> = setInterval(function () {
+            d(<?php  echo $goods['id'];?>);
+        }, 1000);
+    </script>
+
+    <script type="text/javascript">
+
+
+        function d(id) {
+            eval("total_time_" + id + "--");
+            var total_time = eval("total_time_" + id);
+
+            var days = parseInt(total_time / 86400)
+
+            var remain = parseInt(total_time % 86400);
+            var hours = parseInt(remain / 3600)
+            var remain = parseInt(remain % 3600);
+
+            var mins = parseInt(remain / 60);
+            var secs = parseInt(remain % 60);
+
+            if (total_time <= 0) {
+                $("#time_" + id).html("时间到了");
+                var int_time = eval("int_time_" + id);
+                window.clearInterval(int_time);
+
+            } else {
+
+                var ret = "";
+                if (days > 0) {
+                    days = days + "";
+                    if (days.length <= 1) {
+                        days = "0" + days;
+                    }
+                    ret += days + " 天 ";
+                }
+                if (hours > 0) {
+                    hours = hours + "";
+                    if (hours.length <= 1) {
+                        hours = "0" + hours;
+                    }
+                    ret += hours + ":";
+                }
+                if (mins > 0) {
+                    mins = mins + "";
+                    if (mins.length <= 1) {
+                        mins = "0" + mins;
+                    }
+                    ret += mins + ":";
+                }
+
+                secs = secs + "";
+                if (secs.length <= 1) {
+                    secs = "0" + secs;
+                }
+                ret += secs;
+
+
+                $("#time_" + id).html(ret);
+            }
+        }
+
+    </script>
+    <!--秒杀倒计时JS End-->
+
+
+<script language='javascript'>
+    function tip(msg, autoClose) {
+        var div = $("#poptip");
+        var content = $("#poptip_content");
+        if (div.length <= 0) {
+            div = $("<div id='poptip'></div>").appendTo(document.body);
+            content = $("<div id='poptip_content'>" + msg + "</div>").appendTo(document.body);
+        }
+        else {
+            content.html(msg);
+            content.show();
+            div.show();
+        }
+        if (autoClose) {
+            setTimeout(function () {
+                content.fadeOut(500);
+                div.fadeOut(500);
+
+            }, 1000);
+        }
+    }
+    function tip_close() {
+        $("#poptip").fadeOut(500);
+        $("#poptip_content").fadeOut(500);
+    }
+</script>
+
+
+<!--收藏按钮JS Start-->
+<script>
+    $(function () {
+        $("#collect-link").on("click", function () {
+            $("#collect-tip").show();
+        })
+        $("#a-know").on("click", function () {
+            $("#collect-tip").hide();
+        })
+    })
+</script>
+<!--收藏按钮JS End-->
+
+<script type="text/javascript">
+    var $$ = function (obj) {
+        if (obj != null && obj != undefined && obj.toString().length > 0) {
+            if (obj[0] == '#') {
+                return document.getElementById(obj.substr(1, obj.length - 1));
+            }
+        }
+    }
+    function chgNum(a) {
+        var number = $$("#total");
+        var p = parseInt(number.value);
+        if (a == 1) {
+            if (p < 1038) number.value = ++p;
+        }
+        else {
+            if (p > 1) number.value = --p;
+        }
+    }
+</script>
+
+       	<?php  if(!empty($cfg['shop_kf_qq'])){ ?>
+       
+  	
+         	
+         	<div class="fe-floatico fe-floatico-right" style="position: fixed; width: 60px; top: 300px;min-height: 10px;right: 0px;z-index: 1000;box-sizing: border-box;" ng-style="{'width':pages[0].params.floatwidth,'top':pages[0].params.floattop}" ng-class="{'fe-floatico-right':pages[0].params.floatstyle=='right'}" ng-show="pages[0].params.floatico==1">
+            <a href="http://wpa.qq.com/msgrd?v=3&uin=<?php  echo $cfg['shop_kf_qq']; ?>&site=qq&menu=yes" target="_parent">
+                <img src=" <?php echo RESOURCE_ROOT;?>addons/common/image/qq.png" ng-src=" <?php echo RESOURCE_ROOT;?>addons/common/image/qq.png" style="width:100%;">
+            </a>
+        </div>
+         	    	<?php  } ?>
+<?php  include page('footer');?>	
