@@ -85,7 +85,7 @@ public function verifyorder($openid,$ordersn)
 				
 				if(!empty($key))
 				{
-				$reply = mysqld_select('SELECT * FROM '.table('weixin_rule')."   WHERE  keywords = :keywords and beid=:beid" , array(':keywords' =>$key,':beid'=>$_CMS['beid']));
+				$reply = mysqld_select('SELECT * FROM '.table('weixin_rule')."   WHERE  keywords = :keywords and beid=:beid  limit 1" , array(':keywords' =>$key,':beid'=>$_CMS['beid']));
 				}
 			
 		
@@ -143,7 +143,7 @@ public function verifyorder($openid,$ordersn)
 					
 				if($message['type']=='subscribe')
 			{
-					$reply = mysqld_select('SELECT * FROM '.table('weixin_rule')."   WHERE  keywords = :keywords and beid=:beid" , array(':keywords' =>subscribe_key,':beid'=>$_CMS['beid']));
+					$reply = mysqld_select('SELECT * FROM '.table('weixin_rule')."   WHERE  keywords = :keywords and beid=:beid  limit 1" , array(':keywords' =>subscribe_key,':beid'=>$_CMS['beid']));
 				
 					if(	!empty($message['eventkey'])&&strlen($message['eventkey'])> 8)
 					{
@@ -234,25 +234,10 @@ public function verifyorder($openid,$ordersn)
 							if(!empty($message['from'])&&!empty($eventkey))
 					{
 							$eventkey2=explode('-',$eventkey);
-						bj_tbk_qrcode_updateagent('',$eventkey2[0],$message['from'],$newaccount);
+						bj_tbk_qrcode_updateagent('',$eventkey2[0],$message['from'],$newaccount,$eventkey2[1]);
 					}
 					
 			
-				if($_CMS['addons_bj_tbk'])
-				{
-				if(!empty($message['from'])&&!empty($eventkey))
-					{
-						
-						$eventkey2=explode('-',$eventkey);
-						if(!empty($eventkey2[0])&&!empty($eventkey2[1]))
-						{
-							
-							bj_tbk_qrcode_message($eventkey2,$message['from']);
-						}
-						
-					
-					}
-				}
 				
 			}
 	
@@ -274,7 +259,7 @@ public function verifyorder($openid,$ordersn)
 			}
 			if(empty($reply['id']))
 			{
-					$reply = mysqld_select('SELECT * FROM '.table('weixin_rule')."   WHERE  keywords = :keywords and beid=:beid" , array(':keywords' =>default_key,':beid'=>$_CMS['beid']));
+					$reply = mysqld_select('SELECT * FROM '.table('weixin_rule')."   WHERE  keywords = :keywords and beid=:beid limit 1" , array(':keywords' =>default_key,':beid'=>$_CMS['beid']));
 			}
 				if($reply['ruletype']==1)
 				{
@@ -291,7 +276,7 @@ public function verifyorder($openid,$ordersn)
 			$news = array(
 				'title' => $reply['title'],
 				'description' => $reply['description'],
-				'picurl' => $reply['thumb'],
+				'picurl' => ATTACHMENT_WEBROOT.$reply['thumb'],
 				'url' =>  $reply['url'],
 			);
 			return $this->respNews($news,$message);

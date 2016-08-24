@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>开源版多商户管理系统</title>
+		<title>多店铺管理后台</title>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
    
   <link rel="stylesheet" href="<?php echo RESOURCE_ROOT;?>/addons/main/main.css">

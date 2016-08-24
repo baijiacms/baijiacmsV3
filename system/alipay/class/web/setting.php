@@ -2,8 +2,7 @@
 defined('SYSTEM_IN') or exit('Access Denied');
 	
 $settings=globaSetting();
-		$system_store = mysqld_select('SELECT website FROM '.table('system_store')." where `id`=:id",array(":id"=>$_CMS['beid']));
-			
+
 				$thirdlogin = mysqld_select("SELECT * FROM " . table('thirdlogin') . " WHERE code = :code and beid=:beid", array(':code' => 'alipay',':beid'=>$_CMS['beid']));
 				   		
  if (checksubmit()) {

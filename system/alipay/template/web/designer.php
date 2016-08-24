@@ -121,9 +121,9 @@ function addMenu(){if(!($(".mlist .hover").length>=4)){var t='<tr class="hover" 
 		</tr>	
 				<tr>
 										<td>	
-					<a href="javascript:;" onclick="actionurl('http://<?php echo $system_store['website'].'/'.create_url('mobile',array('name' => 'shopwap','do' => 'shopindex'));?>');"><i class="icon-home"></i>商城首页</a>&nbsp;
-							<a href="javascript:;" onclick="actionurl('http://<?php echo $system_store['website'].'/'.create_url('mobile',array('name' => 'shopwap','do' => 'fansindex'));?>');"><i class="icon-home"></i>个人中心</a>&nbsp;
-						<a href="javascript:;" onclick="actionurl('http://<?php echo $system_store['website'].'/'.create_url('mobile',array('name' => 'shopwap','do' => 'help'));?>');"><i class="icon-home"></i>帮助说明</a>&nbsp;
+					<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'shopindex'));?>');"><i class="icon-home"></i>商城首页</a>&nbsp;
+							<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'fansindex'));?>');"><i class="icon-home"></i>个人中心</a>&nbsp;
+						<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'help'));?>');"><i class="icon-home"></i>帮助说明</a>&nbsp;
 				</td>
 		</tr>
 	</table>

@@ -2,7 +2,15 @@
 
 <h3 class="header smaller lighter blue"><?php  if(!empty($category['id'])) { ?>编辑<?php  }else{ ?>新增<?php  } ?>分类</h3>
 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" >
-	
+	 	<?php  if(!empty($category['id'])) { ?>
+ 	 <div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" > 分类链接：</label>
+
+										<div class="col-sm-9">
+													<input name="xurl"  style="width:600px" value="<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'goodlist','ccate' =>  $category['id']));?>" readonly="readonly" type="text">
+											</div>
+		</div>
+ 	<?php  } ?>
 	<input type="hidden" name="parentid" value="<?php  echo $parent['id'];?>" />
 	  		<?php  if(!empty($parentid)) { ?>
 	   <div class="form-group">

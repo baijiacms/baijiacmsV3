@@ -6,7 +6,7 @@
 				$store = mysqld_select("SELECT * FROM " . table('system_store')." where `deleted`=0 and `id`=:id",array(":id"=>intval($_GP['id'])));
     
 			   	 	mysqld_update('system_store',array("deleted"=>1),array('id'=>$store['id']));
-						message("关闭成功！","refresh","success");
+						message("删除成功！","refresh","success");
 			}
             if($operation=='post')
         {
@@ -27,9 +27,10 @@
 				intval($_GP['isclose']));
 			
        $data['website']=$_GP['website'];
-       		
-       
-			
+       $data['website2']=$_GP['website2'];
+       $data['website3']=$_GP['website3'];
+       $data['fullwebsite']=$_GP['fullwebsite'];
+		
                 
                 if(!empty($website_store['id'])&&$website_store['id']!=$store['id'])
                 {
@@ -73,7 +74,7 @@
             
         		 $selectCondition.=" LIMIT " . ($pindex - 1) * $psize . ',' . $psize;
 						    
-        	 	$store_list = mysqld_selectall("SELECT store.*FROM " . table('system_store')." store where store.`deleted`=0 ".$selectCondition);
+        	 	$store_list = mysqld_selectall("SELECT store.* FROM " . table('system_store')." store where store.`deleted`=0 ".$selectCondition);
        
        
       

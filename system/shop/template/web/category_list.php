@@ -33,7 +33,7 @@
 						 <?php  if(empty($row['is_system'])) { ?>
 						<?php  if(empty($row['parentid'])) { ?>
           <a class="btn btn-xs btn-info" href="<?php  echo web_url('category', array('parentid' => $row['id'], 'op' => 'post'))?>"><i class="icon-plus-sign-alt"></i> 添加子分类</a><?php  } ?>&nbsp;&nbsp;
-					     <?php  } ?><a class="btn btn-xs btn-info" href="http://<?php  echo $system_store['website']?>/<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'goodlist','pcate' =>  $row['id']))?>" target="_blank"><i class="icon-eye-open"></i>&nbsp;查&nbsp;看&nbsp;</a>&nbsp;&nbsp;
+					     <?php  } ?><a class="btn btn-xs btn-info" href="<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'goodlist','pcate' =>  $row['id']))?>" target="_blank"><i class="icon-eye-open"></i>&nbsp;查&nbsp;看&nbsp;</a>&nbsp;&nbsp;
 						 <?php  if(empty($row['is_system'])) { ?>	<a class="btn btn-xs btn-info" href="<?php  echo web_url('category', array('op' => 'post', 'id' => $row['id']))?>"><i class="icon-edit"></i>&nbsp;编&nbsp;辑&nbsp;</a>&nbsp;&nbsp;
 					<a class="btn btn-xs btn-info" href="<?php  echo web_url('category', array('op' => 'delete', 'id' => $row['id']))?>" onclick="return confirm('确认删除此分类吗？');return false;"><i class="icon-edit"></i>&nbsp;删&nbsp;除&nbsp;</a></td>
 			 <?php  } ?>	</tr>
@@ -54,7 +54,7 @@
                                                 <span class='label label-danger'>隐藏</span>
                                                 <?php  } ?></td>
 					<td>
-					<a class="btn btn-xs btn-info" href="http://<?php  echo $system_store['website']?>/<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'goodlist','ccate' =>  $row['id']))?>" target="_blank"><i class="icon-eye-open"></i>&nbsp;查&nbsp;看&nbsp;</a>&nbsp;&nbsp;
+					<a class="btn btn-xs btn-info" href="<?php  echo WEBSITE_ROOT;?><?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'goodlist','ccate' =>  $row['id']))?>" target="_blank"><i class="icon-eye-open"></i>&nbsp;查&nbsp;看&nbsp;</a>&nbsp;&nbsp;
 							 <?php  if(empty($row['is_system'])) { ?>	<a class="btn btn-xs btn-info" href="<?php  echo web_url('category', array('op' => 'post', 'id' => $row['id'], 'parentid'=>$row['parentid']))?>"><i class="icon-edit"></i>&nbsp;编&nbsp;辑&nbsp;</a>
 					&nbsp;&nbsp;<a class="btn btn-xs btn-info" href="<?php  echo web_url('category', array('op' => 'delete', 'id' => $row['id']))?>" onclick="return confirm('确认删除此分类吗？');return false;"><i class="icon-edit"></i>&nbsp;删&nbsp;除&nbsp;</a>	 <?php  } ?></td>
 				</tr>

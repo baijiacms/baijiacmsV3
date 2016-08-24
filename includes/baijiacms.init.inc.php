@@ -24,7 +24,21 @@ if($BJCMS_ISINSTALL==true)
 	}
 	$_CMS['system_globa_setting']=globaPriveteSystemSetting();
 
+	if(!empty($_CMS['system_globa_setting'])&&!empty($_CMS['system_globa_setting']['system_isnetattach']))
+	{
+		if($_CMS['system_globa_setting']['system_isnetattach']==1)
+		{
+			define('ATTACHMENT_WEBROOT', $_CMS['system_globa_setting']['system_ftp_attachurl']);
+		}
+		if($_CMS['system_globa_setting']['system_isnetattach']==2)
+		{
+			define('ATTACHMENT_WEBROOT', $_CMS['system_globa_setting']['system_oss_attachurl']);
+		}	
+	}else
+	{
+		
 	define('ATTACHMENT_WEBROOT', WEBSITE_ROOT.'attachment/');
+	}
 
 }
 

@@ -16,7 +16,7 @@
 
 										<div class="col-sm-9">
 										    
-                         <input type="text" name="interface" class="col-xs-10 col-sm-4" value="http://<?php echo $system_store['website'].'/'.'alipay.php'?>"  readonly="readonly"/>
+                         <input type="text" name="interface" class="col-xs-10 col-sm-4" value="<?php echo WEBSITE_ROOT.'alipay.php'?>"  readonly="readonly"/>
 										</div>
 									</div>
 									

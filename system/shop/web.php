@@ -1,6 +1,7 @@
 <?php
 defined('SYSTEM_IN') or exit('Access Denied');
 class shopAddons  extends BjSystemModule {
+	
 		public function do_goodsorder()
 	{
 		$this->__web(__FUNCTION__);

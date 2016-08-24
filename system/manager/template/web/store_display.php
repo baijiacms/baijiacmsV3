@@ -48,7 +48,7 @@
           <td class="text-center">
           	<?php echo $item['sname']; ?>
           	</td>
-           <td class="text-center"><?php echo $item['website']; ?></td>
+           <td class="text-center"><?php echo $item['website']; ?><?php if(!empty($item['website2'])){ ?><br/><?php echo $item['website2']; ?><?php }?><?php if(!empty($item['website3'])){ ?><br/><?php echo $item['website3']; ?><?php }?></td>
           <td class="text-center"><?php  if(!empty($item['is_system'])){ ?><span class="label label-info" style="cursor:pointer;">系统</span>	<?php  } ?> <?php if(empty($item['isclose'])){ ?> <label data="1" class="label label-success">正常</label><?php   } ?>
           	<?php if(!empty($item['isclose'])){ ?> <label data="1" class="label label-danger">关闭</label><?php   } ?></td>
             <td class="text-center">
@@ -57,7 +57,7 @@
 						<a class="btn btn-xs btn-info"  href="<?php  echo create_url('site',array('name' => 'manager','do' => 'loginstore','beid'=> $item['id']))?>" target="_blank"><i class="icon-edit"></i>店铺管理</a>
              <br/>   <br/> <a class="btn btn-xs btn-info"  href="<?php  echo web_url('store', array('op' => 'post', 'id' => $item['id']))?>"><i class="icon-edit"></i>&nbsp;修&nbsp;改&nbsp;</a> 
              		
-                    	&nbsp;&nbsp;	<a class="btn btn-xs btn-info" onclick="return confirm('此操作不可恢复，确认关闭？');return false;"  href="<?php  echo web_url('store', array('op' => 'delete', 'id' => $item['id']))?>"><i class="icon-edit"></i>&nbsp;关&nbsp;闭&nbsp;</a> </td>
+                    	&nbsp;&nbsp;	<a class="btn btn-xs btn-info" onclick="return confirm('此操作不可恢复，确认删除？');return false;"  href="<?php  echo web_url('store', array('op' => 'delete', 'id' => $item['id']))?>"><i class="icon-edit"></i>&nbsp;删&nbsp;除&nbsp;</a> </td>
                              </td>
 				</tr>
 				<?php  } } ?>

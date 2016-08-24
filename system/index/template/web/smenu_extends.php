@@ -1,5 +1,5 @@
 <?php defined('SYSTEM_IN') or exit('Access Denied');?>
-  <?php  if(is_array($modulelist)) { foreach($modulelist as $module) {
+  <?php  if(is_array($modulelist)) { foreach($modulelist as $module) { if(!empty($module['menus'])){
                                
                                    	?>
   <dl class="left-menu shop_26 sub_cog">
@@ -17,5 +17,5 @@
                                                
                                      
                                                               </dl>    
-                     <?php   }} ?>    
+                     <?php  } }} ?>    
           	       

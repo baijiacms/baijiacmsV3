@@ -176,7 +176,7 @@
 						<td style="font-size: 14px;font-weight: bold;">微信昵称：</td>
 								<td ><input name="weixin_nickname" type="text" value="<?php  echo $_GP['weixin_nickname'];?>" /></td>
 								
-
+		
 								
 							<td colspan="2"><input type="submit" name="submit" value=" 查 询 " class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="report" value="report" class="btn btn-warning">导出excel</button></td>
 						
@@ -235,7 +235,7 @@
 					<td><?php  if($item['status'] == 0) { ?><span class="label label-warning" >待付款</span><?php  } ?>
 															<?php  if($item['status'] == -1) { ?><span class="label label-danger" >已关闭</span><?php  } ?>
 						</td>
-								
+										
 					<td><?php  echo date('Y-m-d H:i:s', $item['createtime'])?></td>
 		
 					<td><a class="btn btn-xs btn-info"  href="<?php  echo web_url('order', array('op' => 'detail', 'id' => $item['id'],'isall'=>1))?>"><i class="icon-edit"></i>操作</a>
@@ -285,7 +285,7 @@
 						<?php  if($item['be_status'] == -6) { ?><span class="label  label-success">已退款</span><?php  } ?>
 			<?php  } ?>
 						</td>
-							
+						
 					<td><?php  echo date('Y-m-d H:i:s', $item['createtime'])?></td>
 		
 					<td><a class="btn btn-xs btn-info"  href="<?php  echo web_url('order', array('op' => 'detail', 'id' => $item['id'],'isbe'=>1))?>"><i class="icon-edit"></i>操作</a>

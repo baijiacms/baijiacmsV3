@@ -2,8 +2,7 @@
 defined('SYSTEM_IN') or exit('Access Denied');
 	
 $settings=globaSetting();
-	$system_store = mysqld_select('SELECT website FROM '.table('system_store')." where `id`=:id",array(":id"=>$_CMS['beid']));
-			
+
 
 				$thirdlogin = mysqld_select("SELECT * FROM " . table('thirdlogin') . " WHERE code = :code and beid=:beid", array(':code' => 'weixin',':beid'=>$_CMS['beid']));
 				   		
@@ -16,6 +15,7 @@ $settings=globaSetting();
 				   		  'weixin_appSecret' => $_GP['weixin_appSecret'],
 				   		  'weixin_autoreg'=> $_GP['weixin_autoreg'],
 				   		  'weixin_autoaddress'=> $_GP['weixin_autoaddress'],
+				   		  'weixin_auth_website'=> $_GP['weixin_auth_website'],
 				   		  'weixin_noaccess'=> intval($_GP['weixin_noaccess'])
             );
         

@@ -1,6 +1,12 @@
 <?php
 defined('SYSTEM_IN') or exit('Access Denied');
 class managerAddons  extends BjSystemModule {
+
+	
+			public function do_update()
+	{
+    $this->__managerweb(__FUNCTION__);
+	}
 			public function do_loginstore()
 	{
     $this->__managerweb(__FUNCTION__);
@@ -10,26 +16,10 @@ class managerAddons  extends BjSystemModule {
     $this->__managerweb(__FUNCTION__);
 	}
 
-		public function do_goodsorder()
-	{
-    $this->__managerweb(__FUNCTION__);
-	}
-		public function do_outchargegold()
-	{
-    $this->__managerweb(__FUNCTION__);
-	}
-	public function do_pushstoregoods()
-	{
-			$this->__managerweb(__FUNCTION__);
-	}
-		public function do_spec() {
-		$this->__managerweb(__FUNCTION__);
- 	}
+	
+
   public function do_picdelete() {
     $this->__managerweb(__FUNCTION__);
-  }
-  public function do_specitem() {
-		$this->__managerweb(__FUNCTION__);
   }
   	public function setOrderCredit($openid,$id , $minus = true,$remark='') {
   	 			$order = mysqld_select("SELECT * FROM " . table('shop_order') . " WHERE id=:id",array(":id"=>$id));
@@ -48,27 +38,7 @@ class managerAddons  extends BjSystemModule {
     public function setOrderStock($id , $minus = true) {
     	updateOrderStock($id,$minus);
     }
-		public function do_category()
-	{
-		$this->__managerweb(__FUNCTION__);
-	}
-		public function do_orderbat()
-	{	
-		$this->__managerweb(__FUNCTION__);
-	}
-	public function do_order()
-	{
-    $this->__managerweb(__FUNCTION__);
-	}
-	public function do_goods()
-	{
-		$this->__managerweb(__FUNCTION__);
-	}
-		public function do_goods_comment()
-	{
-		$this->__managerweb(__FUNCTION__);
-	}
-		
+	
 	public function do_center()
 	{
 		$this->__managerweb(__FUNCTION__);
@@ -148,7 +118,10 @@ class managerAddons  extends BjSystemModule {
 	{
 			$this->__managerweb(__FUNCTION__);
 	}
-	
+		function do_netattach()
+	{
+			$this->__managerweb(__FUNCTION__);
+	}
 	function do_dev()
 	{
 			$this->__managerweb(__FUNCTION__);

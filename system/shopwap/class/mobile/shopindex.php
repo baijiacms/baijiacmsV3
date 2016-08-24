@@ -1,6 +1,8 @@
 <?php	
 
 			$settings=globaSetting();
+
+			
 			$advs = mysqld_selectall("select * from " . table('shop_adv') . " where enabled=1 and beid=:beid order by displayorder desc",array(':beid'=>$_CMS['beid']));
      
 	 	 $children_category=array();
@@ -16,7 +18,7 @@
         $showhot=false;
         foreach ($category as &$c) {
             if ($c['isrecommand'] == 1) {
-                $c['list'] = mysqld_selectall("SELECT * FROM " . table('shop_goods') . " WHERE  isrecommand=1 and deleted=0 AND status = 1  and pcate='{$c['id']}' and ((is_system=0 and beid=:beid) or ((id in (SELECT gst.good_id FROM ".table('shop_goods_goodsstore')." gst WHERE gst.beid=:beid) ) and is_system=1))  ORDER BY displayorder DESC, sales",array(':beid'=>$_CMS['beid']) );
+                $c['list'] = mysqld_selectall("SELECT * FROM " . table('shop_goods') . " WHERE  isrecommand=1 and deleted=0 AND status = 1  and pcate='{$c['id']}' and ((is_system=0 and beid=:beid) or ((id in (SELECT gst.good_id FROM ".table('shop_goods_goodsstore')." gst WHERE gst.beid=:beid) ) and is_system=1))  ORDER BY displayorder DESC",array(':beid'=>$_CMS['beid']) );
                
                foreach ($c['list'] as &$c1goods) {
                     if ($c1goods['isrecommand'] == 1&&$c1goods['isfirst'] == 1) {
@@ -31,7 +33,7 @@
             if (!empty($children_category[$c['id']])) {
                 foreach ($children_category[$c['id']] as &$child) {
                     if ($child['isrecommand'] == 1) {
-                        $child['list'] = mysqld_selectall("SELECT * FROM " . table('shop_goods') . " WHERE  isrecommand=1 and deleted=0 AND status = 1  and pcate='{$c['id']}' and ccate='{$child['id']}' and ((is_system=0 and beid=:beid) or ((id in (SELECT gst.good_id FROM ".table('shop_goods_goodsstore')." gst WHERE gst.beid=:beid) ) and is_system=1))  ORDER BY displayorder DESC, sales DESC ",array(':beid'=>$_CMS['beid']) );
+                        $child['list'] = mysqld_selectall("SELECT * FROM " . table('shop_goods') . " WHERE  isrecommand=1 and deleted=0 AND status = 1  and pcate='{$c['id']}' and ccate='{$child['id']}' and ((is_system=0 and beid=:beid) or ((id in (SELECT gst.good_id FROM ".table('shop_goods_goodsstore')." gst WHERE gst.beid=:beid) ) and is_system=1))  ORDER BY displayorder DESC ",array(':beid'=>$_CMS['beid']) );
                        	  foreach ($child['list'] as &$c2goods) {
 				                    if ($c2goods['isrecommand'] == 1&&$c2goods['isfirst'] == 1) {
 				                       $first_good_list[] = $c2goods;

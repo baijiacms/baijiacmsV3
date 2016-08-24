@@ -3,6 +3,7 @@ defined('SYSTEM_IN') or exit('Access Denied');
 
 require WEB_ROOT.'/system/member/lib/rank.php';
 class shopwapAddons  extends BjSystemModule {
+
 		public function do_index_pc()
 	{
 					$settings=globaSetting();

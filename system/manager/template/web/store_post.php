@@ -10,15 +10,36 @@
 										</div>
 									</div>
 						<div class="form-group">
-										<label class="col-sm-2 control-label no-padding-left" > 绑定域名</label>
+										<label class="col-sm-2 control-label no-padding-left" > 主绑定域名</label>
 
 										<div class="col-sm-9">
-													<input type="text" name="website" class="col-xs-10 col-sm-3" value="<?php echo $store['website'];?>" 		<?php  if(!empty($store['is_system'])){ ?>	readonly="readlony"	<?php  } ?>  />如：***.baijiacms.com，（***部分可为你定义的英文）
+													<input type="text" name="website" class="col-xs-10 col-sm-3" value="<?php echo $store['website'];?>" 		 />如：***.baijiacms.com，请注意格式（***部分可为你定义的英文）不含二级目录和http。
 										</div>
 									</div>
 												
-									  
-									
+									  	<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" > 主完整域名(选填)</label>
+
+										<div class="col-sm-9">
+													<input type="text" name="fullwebsite" class="col-xs-10 col-sm-3" value="<?php echo $store['fullwebsite'];?>" 		 />在二级目录情况下需填写，如：http://***.baijiacms.com/demo/，请注意格式（***部分可为你定义的英文）。
+										</div>
+									</div>
+									<?php if(false){?>
+										  	<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" > 子绑定域名1(选填)</label>
+
+										<div class="col-sm-9">
+													<input type="text" name="website2" class="col-xs-10 col-sm-3" value="<?php echo $store['website2'];?>" 		  />如：***.baijiacms.com，请注意格式（***部分可为你定义的英文）不含二级目录和http。
+										</div>
+									</div>
+									 	<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" > 子绑定域名2(选填)</label>
+
+										<div class="col-sm-9">
+													<input type="text" name="website3" class="col-xs-10 col-sm-3" value="<?php echo $store['website3'];?>" 		  />如：***.baijiacms.com，请注意格式（***部分可为你定义的英文）不含二级目录和http。
+										</div>
+									</div>
+										<?php }?>
 									<div class="form-group">
 										<label class="col-sm-2 control-label no-padding-left"> 是否开启：</label>
 
@@ -35,7 +56,7 @@
 
 										<div class="col-sm-9">
 											<?php if(!empty($store['id'])){?>
-													<input readonly="readlony" type="text"  name="mobile_url" class="col-xs-10 col-sm-6" value="<?php  if(empty($store['website'])) { ?><?php echo WEBSITE_ROOT;?>index.php?beid=<?php echo $store['id'];?><?php  }else{ ?>http://<?php echo $store['website'];?>/index.php<?php  }?>	" /> &nbsp;&nbsp;&nbsp;<a target="_blank" href="<?php  if(empty($store['website'])) { ?><?php echo WEBSITE_ROOT;?>index.php?beid=<?php echo $store['id'];?><?php  }else{ ?>http://<?php echo $store['website'];?>/index.php<?php  }?>">预览</a>
+													<input readonly="readlony" type="text"  name="mobile_url" class="col-xs-10 col-sm-6" value="<?php  if(empty($store['website'])) { ?><?php echo WEBSITE_ROOT;?>index.php?beid=<?php echo $store['id'];?><?php  }else{ ?><?php  if(empty($store['fullwebsite'])) { ?>http://<?php echo $store['website'];?>/<?php }else{ ?><?php echo $store['fullwebsite'];?><?php } ?>index.php<?php  }?>	" /> &nbsp;&nbsp;&nbsp;<a target="_blank" href="<?php  if(empty($store['website'])) { ?><?php echo WEBSITE_ROOT;?>index.php?beid=<?php echo $store['id'];?><?php  }else{ ?><?php  if(empty($store['fullwebsite'])) { ?>http://<?php echo $store['website'];?>/<?php }else{ ?><?php echo $store['fullwebsite'];?><?php } ?>index.php<?php  }?>">预览</a>
 													<?php }else{?>
 													提交后生成链接
 														<?php }?>
@@ -48,7 +69,7 @@
 
 										<div class="col-sm-9">
 											<?php if(!empty($store['id'])){?>
-													<input readonly="readlony" type="text"  name="mobile_url" class="col-xs-10 col-sm-6" value="<?php  if(empty($store['website'])) { ?><?php echo WEBSITE_ROOT;?>index.php?beid=<?php echo $store['id'];?> <?php  }else{ ?>http://<?php echo $store['website'];?>/admin.php<?php  }?>	" /> &nbsp;&nbsp;&nbsp;<a target="_blank" href="<?php  if(empty($store['website'])) { ?><?php echo WEBSITE_ROOT;?>admin.php?beid=<?php echo $store['id'];?><?php  }else{ ?>http://<?php echo $store['website'];?>/admin.php<?php  }?>">预览</a>
+													<input readonly="readlony" type="text"  name="mobile_url" class="col-xs-10 col-sm-6" value="<?php  if(empty($store['website'])) { ?><?php echo WEBSITE_ROOT;?>index.php?beid=<?php echo $store['id'];?> <?php  }else{ ?><?php  if(empty($store['fullwebsite'])) { ?>http://<?php echo $store['website'];?>/<?php }else{ ?><?php echo $store['fullwebsite'];?><?php } ?>admin.php<?php  }?>	" /> &nbsp;&nbsp;&nbsp;<a target="_blank" href="<?php  if(empty($store['website'])) { ?><?php echo WEBSITE_ROOT;?>admin.php?beid=<?php echo $store['id'];?><?php  }else{ ?><?php  if(empty($store['fullwebsite'])) { ?>http://<?php echo $store['website'];?>/<?php }else{ ?><?php echo $store['fullwebsite'];?><?php } ?>admin.php<?php  }?>">预览</a>
 													<?php }else{?>
 													提交后生成链接
 														<?php }?>

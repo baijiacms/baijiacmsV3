@@ -78,8 +78,10 @@
               <dd class="subshop_0 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'shopwap','do' => 'themes','op'=>'display'))?>" target="main">模板设置 </a>
                                     </dd>  
-               
-                   
+                             
+                        <dd class="subshop_1 ">
+                    <a  href="<?php  echo create_url('site', array('name' => 'shopwap','do' => 'fansindex_menu','op'=>'display'))?>" target="main">个人中心菜单 </a>
+                                    </dd>    
                                     
                                       <dd class="subshop_1 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'shop','do' => 'adv','op'=>'display'))?>" target="main">首页广告 </a>

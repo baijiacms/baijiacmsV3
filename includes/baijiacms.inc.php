@@ -17,7 +17,7 @@ if(is_file(WEB_ROOT.'/config/debug.php'))
 	require WEB_ROOT.'/config/debug.php';
 }
 define('SAPP_NAME', '微商城');
-define('CORE_VERSION', 20160701);
+define('CORE_VERSION', 20160709);
 defined('SYSTEM_VERSION') or define('SYSTEM_VERSION', CORE_VERSION);
 header('Content-type: text/html; charset=UTF-8');
 define('SYSTEM_WEBROOT', WEB_ROOT);
@@ -27,6 +27,7 @@ defined('DATA_PROTECT') or define('DATA_PROTECT', false);
 defined('CUSTOM_VERSION') or define('CUSTOM_VERSION', false);
 date_default_timezone_set('PRC');
 $document_root = substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'));
+define('WEBSITE_FOOTER', $document_root);	
 define('SESSION_PREFIX', $_SERVER['HTTP_HOST']);	
 define('WEB_WEBSITE', $_SERVER['HTTP_HOST']);	
 define('WEBSITE_ROOT', 'http://'.$_SERVER['HTTP_HOST'].$document_root.'/');	

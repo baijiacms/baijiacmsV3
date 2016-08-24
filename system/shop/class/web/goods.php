@@ -498,7 +498,7 @@
                 $condition .= " AND status = '" . intval($_GP['status']) . "'";
             }
 
-            $list = mysqld_selectall("SELECT * FROM " . table('shop_goods') . " WHERE  deleted=0  and ((is_system=0 and beid=:beid)  or ((id in (SELECT gst.good_id FROM ".table('shop_goods_goodsstore')." gst WHERE gst.beid=:beid) ) and is_system=1)) $condition ORDER BY status DESC, displayorder DESC, id DESC LIMIT " . ($pindex - 1) * $psize . ',' . $psize,array(':beid'=>$_CMS['beid']));
+            $list = mysqld_selectall("SELECT * FROM " . table('shop_goods') . " WHERE  deleted=0  and ((is_system=0 and beid=:beid)  or ((id in (SELECT gst.good_id FROM ".table('shop_goods_goodsstore')." gst WHERE gst.beid=:beid) ) and is_system=1)) $condition ORDER BY status DESC, displayorder DESC LIMIT " . ($pindex - 1) * $psize . ',' . $psize,array(':beid'=>$_CMS['beid']));
             $total = mysqld_selectcolumn('SELECT COUNT(*) FROM ' . table('shop_goods') . " WHERE deleted=0  and ((is_system=0 and beid=:beid) or is_system=1) $condition",array(':beid'=>$_CMS['beid']));
             $pager = pagination($total, $pindex, $psize);
              include page('goods_list');

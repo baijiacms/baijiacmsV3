@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>开源版-<?php echo $system_store['sname']?>店铺管理后台</title>
+		<title><?php echo $system_store['sname']?>店铺管理后台</title>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
    
   <link rel="stylesheet" href="<?php echo RESOURCE_ROOT;?>/addons/main/main.css">
@@ -44,14 +44,14 @@
 
         <div class="fr">
            <ul class="header-nav-list clearfix">
-             
+          
              <li class="fl">
-    <a   href="http://<?php  echo $system_store['website'].'/index_pc.php';?>" target="_blank">
+    <a   href="<?php  echo WEBSITE_ROOT.'index_pc.php';?>" target="_blank">
         <span>PC端商城</span>
     </a> 
 </li>
 <li class="fl">
-    <a   href="http://<?php  echo $system_store['website'].'/index.php';?>" target="_blank">
+    <a   href="<?php  echo WEBSITE_ROOT.'index.php';?>" target="_blank">
         <span>移动端商城</span>
     </a> 
 </li>

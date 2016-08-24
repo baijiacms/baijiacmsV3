@@ -19,7 +19,7 @@ function is_use_weixin()
 		global $_CMS,$_GP;
 
 		$configs=globaSetting();
-		$no_access=intval($configs['weixin_noaccess']);
+		$access=is_weixin_access();
 		if(empty($configs['weixin_appId']))
 		{
 			return false;
@@ -28,7 +28,7 @@ function is_use_weixin()
 		{
 			return false;
 		}
-	if ((strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')!== false)&&empty($no_access)) {
+	if ((strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')!== false)&&!empty($access)) {
 		
 		return true;
 	}
@@ -49,10 +49,25 @@ function is_weixin_access()
 		{
 			return false;
 		}
-	if (empty($no_access)) {
-		
-		return true;
-	}
+		$weixin_auth_website='';
+			if(empty($configs['weixin_auth_website']))
+			{
+				if(!empty($_CMS['beid']))
+				{
+					$system_store = mysqld_select('SELECT website FROM '.table('system_store')." where `id`=:id",array(":id"=>$_CMS['beid']));
+					$weixin_auth_website=$system_store['website'];
+					refreshSetting(array('weixin_auth_website'=>$system_store['website']));
+				}
+			}else
+			{
+					$weixin_auth_website=$configs['weixin_auth_website'];
+			}
+			if($weixin_auth_website==WEB_WEBSITE&&empty($no_access))
+			{
+			return true;	
+			}
+			
+
 	return false;
 }
 function hidtel($phone){

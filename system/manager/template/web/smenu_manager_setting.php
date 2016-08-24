@@ -12,13 +12,17 @@
                         <dd class="subshop_1 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'manager','do' => 'store','op'=>'display'))?>" target="main">管理店铺 </a>
                                     </dd>      
+                                       
                                      <dd class="subshop_0 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'manager','do' => 'user'))?>" target="main">用户管理 </a>
                                     </dd>  
-                                                
+                                              <dd class="subshop_1 ">
+                    <a  href="<?php  echo create_url('site', array('name' => 'manager','do' => 'netattach'))?>" target="main">远程附件 </a>
+                                    </dd>        
                    </dl>       
                    
 
+	   
 
 	   <dl class="left-menu shop_26 sub_cog">
              <dt>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>百家CMS开源版V3安装程序</title>
+<title>百家CMS安装程序</title>
 <link href="<?php echo RESOURCE_ROOT;?>/addons/public/install/install.css?x=20150530_23" rel="stylesheet" />
 <script type="text/javascript" src="<?php echo RESOURCE_ROOT;?>/addons/common/js/jquery-1.10.2.min.js"></script>
 </head>
@@ -35,7 +35,7 @@
 <div id="sheets" class="sheet shown">
 	<div id="sheet_license" class="sheet shown clearfix">
 	<div class="contentTitle">
-		<h1>百家CMS开源版V3-安装助手</h1>
+		<h1>安装助手</h1>
 		<ul id="stepList_1" class="stepList clearfix">
 							<li class="ok">许可协议</li>
 							<li >许可协议</li>

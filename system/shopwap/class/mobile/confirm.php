@@ -258,7 +258,7 @@ $goodscredit=0;
 
    				$paytype=$this->getPaytypebycode($payment['code']);**/
    				
-   		
+   			
             $data = array(
                 'openid' => $openid,	
                 'ordersn' => $ordersns,
@@ -296,7 +296,7 @@ $goodscredit=0;
                 'createtime' => time()		,
                 'updatetime' => time()			
             );
-    
+       
             
         $system_store = mysqld_select("select compid,saleid from " . table("system_store") . " where id=:beid", array(':beid'=>$_CMS['beid']));
                 

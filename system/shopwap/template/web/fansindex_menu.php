@@ -3,6 +3,7 @@
 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
 		<input type="hidden" name="id" class="col-xs-10 col-sm-2" value="<?php echo $fansindex_menu['id'];?>" />
 		<input type="hidden" name="menu_type" class="col-xs-10 col-sm-2" value="fansindex" />
+		<?php if(false){?>
       <div class="form-group">
 										<label class="col-sm-2 control-label no-padding-left" > 图标</label>
 
@@ -11,7 +12,7 @@
 
 										</div>
 									</div>
-		
+			<?php } ?>
 		 <div class="form-group">
 										<label class="col-sm-2 control-label no-padding-left" > 名称</label>
 
@@ -28,10 +29,6 @@
 										<div class="col-sm-9">
 																   		<span id="urltr2" >
 					<input type="text" name="url" id="url" style="width:400px" value="<?php echo $fansindex_menu['url'];?>"  />&nbsp;
-					<br>
-								<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'shopindex'));?>');"><i class="icon-home"></i>商城首页</a>&nbsp;
-							<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'fansindex'));?>');"><i class="icon-home"></i>个人中心</a>&nbsp;
-						<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'help'));?>');"><i class="icon-home"></i>帮助说明</a>&nbsp;
 						</span>
 										</div>
 									</div>

@@ -51,7 +51,7 @@ function member_login_weixin($weixin_openid)
 										save_member_login($member['openid']);
 					}else
 					{
-					
+					bj_tbk_shareinfo();
 								$openid=member_create_new("","",$weixin_wxfans['nickname']);
 								
 								mysqld_update('weixin_wxfans',array('openid'=>$openid),array('weixin_openid'=>$weixin_openid,'beid'=>$_CMS['beid']));	
@@ -154,6 +154,8 @@ function member_create_check($mobile)
 }
 function member_create_new($mobile,$pwd,$nickname="")
 {
+			$member=get_session_account();
+			$oldsessionid=$member['openid'];
 		unset($_SESSION[MOBILE_ACCOUNT]);
 				unset($_SESSION[MOBILE_SESSION_ACCOUNT]);
 		global $_CMS;
@@ -181,7 +183,7 @@ function member_create_new($mobile,$pwd,$nickname="")
                     'experience'=> 0 ,
                     'openid' =>$openid,'beid'=>$_CMS['beid']);
 				mysqld_insert('member', $data);
-			bj_tbk_reg_member($openid,$openid);
+			bj_tbk_reg_member($openid,$oldsessionid);
 				return $openid;
 }
 function member_create_new_sample($nickname)
@@ -283,7 +285,7 @@ function integration_session_account($loginid,$oldsessionid)
 	 
 
 
-		 if(empty($member['openid'])||$sessionmember['istemplate']!=1)
+		 if(empty($member['openid'])||(!empty($member['openid'])&&$sessionmember['istemplate']!=1))
 		 {
 		 	return;
 		 }
@@ -312,31 +314,6 @@ function integration_session_account($loginid,$oldsessionid)
 	 mysqld_update('shop_order_paylog', array('openid'=>$loginid), array('openid'=>$oldsessionid,'beid'=>$_CMS['beid']));
 	 mysqld_update('member_paylog', array('openid'=>$loginid), array('openid'=>$oldsessionid,'beid'=>$_CMS['beid']));
 
-	
-	/*可能出现刷分情况，屏蔽
-		 if($sessionmember['credit']>0)
-		 {
-		 	member_credit($loginid,intval($sessionmember['credit']),'addcredit','登陆后账户合并所得积分');
-     }
-   */
-     if($sessionmember['gold']>0)
-		 {
-		 	member_gold($loginid,intval($sessionmember['gold']),'addgold','登录后与临时账户合并所得余额');
-		 }
-		 
-	  mysqld_delete('member', array('openid'=>$oldsessionid,'beid'=>$_CMS['beid']));
-		mysqld_update('alipay_alifans', array('openid'=>$loginid), array('alipay_openid'=>$oldsessionid,'beid'=>$_CMS['beid']));	
-				
-		if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
-		mysqld_update('weixin_wxfans', array('openid'=>$loginid), array('weixin_openid'=>$oldsessionid,'beid'=>$_CMS['beid']));	
-						
-		}
-
-		if(!empty($_SESSION[MOBILE_QQ_OPENID]))
-		{
-					mysqld_update('qq_qqfans', array('openid'=>$loginid), array('qq_openid'=>$_SESSION[MOBILE_QQ_OPENID],'beid'=>$_CMS['beid']));	
-						
-		}
 	
 	//unset($_SESSION[MOBILE_SESSION_ACCOUNT]);
 }
@@ -396,7 +373,7 @@ function get_session_account($useAccount=true)
 		
 		if($useAccount&&!empty($sessionAccount))
 		{
-				$member = mysqld_select("SELECT * FROM ".table('member')." where openid=:openid and istemplate=1 and beid=:beid ", array(':openid' => $sessionAccount['openid'],':beid'=>$_CMS['beid']));
+			/*	$member = mysqld_select("SELECT * FROM ".table('member')." where openid=:openid and istemplate=1 and beid=:beid ", array(':openid' => $sessionAccount['openid'],':beid'=>$_CMS['beid']));
 					if(empty($member['openid']))
 						{
 								$data = array('mobile' => "",
@@ -407,7 +384,7 @@ function get_session_account($useAccount=true)
                     'experience'=> 0 ,
                     'openid' =>$sessionAccount['openid'],'beid'=>$_CMS['beid']);
 							mysqld_insert('member', $data);	
-						}
+						}*/
 			
 		}
 		return $sessionAccount;

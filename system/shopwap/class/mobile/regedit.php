@@ -68,14 +68,9 @@
 
 
 				$openid=member_create_new($mobile,$pwd);
-				$member=get_session_account();
-					$oldsessionid=$member['openid'];
+		
 				
-			if($_CMS['addons_bj_tbk'])
-        {
-       		 bj_tbk_reg_member($openid,$oldsessionid);
-        }
-				
+		
 				if(!empty($shop_regcredit))
 				{
 				member_credit($openid,$shop_regcredit,"addcredit","注册系统赠送积分");

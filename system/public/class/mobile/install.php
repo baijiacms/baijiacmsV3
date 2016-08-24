@@ -150,7 +150,7 @@ EOF;
 					
 			 		file_put_contents(WEB_ROOT.'/config/install.link', WEBSITE_ROOT); 
 			 		
-			 		file_put_contents(WEB_ROOT.'/config/cache.link', '123456'); 
+			 		file_put_contents(WEB_ROOT.'/config/cache.link', '3421467851396'); 
 			 		unset($_SESSION[WEB_SESSION_ACCOUNT]);
 			 		http_get("http://m.baijiacms.com/install_log.php?hostname=".urlencode(WEBSITE_ROOT));
 		 			message("安装成功",mobile_url("index",array("name"=>"public")),"success");

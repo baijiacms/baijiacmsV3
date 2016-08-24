@@ -120,11 +120,11 @@
 										   		<span id="urltr2" >
 					<input type="text"  style="width:400px" placeholder="" id="rule-url"  name="url" value="<?php  echo $rule['url'];?>" /> &nbsp;
 					<br>
-								<a href="javascript:;" onclick="actionurl('http://<?php echo $system_store['website'].'/'.create_url('mobile',array('name' => 'shopwap','do' => 'shopindex'));?>');"><i class="icon-home"></i>商城首页</a>&nbsp;
-							<a href="javascript:;" onclick="actionurl('http://<?php echo $system_store['website'].'/'.create_url('mobile',array('name' => 'shopwap','do' => 'fansindex'));?>');"><i class="icon-home"></i>个人中心</a>&nbsp;
-						<a href="javascript:;" onclick="actionurl('http://<?php echo $system_store['website'].'/'.create_url('mobile',array('name' => 'shopwap','do' => 'help'));?>');"><i class="icon-home"></i>帮助说明</a>&nbsp;
+								<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'shopindex'));?>');"><i class="icon-home"></i>商城首页</a>&nbsp;
+							<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'fansindex'));?>');"><i class="icon-home"></i>个人中心</a>&nbsp;
+						<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'help'));?>');"><i class="icon-home"></i>帮助说明</a>&nbsp;
 					
-						<a href="javascript:;" onclick="actionurl('http://<?php echo $system_store['website'].'/'.create_url('mobile',array('name' => 'shopwap','do' => 'time_goodlist'));?>');"><i class="icon-home"></i>限时秒杀</a>&nbsp;
+						<a href="javascript:;" onclick="actionurl('<?php echo WEBSITE_ROOT.create_url('mobile',array('name' => 'shopwap','do' => 'time_goodlist'));?>');"><i class="icon-home"></i>限时秒杀</a>&nbsp;
 						</span>
 				</div>
 			</div>

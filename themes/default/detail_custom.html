@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title><?php  echo $goods['title'];?></title>
-   <meta name="Description" content="<?php  echo $goods['description'];?>"/> 
+   <meta name="description" content="<?php  echo $goods['description'];?>"/> 
     <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="__RESOURCE__/css/bootstrap.min.css">
@@ -318,28 +318,7 @@
                     <?php  } } ?>
                     <?php  } ?>
 
-<?php if($_CMS['custom']=='custom_0710'&&$hassendtime)
-   	{ ?>    <?php  if(is_array($sendtimelist)) {?>
-     <div id='option_group' class='detail-group' style="margin-top:10px;">
 
-                  <input type="hidden" id="optiontime" name="optiontime" value=""/>
-                        <div class="detail-group">
-
-                            <p style='margin-left:10px;padding:0'>配送时间段：</p>
-                            <span style="float:left;margin-left:8px;" class='options options_sendtime'
-                            specid='sendtime'>
-                            <?php   foreach($sendtimelist as $sendtime) { ?>
-<?php //style="background:#edeeef;border:1px solid #edeeef" ?>
-                            <span class="property option option_sendtime" 
-                                  specid='sendtime' oid="<?php  echo $sendtime['id'];?>"
-                            sel='false'><?php echo $sendtime['start_hour'].':'.$sendtime['start_minute']; ?>&nbsp;~&nbsp;<?php echo $sendtime['end_hour'].':'.$sendtime['end_minute']; ?></span>
-                       
-
-                            <?php  } ?>
-                            </span>
-                        </div>
-                    </div>
-    <?php  } ?>   <?php  } ?>
                     <div class="goods_number clearfix">
                         <p class="name">购买数量：</p>
 
@@ -410,10 +389,7 @@
         	          return;
         }
         
-       <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
- 	{ ?>
- 		
- 	<?php }?>
+
         
         if(ret.no!=''){
             if(array[1] == "in"){
@@ -423,14 +399,7 @@
             }
             return;
         }
-             <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
- 	{ ?>
-if($("#optiontime").val()=='')
-{
-  tip("请选择时间段!",true);
-	return false;
-}
-  <?php  } ?>
+      
         var total = $("#total").val();
         <?php  if($stock!=-1) { ?>
         if(total>parseInt($("#goodstotail").html()))
@@ -463,14 +432,6 @@ if($("#optiontime").val()=='')
             return;
         };
 
-      <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
- 	{ ?>
-if($("#optiontime").val()=='')
-{
-  tip("请选择时间段!",true);
-	return false;
-}
-  <?php  } ?>
         var total = $("#total").val();
         <?php  if($stock!=-1) { ?>
         if(total>parseInt($("#goodstotail").html()))
@@ -494,29 +455,7 @@ if($("#optiontime").val()=='')
             };
         });
     }
-     <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
- 	{ ?>
- 		
-    function option_selected(){
-
-        var ret= {
-            no: "",
-            all: []
-        };
-        if(!hasoption){
-            return ret;
-        }
-        $(".optionid").each(function(){
-            ret.all.push($(this).val());
-            if($(this).val()==''){
-                ret.no = $(this).attr("title");
-                return false;
-            }
-        });
-        return ret;
-    }
-
- 	<?php }?>
+    
     function option_selected(){
 
         var ret= {
@@ -553,14 +492,7 @@ if($("#optiontime").val()=='')
         $(this).addClass("current").attr("sel", "true");
      
      
-      <?php  	if($_CMS['custom']=='custom_0710'&&$hassendtime)
- 	{ ?>
-if(specid=='sendtime')
-{
-	 $("#optiontime").val(oid);
-	return false;
-}
-  <?php  } ?>
+   
   
      
         $(".optionid_" + specid).val(oid);

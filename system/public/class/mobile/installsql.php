@@ -9,6 +9,20 @@
 defined('SYSTEM_IN') or exit('Access Denied');
 defined('SYSTEM_INSTALL_IN') or exit('Access Denied');
 $sql = "
+CREATE TABLE IF NOT EXISTS `baijiacms_bj_tbk_diyshopindex` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `active` tinyint(1) NOT NULL,
+  `beid` int(10) NOT NULL,
+  `pagename` varchar(255) NOT NULL DEFAULT '' COMMENT '页面名称',
+  `pagetype` tinyint(3) NOT NULL DEFAULT '0' COMMENT '页面类型 1首页，0其他',
+  `pageinfo` text NOT NULL,
+  `createtime` varchar(255) NOT NULL DEFAULT '' COMMENT '页面创建时间',
+  `updatetime` varchar(255) NOT NULL DEFAULT '' COMMENT '页面最后保存时间',
+  `showtype` tinyint(2) NOT NULL DEFAULT '0' COMMENT '页面类型0DIY页面1html代码页面',
+  `datas` text NOT NULL COMMENT '数据',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `baijiacms_bj_tbk_fans` (
   `beid` int(10) NOT NULL,
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -16,8 +30,7 @@ CREATE TABLE IF NOT EXISTS `baijiacms_bj_tbk_fans` (
   `share_from_user` varchar(50) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
+---------------------------
 -- Records of baijiacms_bj_tbk_fans
 -- ----------------------------
 
@@ -1075,7 +1088,10 @@ CREATE TABLE IF NOT EXISTS `baijiacms_system_store` (
   `sname` varchar(100) NOT NULL,
   `is_system` int(1) NOT NULL DEFAULT '0',
   `isclose` int(1) NOT NULL,
+  `fullwebsite` varchar(200) NOT NULL,
   `website` varchar(100) NOT NULL,
+  `website2` varchar(100) NOT NULL,
+  `website3` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

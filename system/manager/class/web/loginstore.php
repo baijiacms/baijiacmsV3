@@ -15,7 +15,7 @@
 		{
 		$loginkey=date('YmdHis') . random(6, 1);
 		mysqld_update('user',array('loginkey'=>$loginkey),array('id'=>$id));
-				header("location:".'http://'.$store['website'].'/'.create_url('mobile', array('beid'=>$store['id'],'name' => 'public','do' => 'login','op'=>'loginkey','loginkey'=>$loginkey)));
+				header("location:".(empty($store['fullwebsite'])?('http://'.$store['website'].'/'):$store['fullwebsite']).create_url('mobile', array('beid'=>$store['id'],'name' => 'public','do' => 'login','op'=>'loginkey','loginkey'=>$loginkey)));
 		}else
 		{
 				message("µêÆÌµÇÂ¼Ê§°Ü£¡");	

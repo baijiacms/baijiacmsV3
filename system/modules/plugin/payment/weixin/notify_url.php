@@ -70,9 +70,15 @@
 					$paylog_weixin['order_table']='shop_order';
 					 $order = mysqld_select("SELECT * FROM " . table('shop_order') . " WHERE id = :id and ordersn=:ordersn", array(':id' => $orderid,':ordersn'=>$ordersn));
 				
-				  	$system_store = mysqld_select('SELECT id,website FROM '.table('system_store')." where `id`=:id",array(":id"=>$order['beid']));
+				  	$system_store = mysqld_select('SELECT id,website,fullwebsite FROM '.table('system_store')." where `id`=:id",array(":id"=>$order['beid']));
+					if(empty($system_store['fullwebsite']))
+					{
+					
 					$store_website="http://".$system_store['website']."/";
-				
+					}else
+					{
+					$store_website=$system_store['fullwebsite'];
+					}
 					if(!empty($order['id']))
 					{
 						if($order['status']==0)

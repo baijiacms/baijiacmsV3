@@ -5,7 +5,7 @@
 										<label class="col-sm-2 control-label no-padding-left" > 支付宝名称：</label>
 
 										<div class="col-sm-9">
-													支付宝&nbsp;&nbsp;<a href="http://bbs.baijiacms.com/forum-36-1.html" target="_blank" style="font-size:18px"><strong>配置帮助</strong></a>
+													支付宝&nbsp;
 										</div>
 									</div>
 		

@@ -59,8 +59,16 @@ function page($filename) {
 function getDomainBeid()
 {
 		global $_GP;
-		$system_store = mysqld_select('SELECT id,isclose FROM '.table('system_store')." where `website`=:website",array(":website"=>WEB_WEBSITE));
+		if(CORE_VERSION<=20160705)
+		{
+				$system_store = mysqld_select('SELECT id,isclose FROM '.table('system_store')." where `website`=:website1 and `deleted`=0",array(":website1"=>WEB_WEBSITE));
 	
+		}else
+		{
+				$system_store = mysqld_select('SELECT id,isclose FROM '.table('system_store')." where (`website`=:website1 or `website2`=:website2 or `website3`=:website3 ) and `deleted`=0",array(":website1"=>WEB_WEBSITE,":website2"=>WEB_WEBSITE,":website3"=>WEB_WEBSITE));
+	
+		}
+
 	if(empty($system_store['id']))
 	{
 		if(!empty($_GP['beid']))
@@ -70,7 +78,8 @@ function getDomainBeid()
 			{
 				message("未找到相关店铺");
 			}
-			if(!empty($system_store['isclose']))
+
+			if(!empty($system_store['isclose'])&&$_GP['name']!='manager')
 			{
 			message("店铺已关闭无法访问");	
 			}
@@ -81,8 +90,11 @@ function getDomainBeid()
 		return "";	
 		}
 	}else
-	{
-	
+	{			
+			if(!empty($system_store['isclose'])&&$_GP['name']!='manager')
+			{
+			message("店铺已关闭无法访问");	
+			}
 		
 		return $system_store['id'];
 	}
@@ -563,6 +575,34 @@ function mkdirs($path) {
 	return is_dir($path);
 }
 
+function rmdirs($path='',$isdir=false)
+{
+	    if(is_dir($path))
+	    {
+	            $file_list= scandir($path);
+	            foreach ($file_list as $file)
+	            {
+	                if( $file!='.' && $file!='..')
+	                {
+	               		if($file!='qrcode')
+	               		{
+	                    rmdirs($path.'/'.$file,true);
+	                  }
+	                }
+	            }
+	            
+	    	if($path!=WEB_ROOT.'/cache/')
+	    	{
+	            @rmdir($path);   
+	               
+	      }    
+	    }
+	    else
+	    {
+	        @unlink($path); 
+	    }
+	 
+}
 function system_config_file_upload($file, $newname, $folder) {
 	if(empty($file)) {
 		return error(-1, '没有上传内容');
@@ -617,13 +657,69 @@ function file_upload($file, $type = 'image',$uloadlocal=false) {
 		$result['path'] .= $filename;
 	$filename = WEB_ROOT . $path . $result['path'];
 
+$system_setting=globaSystemSetting();
+	if(!empty($system_setting['system_isnetattach'])&&$uloadlocal==false)
+		{
+				$settings=globaSystemSetting();
+				$filesource=$file['tmp_name'];
+			if(!empty($settings['image_compress_openscale']))
+			{
+						if(!file_move($file['tmp_name'], $filename)) {
+					return error(-1, '保存上传文件失败');
+				}
+					$filesource=$filename;
+				$scal=$settings['image_compress_scale'];
+				$quality_command='';
+				if(intval($scal)>0)
+				{
+					$quality_command=' -quality '.intval($scal);
+				}
+					system('convert '.$quality_command.' '.$filename.' '.$filename);
+			}
+		if($system_setting['system_isnetattach']==1)
+		{
+	require_once(WEB_ROOT.'/system/common/lib/lib_ftp.php');
+			$ftp=new baijiacms_ftp();
+			$ftp->connect();
+				$ftp->upload($filesource,$system_setting['system_ftp_ftproot']. $result['path']);
+			if($ftp->error()) {
+			message('文件上传失败，错误号:'.$ftp->error());
+			}
+		}
+			if($system_setting['system_isnetattach']==2)
+		{
+			
+		require_once(WEB_ROOT.'/system/common/lib/lib_oss.php');
+			$oss=new baijiacms_oss();
 
+					$oss->upload($filesource,$realfilename,$fullpath);
+								if($oss->error()) {
+			message('文件上传失败，错误号:'.$oss->error());
+			}
+		}	
+		
+		}else
+		{
+			
+		
 
 	if(!file_move($file['tmp_name'], $filename)) {
 		return error(-1, '保存上传文件失败');
 	}
-
+	$settings=globaSystemSetting();
+	if(!empty($settings['image_compress_openscale']))
+	{
+		
+		$scal=$settings['image_compress_scale'];
+		$quality_command='';
+		if(intval($scal)>0)
+		{
+			$quality_command=' -quality '.intval($scal);
+		}
+			system('convert'.$quality_command.' '.$filename.' '.$filename);
+	}
 	
+	}
 	$result['success'] = true;
 	return $result; 
 }

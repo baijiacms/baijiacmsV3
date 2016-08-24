@@ -52,7 +52,7 @@
 		
 	<table class="table table-striped table-bordered table-hover">
   <tr >
-  	 <th class="text-center" >商品ID</th>
+  	 <th class="text-center" >排序id</th>
  <th class="text-center" >首图</th>
     <th class="text-center">商品名称</th>
 	<th class="text-center" >货号</th>
@@ -67,8 +67,8 @@
 		<?php if(is_array($list)) { foreach($list as $item) { ?>
 				<tr>
 					   	<td style="text-align:center;">	  <?php  if(!empty($item['is_system'])) { ?>
-                                        		<span  class="label label-danger" style="cursor:pointer;">总部商品</span>
-                                        		  <?php  }else{ ?><?php  echo $item['id'];?> <?php  } ?></td>
+                                        	 	<span  class="label label-danger" style="cursor:pointer;">总部商品</span>
+                                        		  <?php  }else{ ?><?php  echo $item['displayorder'];?> <?php  } ?></td>
 				 <td><p style="text-align:center"> <img src="<?php echo ATTACHMENT_WEBROOT;?><?php  echo $item['thumb'];?>" height="60" width="60"></p></td>
 
                                      
@@ -98,7 +98,7 @@
 					
 					<td style="text-align:center;"><?php  if($item['status']) { ?><span data='<?php  echo $item['status'];?>' onclick="setProperty1(this,<?php  echo $item['id'];?>,'status')" class="label label-success" style="cursor:pointer;">上架中</span><?php  } else { ?><span data='<?php  echo $item['status'];?>' onclick="setProperty1(this,<?php  echo $item['id'];?>,'status')" class="label label-danger" style="cursor:pointer;">已下架</span><?php  } ?><!--&nbsp;<span class="label label-info"><?php  if($item['type'] == 1) { ?>实体商品<?php  } else { ?>虚拟商品<?php  } ?></span>--></td>
 					<td style="text-align:center;">
-					<p ><a class="btn btn-xs btn-info" target="_blank" href="http://<?php  echo $system_store['website']?>/<?php echo mobile_url('detail',array('name'=>'shopwap','id'=>$item['id']));?>"><i class="icon-eye-open"></i>&nbsp;查&nbsp;看&nbsp;</a>&nbsp;&nbsp;
+					<p ><a class="btn btn-xs btn-info" target="_blank" href="<?php echo mobile_url('detail',array('name'=>'shopwap','id'=>$item['id']));?>"><i class="icon-eye-open"></i>&nbsp;查&nbsp;看&nbsp;</a>&nbsp;&nbsp;
 						
 						  <?php  if(empty($item['is_system'])) { ?>
 						<a  class="btn btn-xs btn-info" href="<?php  echo web_url('goods', array('id' => $item['id'], 'op' => 'post'))?>"><i class="icon-edit"></i>&nbsp;编&nbsp;辑&nbsp;</a>&nbsp;&nbsp;

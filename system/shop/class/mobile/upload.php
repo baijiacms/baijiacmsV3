@@ -16,10 +16,9 @@ $extention = pathinfo($_FILES['imgFile']['name'], PATHINFO_EXTENSION);
 			$result['message'] = $file['message'];
 			exit(json_encode($result));
 		}
-		$result['url'] = $file['url'];
 		$result['error'] = 0;
 		$result['filename'] = $file['path'];
-		$result['url'] = ATTACHMENT_WEBROOT.$result['filename'];
+		$result['url'] = ATTACHMENT_WEBROOT.$file['path'];
 		$filename=basename($result['url']);
 		exit(json_encode($result));
 	} else {

@@ -14,7 +14,7 @@
 										<label class="col-sm-2 control-label no-padding-left" > 本地版本：</label>
 
 										<div class="col-sm-9">
-											    开源版-<?php echo SYSTEM_VERSION;?>
+											    <?php echo SYSTEM_VERSION;?>
 										</div>
 									</div>
 									       <div class="form-group">

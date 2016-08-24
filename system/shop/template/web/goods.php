@@ -3,6 +3,15 @@
 <script type="text/javascript" src="<?php echo RESOURCE_ROOT;?>/addons/common/js/jquery-ui-1.10.3.min.js"></script>
 
  <form action="" method="post" name="theForm" enctype="multipart/form-data" class="form-horizontal" role="form" onsubmit="return fillform()">
+ 	<?php  if(!empty($item['id'])) { ?>
+ 	 <div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" > 商品链接：</label>
+
+										<div class="col-sm-9">
+													<input name="xurl"  style="width:600px" value="<?php echo WEBSITE_ROOT.mobile_url('detail',array('name'=>'shopwap','id'=>$item['id']));?>" readonly="readonly" type="text">
+											</div>
+		</div>
+ 	<?php  } ?>
  <div class="form-group">
 										<label class="col-sm-2 control-label no-padding-left" > 商品名称：</label>
 
@@ -11,7 +20,13 @@
 										</div>
 		</div>
 		
+ <div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" > 优先级(最大越前)：</label>
 
+										<div class="col-sm-9">
+												 <input type="text" name="displayorder"  value="<?php  echo $item['displayorder'];?>" /> 
+										</div>
+		</div>
 
  <div class="form-group">
 										<label class="col-sm-2 control-label no-padding-left" > 货号：</label>

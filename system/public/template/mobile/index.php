@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
-	<title>百家CMS开源版V3-多商户版</title>
+	<title><?php  echo empty($settings['shop_title'])?'':$settings['shop_title'];?></title>
 <meta name="description" content="<?php  echo empty($settings['shop_description'])?'':$settings['shop_description'];?>" />
 <meta name="keywords" content="<?php  echo empty($settings['shop_keyword'])?'':$settings['shop_keyword'];?>">
 	<link href="<?php echo RESOURCE_ROOT;?>/addons/common/fontawesome3/css/font-awesome.min.css" rel="stylesheet">
@@ -51,7 +51,7 @@
 				<div class="push-10-t push-10 animated fadeIn">
 
 					<div class="text-center">
-
+&nbsp;
 					</div>
 
 

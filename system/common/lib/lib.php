@@ -15,7 +15,6 @@ if(is_file(WEB_ROOT.'/config/custom.php'))
 require(WEB_ROOT.'/system/common/lib/lib_account.php');
 
 require(WEB_ROOT.'/system/common/lib/lib_weixin.php');
-require(WEB_ROOT.'/system/common/lib/lib_alipay.php');
 require(WEB_ROOT.'/system/common/lib/lib_sms.php');
 require(WEB_ROOT.'/system/common/lib/lib_biz.php');
 
