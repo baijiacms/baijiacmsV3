@@ -13,7 +13,7 @@
 										<label class="col-sm-2 control-label no-padding-left" > 主绑定域名</label>
 
 										<div class="col-sm-9">
-													<input type="text" name="website" class="col-xs-10 col-sm-3" value="<?php echo $store['website'];?>" 		 />如：***.baijiacms.com，请注意格式（***部分可为你定义的英文）不含二级目录和http。
+													<input type="text" name="website" class="col-xs-10 col-sm-3" value="<?php echo $store['website'];?>" 		 />如：<font style="color:red">***.baijiacms.com</font>，请注意格式（***部分可为你定义的英文）不含二级目录和http。
 										</div>
 									</div>
 												
