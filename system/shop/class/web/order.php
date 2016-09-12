@@ -44,7 +44,7 @@
                if (!empty($_GP['begintime'])) {
                 $condition .= " AND createtime  >= ". strtotime($_GP['begintime']);
             }
-              
+               
             
             
             if (!empty($_GP['member_mobile'])) {
@@ -198,6 +198,30 @@
                     . " WHERE orderid='{$orderid}' and beid=:beid",array(':beid'=>$_CMS['beid']));
             $order['goods'] = $goods;
             
+                       if (checksubmit('confrimpay')) {//ok
+                 	if(!empty($order['status']))
+	         	{
+	         		message("订单不是待付款状态无法确认支付");
+	         	}
+	         	
+	         	 	$payment_item = mysqld_select("SELECT * FROM " . table('payment') . " WHERE enabled = 1 and code=:code",array(":code"=>$_GP['visual_paycode']));
+				$paytype=$this->getPaytypebycode($payment_item['code']);
+	         		updateOrderStock($order['id']);
+	         		
+                mysqld_update('shop_order', array('visual_pay'=>1,'paytypecode'=>$payment['code'],'status'=>1,'paytypename'=>$payment_item['name'],'paytype'=>$paytype), array('id' => $orderid));
+            
+                
+                  	 if($_CMS['addons_bj_message']) {
+	 	
+ $order = mysqld_select("select * from " . table('shop_order') . " where id='".$orderid."' ");
+ 
+              bj_message_sendddzfcgtz( $order['ordersn'],$order['price'],$order['openid']);
+  }
+                
+                message('确认订单付款操作成功！', refresh(), 'success');
+            }
+            
+            
             if (checksubmit('confirmsend')) {//ok
             		if(empty($order['is_be'])){
                		message("总部订单不能操作");
@@ -210,9 +234,9 @@
                  {
                  	$express="";
                  	}
-              
+              	
                  		updateOrderStock($orderid,true,true);
-                 	
+                 
                 mysqld_update('shop_order', array(
                     'be_status' => 2,'be_updatetime'=>time(),
                     'be_express' => $express,
@@ -257,17 +281,16 @@
             
             
               if (checksubmit('be_close')) {
-           
+          
                 mysqld_update('shop_order', array('be_status' => -1,'updatetime'=>time()), array('id' => $orderid));
                 
-                		   mysqld_update('bj_tbk_order', array('gstatus' => -1, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
-             
+                		 
         
                 
                 message('分店订单关闭操作成功！', refresh(), 'success');
             }
               if (checksubmit('be_finish')) {
-            
+           
             	        if (empty($order['isrest'])) {
            		 $this->setOrderCredit($order['openid'],$orderid,true,'订单:'.$order['be_ordersn'].'完成新增积分');
            		}
@@ -277,8 +300,7 @@
                
               
               
-            mysqld_update('bj_tbk_order', array('gstatus' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
-          
+         
                    
                  	 if($_CMS['addons_bj_message']) {
 	 	
@@ -287,10 +309,7 @@
 	 	
               bj_message_sendddqrshtz( $order['be_ordersn'],$order['openid'],$orderid);
   }
-    	 if($_CMS['addons_bj_tbk'])
-			        {
-			        	bj_tbk_sendxjdlshtz($orderid);
-			        }
+  
                 message('订单操作成功！', refresh(), 'success');
             }
             
@@ -315,10 +334,9 @@
 								message('请输入退款金额');	
 								}
 									$returnmoney=$_GP['returnmoney'];
-								
+								  
                   mysqld_update('shop_order', array('be_status' => -6,'be_returnmoney' => $returnmoney,'be_returnmoneytype' =>intval($_GP['returnmoneytype'])), array('id' => $orderid));
-        		      mysqld_update('bj_tbk_order', array('gstatus' => -6, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
-             
+        		   
               
         		    mysqld_update('shop_order_goods', array('status' =>  -6, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
            

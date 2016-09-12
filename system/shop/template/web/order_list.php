@@ -176,7 +176,7 @@
 						<td style="font-size: 14px;font-weight: bold;">微信昵称：</td>
 								<td ><input name="weixin_nickname" type="text" value="<?php  echo $_GP['weixin_nickname'];?>" /></td>
 								
-		
+							
 								
 							<td colspan="2"><input type="submit" name="submit" value=" 查 询 " class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="report" value="report" class="btn btn-warning">导出excel</button></td>
 						
@@ -209,7 +209,7 @@
 					<th >支付方式</th>
 					<th >总价</th>         
 					<th >状态</th>
-					
+						
 					<th >下单时间</th>
 					<th >操作</th>
 				</tr>

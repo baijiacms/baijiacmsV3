@@ -129,9 +129,9 @@
 										<label class="col-sm-2 control-label no-padding-left" > 是否开启注册：</label>
 
 										<div class="col-sm-9">
-												   <input type="radio" name="shop_openreg" value="0" id="shop_closereg" <?php  if($settings['shop_openreg'] == 0) { ?>checked="true"<?php  } ?> /> 关闭  &nbsp;&nbsp;
+												   <input type="radio" name="shop_openreg" value="0"  <?php  if($settings['shop_openreg'] == 0) { ?>checked="true"<?php  } ?> /> 关闭  &nbsp;&nbsp;
              
-              		  <input type="radio" name="shop_openreg" value="1" id="shop_closereg"  <?php  if($settings['shop_openreg'] == 1) { ?>checked="true"<?php  } ?> /> 开启
+              		  <input type="radio" name="shop_openreg" value="1"  <?php  if($settings['shop_openreg'] == 1) { ?>checked="true"<?php  } ?> /> 开启
              
 										</div>
 									</div>

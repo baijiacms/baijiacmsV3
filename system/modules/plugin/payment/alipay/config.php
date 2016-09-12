@@ -13,7 +13,7 @@
 										<label class="col-sm-2 control-label no-padding-left" > 支付宝描述：</label>
 
 										<div class="col-sm-9">
-													  <?php  echo $item['desc'];?>
+													  <font color="red">微信端默认屏蔽支付宝。</font><?php  echo $item['desc'];?>
 										</div>
 									</div>
 									

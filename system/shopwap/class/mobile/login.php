@@ -1,4 +1,5 @@
 <?php
+	
 		$system_settings=globaSystemSetting();
 				if (checksubmit("submit")) {
 								$mobile=$_GP['mobile'];

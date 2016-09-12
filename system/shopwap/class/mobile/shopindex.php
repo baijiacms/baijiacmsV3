@@ -1,7 +1,10 @@
 <?php	
-
 			$settings=globaSetting();
-
+			if(!empty($settings['shopwap_diyshop_diyshopindex']))
+			{
+			$this->do_diypage();
+			exit;
+		}
 			
 			$advs = mysqld_selectall("select * from " . table('shop_adv') . " where enabled=1 and beid=:beid order by displayorder desc",array(':beid'=>$_CMS['beid']));
      
@@ -52,11 +55,7 @@
      
       
               
-if($_CMS['addons_bj_tbk'])
-        {
-     		$xmember=get_member_account(false);
-				$bj_tbk_member_relect = mysqld_select("SELECT fmr.* FROM " .table('bj_tbk_member_relect')." as fmr where fmr.openid=:openid ",array(":openid"=>$xmember['openid']  ));
-			}
+
 			$isfollow=true;
 			if(!empty($settings['weixin_guanzhu_open']))
 			{

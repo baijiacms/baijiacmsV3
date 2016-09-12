@@ -13,6 +13,11 @@ CREATE TABLE IF NOT EXISTS `baijiacms_bj_tbk_diyshopindex` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ";
+
+
+if(!mysqld_fieldexists('shop_order', 'visual_pay')) {
+	$sql=$sql."ALTER TABLE ".table('shop_order')." ADD COLUMN `visual_pay` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否是虚拟付款0否1是，虚拟付款即后台付款';";
+}
 if(!mysqld_fieldexists('system_store', 'fullwebsite')) {
 	$sql=$sql."ALTER TABLE ".table('system_store')." ADD COLUMN `fullwebsite` varchar(200) NOT NULL DEFAULT '' COMMENT '完整域名';";
 }

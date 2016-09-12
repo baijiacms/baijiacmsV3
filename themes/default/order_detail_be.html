@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/style_normal.css">
          
 	<script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>   
+	
+	<script src="__RESOURCE__/alert/jquery-confirm.min.js" type="text/javascript"></script>
+	<link href="__RESOURCE__/alert/jquery-confirm.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
 <title>订单详情</title>
@@ -262,19 +265,18 @@ select { width:100px;height:40px;position:absolute;left:0; -webkit-appearance: n
 <div class="detail_pay">
 	 <div  style="float: left;height: 38px;margin-top: 20px;padding: 0px 10px;">订单金额：<span style="height: 30px;margin-right: 0px;line-height: 20px;"><?php echo $shoporder['be_goodsprice']+$shoporder['be_dispatchprice'];?>元</span></div>
 	<?php  if($shoporder['be_status']==2) { ?>
-        	      <div class="paysub"  onclick="if(confirm('确认收货？')){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'be_confirm','orderid' => $shoporder['id']))?>';}">确认收货</div>
+        	      <div class="paysub"  onclick="$.confirm({title: '',content: '确认收货？',  confirm: function(){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'be_confirm','orderid' => $shoporder['id']))?>'; }})">确认收货</div>
             	
 
             			<?php  } ?>
             			
             		<?php  if($shoporder['be_status']==0&&$shoporder['status'] == 1) { ?>
 
-	 <div class="paysub"  onclick="if(confirm('确认申请退款？')){location.href='<?php  echo mobile_url('myorder', array('orderid' => $shoporder['id'], 'op' => 'be_returnpay'))?>';}">申请退款</div>
+	 <div class="paysub"  onclick="$.confirm({title: '',content: '确认申请退款？',  confirm: function(){location.href='<?php  echo mobile_url('myorder', array('orderid' => $shoporder['id'], 'op' => 'be_returnpay'))?>'; }});	">申请退款</div>
             	
 			<?php  } ?>
             			
 </div>
-	
 	
 </body>
 </html>

@@ -23,18 +23,4 @@ if(!empty($weixinthirdlogin)&&!empty($weixinthirdlogin['id']))
 }
 }
 
-if(is_login_account())
-{
-		if(($_GP['name']=='shopwap'||$_GP['name']=='bj_tbk')&&$_CMS['addons_bj_tbk'])
-        {
-        	 		
-						 $member=get_member_account(false);
-							 $openid=$member['openid'] ;
-							 $bj_tbk_member_relect = mysqld_select("SELECT openid,isagent FROM " . table('bj_tbk_member_relect') . " WHERE openid = :openid and beid=:beid",array(':openid'=>$openid,':beid'=> $_CMS['beid'] ));
-						
-							if(!empty($bj_tbk_member_relect['openid'])&&!empty($bj_tbk_member_relect['isagent']))
-							{
-        			$_CMS['shopwap_member_isagent'] =true;
-        		}
-        }
-}
+

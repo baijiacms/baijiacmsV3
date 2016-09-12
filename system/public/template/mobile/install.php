@@ -191,9 +191,9 @@
 			</div>
 			
 			<div class="field clearfix">
-		<label  class="aligned">pdo_mysql： </label>
+		<label  class="aligned">mysql_connect： </label>
 		<div class="contentinput">
-		<?php echo $resultarray['pdo_mysql']; ?></div>
+		<?php echo $resultarray['mysql_connect']; ?></div>
 			</div>
 			
 					<div class="field clearfix">

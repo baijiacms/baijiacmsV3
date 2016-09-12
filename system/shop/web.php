@@ -1,7 +1,18 @@
 <?php
 defined('SYSTEM_IN') or exit('Access Denied');
 class shopAddons  extends BjSystemModule {
-	
+	public function do_diyshop_uploadpic()
+	{
+		$this->__web(__FUNCTION__);
+	}
+		public function do_diyshop_searchgoods()
+	{
+		$this->__web(__FUNCTION__);
+	}
+	public function do_diyshop()
+	{
+				$this->__web(__FUNCTION__);
+	}
 		public function do_goodsorder()
 	{
 		$this->__web(__FUNCTION__);
@@ -84,6 +95,19 @@ class shopAddons  extends BjSystemModule {
     public function setOrderStock($id , $minus = true) {
     	updateOrderStock($id,$minus);
     }
+       	public function getPaytypebycode($code)
+	{
+				$paytype=2;
+   			if($code=='delivery')
+   			{
+   					$paytype=3;
+   			}
+   				if($code=='gold')
+   			{
+   					$paytype=1;
+   			}
+   			return $paytype;
+	}
 }
 
 

@@ -228,9 +228,8 @@
 										<label class="col-sm-2 control-label no-padding-left" > 退款到：</label>
 
 									<div class="col-sm-9">
-												   <input name="returnmoneytype" value="0" checked="true" type="radio"> 账户余额  &nbsp;&nbsp;
              
-              		  <input name="returnmoneytype" value="1" type="radio"> 其他打款
+              		  <input name="returnmoneytype" value="1" type="radio"  checked="true"> 其他打款
              
 										</div>
 									</div>

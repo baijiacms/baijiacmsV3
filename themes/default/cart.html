@@ -8,6 +8,9 @@
          <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/style_normal.css">
          
 	<script type="text/javascript" src="__RESOURCE__/script/jquery-1.7.2.min.js"></script>
+	
+	<script src="__RESOURCE__/alert/jquery-confirm.min.js" type="text/javascript"></script>
+	<link href="__RESOURCE__/alert/jquery-confirm.min.css" rel="stylesheet" type="text/css" />
      <body>
 
 
@@ -131,7 +134,7 @@ body {margin:0px; background:#f8f8f8;width:100%;}
               }
          
               if(num>mb && mb>0){
-                    alert("最多只能购买 " + mb + " 件!",true);
+                    $.alert("最多只能购买 " + mb + " 件!",true);
                     $("#goodsnum_" + id).val(mb);
                     return;
                 }
@@ -146,16 +149,30 @@ body {margin:0px; background:#f8f8f8;width:100%;}
         
     })
 function clearCart(){
-    if (confirm('确定要清空购物车吗？')) {
+	$.confirm({
+
+    title: '',
+
+    content: '确定要清空购物车吗？',
+
+    confirm: function(){
         $.getJSON('<?php  echo mobile_url('mycart',array('op'=>'clear'));?>', function(s){
             $(".cart_good").remove();
             $("#cartempty").show();
             $("#cartfooter").hide();
         });
     }
+    });
+
 }
 function removeCart(id){
-    if (confirm('您确定要删除此商品吗？')) {
+	$.confirm({
+
+    title: '',
+
+    content: '您确定要删除此商品吗？',
+
+    confirm: function(){
         var url  = '<?php  echo mobile_url('mycart', array('op'=>'remove'))?>' + "&id=" + id;
         $.getJSON(url, function(s){
             $("#item_" + s.cartid).remove();
@@ -166,6 +183,8 @@ function removeCart(id){
             canculate();
         });
     }
+    });
+
 }
 function updateCart(id,num){
     
@@ -187,7 +206,7 @@ function addNum(id,maxbuy){
  
     var num = parseInt( $("#goodsnum_" + id).val() ) + 1;
     if(num>mb && mb>0){
-        alert("最多只能购买 " + mb + " 件!",true);
+        $.alert("最多只能购买 " + mb + " 件!",true);
         return;
     }
     $("#goodsnum_" + id).val(num);

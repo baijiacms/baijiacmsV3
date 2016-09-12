@@ -18,6 +18,8 @@
 	<script type="text/javascript" src="__RESOURCE__/script/cascade.js"></script>
 	<script type="text/javascript" src="__RESOURCE__/mobile/script/jquery.touchwipe.js"></script>
 	<script type="text/javascript" src="__RESOURCE__/mobile/script/swipe.js"></script>
+	<script src="__RESOURCE__/alert/jquery-confirm.min.js" type="text/javascript"></script>
+	<link href="__RESOURCE__/alert/jquery-confirm.min.css" rel="stylesheet" type="text/css" />
 	<style type='text/css'>
     #poptip { position: fixed; top:40%;left:50%;width:160px;margin-left:-80px;height: 27px;background:#000; opacity: 0.7;filter:alpha(opacity=0.7); color:#fff;z-index: 999;  border-radius:5px;
         -webkit-border-radius:5px;
@@ -187,19 +189,19 @@ function saveAddress() {
 	}
 	var address = $('#address').val();
 	if (!realname) {
-		alert('请输入您的真实姓名！');
+		$.alert('请输入您的真实姓名！');
 		return false;
 	}
 	if (!mobile) {
-		alert('请输入您的手机号码！');
+		$.alert('请输入您的手机号码！');
 		return false;
 	}
 	if (mobile.search(/^([0-9]{11})?$/) == -1) {
-		alert('请输入正确的手机号码！');
+		$.alert('请输入正确的手机号码！');
 		return false;
 	}
 	if (!address) {
-		alert('请输入您的详细地址！');
+		$.alert('请输入您的详细地址！');
 		return false;
 	} tip("正在处理数据...");
 	$.post('<?php  echo mobile_url('address')?>', {
@@ -224,7 +226,7 @@ function saveAddress() {
 			location.reload();
 		}else
 			{
-				alert("新增地址失败请再试一次");
+				$.alert("新增地址失败请再试一次");
 				}
 		$('#addAddressPanel').hide();
 	}, 'json');
@@ -265,7 +267,14 @@ function saveDefaultAddress(e,id) {
           e.stopPropagation() ;
 }
 function removeAddress(e,id){
-    if(confirm('确认要删除此收货地址吗?')){
+ 	$.confirm({
+
+    title: '',
+
+    content: '确认要删除此收货地址吗?',
+
+    confirm: function(){
+
          tip("正在处理数据...");
 	$.post('<?php  echo mobile_url('address', array('op' => 'remove'))?>', {
 		'id' : id,
@@ -280,6 +289,8 @@ function removeAddress(e,id){
 	}, 'json');
           e.stopPropagation() ;
     }
+    });
+
 }
 var isdef = 0;
 function editAddress(id) {   

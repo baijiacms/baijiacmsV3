@@ -68,11 +68,11 @@
 </div>
 	  <?php  if($is_login){?>
  <div class="cart" style="margin-top: 0px;">
-     <a href="javascript:;"><div style="margin-top: 0px;" class="list1" style=" border-bottom:0px;border-top:0px;">余额: <span style='color:#f90'><?php  $gold=$member['gold'];$gold=sprintf("%.2f",$gold); echo $gold; ?></span> 
+  <a href="javascript:;"><div style="margin-top: 0px;" class="list1" style=" border-bottom:0px;border-top:0px;">余额: <span style='color:#f90'><?php  $gold=$member['gold'];$gold=sprintf("%.2f",$gold); echo $gold; ?></span> 
              <div class="take" style="margin-left:10px" onclick="location.href='<?php  echo mobile_url('rechargegold')?>'">充值</div><div class="take1" onclick="location.href='<?php  echo mobile_url('outchargegold')?>'">提现</div>
    
                  
-         </div></a>
+         </div></a>	  
     <a href="javascript:;" ><div style="margin-top: 0px;" class="list1" style=" border-bottom:0px;border-top:0px;">积分: <span style='color:#f90'><?php  $credit=$member['credit'];echo $credit; ?></span>    </div></a>
    
 </div>  
@@ -109,17 +109,15 @@
 
 <?php  if($is_login){?>
 <div class="cart">
-	     <?php  if(!empty($settings['bj_tbk_protimes'])&&$_CMS['addons_bj_tbk']&&$bj_tbk_member_relect['isagent']==1){?>
-		        <a href="<?php  echo create_url('mobile',array('name' => 'bj_tbk','do' => 'bj_tbkcenter'));?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-home" style="color:#f10;"></i>分销中心<i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>	
-	     <?php  } ?>
+	    
   <a href="<?php  echo mobile_url('address',array('from'=>'fansindex'))?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-gift" style="color:#99C;"></i>收货地址管理 <i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>	
    
-			 <a href="<?php  echo mobile_url('member')?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-user" style="color:#A6E1EC;"></i>我的资料<i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>	
-	     <a href="<?php  echo mobile_url('mycart')?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-shopping-cart" style="color:#f90;"></i>我的购物车<i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>	
-	   
+			     <a href="<?php  echo mobile_url('member')?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-user" style="color:#A6E1EC;"></i>我的资料<i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>	
+	   	  <a href="<?php  echo mobile_url('mycart')?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-shopping-cart" style="color:#f90;"></i>我的购物车<i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>	
+
 	   <a href="<?php  echo mobile_url('member_pwd')?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-key" style="color:#f10;"></i>修改密码<i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>	
 	  
-	  
+	
 			  
 </div>
 
@@ -128,9 +126,9 @@
  <?php  if(empty($is_login)){?>
  <div class="cart">
 		        <a href="<?php  echo mobile_url('login')?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-sign-in" style="color:#f10;"></i>用户登录<i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>	
-	  		    <?php if(empty($cfg['bj_color_enable'])){ ?>
+	  		 
 	    <a href="<?php  echo mobile_url('regedit')?>"><div class="list1" style="margin:0px; border-bottom:0px;"><i class="fa fa-user" style="color:#A6E1EC;"></i>用户注册<i class="fa fa-angle-right" style="color:#999; font-size:26px; float:right; line-height:44px;"></i></div></a>
-<?php  } ?>
+
 </div>
 <?php  } ?>
 

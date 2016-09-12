@@ -24,10 +24,7 @@
                     message('抱歉，商品不存在或是已经删除！', '', 'error');
                 }
            
-      if($_CMS['addons_bj_tbk']) {
-                 $bj_tbk_good_commission = mysqld_select("SELECT * FROM " . table('bj_tbk_good_commission') . " WHERE goodid = :id and beid=:beid", array(':id' => $item['id'],':beid'=>$_CMS['beid']));
-           }
-                
+    
                 
                  $allspecs = mysqld_selectall("select * from " . table('shop_goods_spec')." where goodsid=:id and beid=:beid order by displayorder asc",array(":id"=>$id,':beid'=>$_CMS['beid']));
                 foreach ($allspecs as &$s) {
@@ -212,11 +209,15 @@
                     'hasoption' => intval($_GP['hasoption']),
                     'timeend' => strtotime($_GP['timeend'])
                     );
-                    if($_CMS['addons_bj_color']){
-                    	$data['bj_color_isred']=intval($_GP['bj_color_isred']);
-                    }
+                
                     
-        
+        				if(!empty($_GP['sales']))
+        				{
+        					$data['sales']=intval($_GP['sales']);
+        				}else
+        				{
+        					$data['sales']=0;
+        				}
             
                     
                 if (!empty($_FILES['thumb']['tmp_name'])) {
@@ -228,14 +229,15 @@
                 }
                 if (empty($id)) {
                 	
-                    $data['sales']=0;
+                   // $data['sales']=0;
                     $data['is_system']=0;
                              $data['beid']=$_CMS['beid'];
                     mysqld_insert('shop_goods', $data);
                     $id = mysqld_insertid();
                 } else {
                     unset($data['createtime']);
-                     unset($data['sales']);
+                    // unset($data['sales']);
+               
                     mysqld_update('shop_goods', $data, array('id' => $id,'is_system'=>0,'beid'=>$_CMS['beid']));
                 }
                 
@@ -244,21 +246,7 @@
               
                      
                      
-                      if($_CMS['addons_bj_tbk']) {
-                $bj_tbk_good_commission = mysqld_select("SELECT * FROM " . table('bj_tbk_good_commission') . " WHERE goodid = :id and beid=:beid", array(':id' => $id,':beid'=>$_CMS['beid']));
-                if (empty($bj_tbk_good_commission['goodid'])) {
-                    	 mysqld_insert('bj_tbk_good_commission', array('customCommission'=>intval($_GP['customCommission']),
-                    	 'customCommissionType'=>intval($_GP['customCommissionType']),'commission1'=>intval($_GP['bj_tbk_commission'])
-                    	 ,'commission2'=>intval($_GP['bj_tbk_commission2'])
-                    	 ,'commission3'=>intval($_GP['bj_tbk_commission3']), 'goodid' => $id,'beid'=>$_CMS['beid']));
-             
-                }else
-                {
-                	 mysqld_update('bj_tbk_good_commission', array('customCommission'=>intval($_GP['customCommission']),
-                	 'customCommissionType'=>intval($_GP['customCommissionType']),'commission1'=>intval($_GP['bj_tbk_commission']),'commission2'=>intval($_GP['bj_tbk_commission2']),'commission3'=>intval($_GP['bj_tbk_commission3'])
-                	), array('goodid' => $id,'beid'=>$_CMS['beid']));
-                }
-          }
+            
            
                     
                     $hsdata=array();

@@ -9,7 +9,14 @@
 												
 										</div>
 									</div>
-		
+		   <div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" > 扫码支付-支付回调URL：</label>
+
+										<div class="col-sm-9">
+												<?php echo WEBSITE_ROOT;?>notify/weixin_native_notify.php
+												
+										</div>
+									</div>
 		 <div class="form-group">
 										<label class="col-sm-2 control-label no-padding-left" > 支付方式描述：</label>
 

@@ -26,6 +26,10 @@ class memberAddons  extends BjSystemModule {
 	{
 		$this->__web(__FUNCTION__);
 	}
+	public function do_outchargegold()
+	{
+				$this->__web(__FUNCTION__);
+	}
 }
 
 

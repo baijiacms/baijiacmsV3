@@ -90,52 +90,7 @@ public function verifyorder($openid,$ordersn)
 			
 		
 					
-			if($_CMS['addons_bj_tbk'])
-							    {
-							    	 
-												if(!empty($reply['addonsrule'])&&!empty($key)&&$reply['addonsModule']=='bj_tbk')
-												{
-																					
-														$from_user=$message['from'];
-														
-													 $spread = mysqld_select("SELECT * FROM " . table('bj_tbk_qrcode')." where weixinkey=:weixinkey and beid=:beid limit 1",array(':weixinkey'=>$key,':beid'=>$_CMS['beid']) );
-													 
-													 if(!empty($spread['id']))
-													 {
-													 		$weixin_wxfans=mysqld_select('SELECT * FROM '.table('weixin_wxfans'). " WHERE weixin_openid = :weixin_openid and beid=:beid", array(':weixin_openid' => $from_user,':beid'=>$_CMS['beid']));
-															 if(!empty($weixin_wxfans['openid']))
-																{
-					
-			if(!empty($spread['allowqrcode']))
-			{
-	$bj_tbk_member_relect = mysqld_select("SELECT fmr.* FROM " .table('bj_tbk_member_relect')." as fmr where fmr.openid=:openid and fmr.beid=:beid ",array(":openid"=>$weixin_wxfans['openid'],':beid'=>$_CMS['beid']  ));
-		if(empty($bj_tbk_member_relect['isagent']))
-		{
- return $this->respText($spread['noallowmsg'],$message);		
-		}
-	}
-							
-																$media_id=bj_tbk_qrcode($spread,$from_user,$weixin_wxfans['openid'],true,'media_id');
-																
-														 return $this->respImage($media_id,$message);
-												
-																		 			
-																		 	
-																}else
-																{
-																	return $this->respText('您还不是会员无法生成二维码',$message);	
-																}
-																
-													 	
-													 	
-												
-													 
-													}
-													 
-													 
-									  		 }
-						  		 
-						  		}
+		
 				
 			}
 					
@@ -221,21 +176,15 @@ public function verifyorder($openid,$ordersn)
 					$newopenid=member_create_new("","",$weixin_wxfans['nickname']);
 									
 						mysqld_update('weixin_wxfans',array('openid'=>$newopenid),array('weixin_openid'=>$weixin_wxfans['weixin_openid'],'beid'=>$_CMS['beid']));	
-						bj_tbk_shareinfo($newopenid);
+				
 							$newaccount=true;
 					}else
 					{
 						
-							bj_tbk_shareinfo($weixin_wxfans['openid']);	
 					}
 				}
 				
 			}
-							if(!empty($message['from'])&&!empty($eventkey))
-					{
-							$eventkey2=explode('-',$eventkey);
-						bj_tbk_qrcode_updateagent('',$eventkey2[0],$message['from'],$newaccount,$eventkey2[1]);
-					}
 					
 			
 				
@@ -276,9 +225,9 @@ public function verifyorder($openid,$ordersn)
 			$news = array(
 				'title' => $reply['title'],
 				'description' => $reply['description'],
-				'picurl' => ATTACHMENT_WEBROOT.$reply['thumb'],
+				'picurl' => $reply['thumb'],
 				'url' =>  $reply['url'],
-			);
+			);	
 			return $this->respNews($news,$message);
 					
 				}

@@ -144,8 +144,7 @@
 							
 						     mysqld_update('shop_order_goods', array('status' => -5,'updatetime'=>time(),'be_return_money'=>1), array('id' => $goods['id'],'is_system'=>0));
         		    
-        		      mysqld_update('bj_tbk_order', array('gstatus' => -2, 'updatetime'=>time()), array('orderid' => $orderid,'ogid'=>$ogid));
-              
+        		   
                
         		    system_check_order_status($orderid);
         		  
@@ -158,8 +157,7 @@
             	
             	   
                 mysqld_update('shop_order_goods', array('status' =>  1,'restatus' =>1), array('id' =>$goods['id']));
-                  mysqld_update('bj_tbk_order', array('gstatus' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'ogid'=>$ogid));
-              
+                
               		system_check_order_status($orderid);
                   
                 message('确认收货成功！', refresh(), 'success');
@@ -226,8 +224,7 @@
 										
 						     mysqld_update('shop_order_goods', array('status' =>-7,'updatetime'=>time(),'return_express' => $express,'return_expresssn' => $expresssn,'return_expresscom' => $expresscom), array('id' => $goods['id'],'is_system'=>0));
         		  
-        		      mysqld_update('bj_tbk_order', array('updatetime'=>time()), array('orderid' => $orderid,'ogid'=>$ogid));
-              
+        		   
                 
         		    
         		  
@@ -251,8 +248,7 @@
               
 						     mysqld_update('shop_order_goods', array('status' =>1), array('id' => $goods['id'],'is_system'=>0));
         		 
-						   mysqld_update('bj_tbk_order', array('gstatus' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'ogid'=>$ogsid));
-             
+						  
             
 										system_check_order_status($orderid);
 								message('取消发货操作成功！', refresh(), 'success');

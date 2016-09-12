@@ -45,7 +45,7 @@ defined('SYSTEM_IN') or exit('Access Denied');
 	                $_GP['keywords']=	subscribe_key;
 	                }
 	                }
-	    					$data=array('beid'=>$_CMS['beid'],'title'=>$_GP['title'],'ruletype'=>$ruletype,'keywords'=>$_GP['keywords']);
+	    					$data=array('beid'=>$_CMS['beid'],'title'=>$_GP['title'],'ruletype'=>$ruletype,'keywords'=>$_GP['keywords'],'description'=>$_GP['description']);
 	          	 mysqld_insert('weixin_rule', $data);
 	    					message('保存成功！', 'refresh', 'success');
 	    				}else
@@ -74,7 +74,7 @@ defined('SYSTEM_IN') or exit('Access Denied');
 	                }
 	                }
 	                
-	    						$data=array('title'=>$_GP['title'],'ruletype'=>$_GP['ruletype'],'keywords'=>$_GP['keywords']);
+	    						$data=array('title'=>$_GP['title'],'ruletype'=>$_GP['ruletype'],'keywords'=>$_GP['keywords'],'description'=>$_GP['description']);
 	          	
 	          
 	          	 mysqld_update('weixin_rule', $data, array('id' => $_GP['id'],'beid'=>$_CMS['beid']));

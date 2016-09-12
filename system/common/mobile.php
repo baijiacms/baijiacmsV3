@@ -13,11 +13,7 @@ abstract class BjSystemModule {
 			$filephp=$_CMS['module'].'/class/mobile/'.strtolower(substr($f_name,3)).'.php';
 			
 			
-			if($_CMS['addons_bj_tbk']&&($_GP['name']=='shopwap'||$_GP['name']=='bj_tbk'))
-        {
-        	bj_tbk_shareinfo();
-
-        }
+		
         if($_CMS['shopwap_member_isagent']==true&&empty($_GP['shareid']))
 				{
 								$member=get_member_account(false);

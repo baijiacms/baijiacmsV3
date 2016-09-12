@@ -46,7 +46,6 @@
 				<td >
 						<?php  echo $order['price']?>		
 						
-								<?php  if(!empty($order['is_be'])) { ?>(含分店订单<?php  echo $order['be_goodsprice']+$order['be_dispatchprice']?>元)<?php  } ?>
 				</td>
 			</tr>
 			<tr>
@@ -61,6 +60,8 @@
 		
 				</td>
 			</tr>
+			
+	
 			
 		<tr>
 <th ><label for="">用户UID</label></th>
@@ -123,9 +124,8 @@
 				<td >
 						<?php  echo $order['address_mobile']?>
 				</td>
-				<th ><label for=""></label></th>
+				<th ></th>
 				<td >
-			
 				</td>
 			</tr>
 				<tr>
@@ -258,9 +258,8 @@
 										<label class="col-sm-2 control-label no-padding-left" > 退款到：</label>
 
 									<div class="col-sm-9">
-												   <input name="returnmoneytype" value="0" checked="true" type="radio"> 账户余额  &nbsp;&nbsp;
              
-              		  <input name="returnmoneytype" value="1" type="radio"> 其他打款
+              		  <input name="returnmoneytype" value="1" type="radio" checked="true"> 其他打款
              
 										</div>
 									</div>

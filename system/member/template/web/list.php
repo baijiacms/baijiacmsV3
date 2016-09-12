@@ -42,7 +42,10 @@
      				</select>
 			</td>	
 						</tr>
-					<tr>
+		
+						
+						
+								<tr>
 							<td style="vertical-align: middle;font-size: 14px;font-weight: bold;width:120px">微信昵称</td>
 							<td style="width:300px">
 						<input name="weixinname"  type="text" value="<?php  echo $_GP['weixinname'];?>" />
@@ -52,6 +55,7 @@
 			<td><input name="userid"  type="text" value="<?php  echo $_GP['userid'];?>" />
 			</td>	
 						</tr>
+				
 							
 						<tr>
 							<td></td>
@@ -76,6 +80,7 @@
 				<tr>
 						<th style="text-align:center;">用户UID</th>
 					<th style="text-align:center;">手机号码</th>
+					
 						<th style="text-align:center;">微信昵称</th>
 					<th style="text-align:center;">用户名</th>
 					<th style="text-align:center;">注册时间</th>

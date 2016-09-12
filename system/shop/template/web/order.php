@@ -40,8 +40,6 @@
 				<td >
 						<?php  echo $order['price']?>		
 						
-							<?php  if(!empty($order['is_system'])) { ?>(含总店订单<?php  echo $order['zong_goodsprice']+$order['zong_dispatchprice']?>元)<?php  } ?>
-								<?php  if(!empty($order['is_be'])) { ?>(含分店订单<?php  echo $order['be_goodsprice']+$order['be_dispatchprice']?>元)<?php  } ?>
 				</td>
 			</tr>
 			<tr>
@@ -53,10 +51,12 @@
 				<td >
 								
 								<?php  if(!empty($order['is_system'])) { ?>总店：<?php  echo $order['dispatch_name']?><br/><?php  } ?>
-								<?php  if(!empty($order['is_be'])) { ?>分店：<?php  echo $order['be_dispatch_name']?><?php  } ?>
+								<?php  if(!empty($order['is_be'])) { ?><?php  echo $order['be_dispatch_name']?><?php  } ?>
 			
 				</td>
 			</tr>
+			
+						
 			
 		<tr>
 <th ><label for="">用户UID</label></th>
@@ -91,9 +91,8 @@
 				<td >
 						<?php  echo $order['address_mobile']?>
 				</td>
-				<th ><label for=""></label></th>
+				<th ></th>
 				<td >
-					  
 				</td>
 			</tr>
 				<tr>
@@ -138,7 +137,60 @@
 			<?php  } } ?>
 		</table>
 		
-	
+	<table class="table" >
+			<tr>
+				<th  style="width:50px"></th>
+				<td>
+					
+					
+					
+							<?php  if(empty($order['status'])) { ?>
+					<button type="button" class="btn span2  btn-danger" name="confrimpay_pre"  value="confrimpay_pre" data-toggle="modal" data-target="#modal-confrimpay_pre">确认付款</button>
+				
+		
+					<button type="submit" class="btn span2" name="close" onclick="return confirm('永久关闭此订单吗？'); return false;" value="close">关闭订单</button>
+					<?php  } ?>
+					
+					
+				</td>
+			</tr>
+		</table>
+					
+					
+					
+					
+					<div id="modal-confrimpay_pre" class="modal  fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">付款方式</h4>
+      </div>
+      <div class="modal-body">
+      	
+      		  <div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" > 付款方式：</label>
+
+										<div class="col-sm-9">
+													<select name="visual_paycode" id='visual_paycode'>
+					                  <?php   foreach($payments as $payitems) { ?>
+			 			<option value="<?php echo $payitems['code'];?>" data-name="<?php echo $payitems['name'];?>"><?php echo $payitems['name'];?></option>
+			 					<?php   } ?>
+													</select>
+										</div>
+									</div>
+      	
+      	
+      	
+      </div>
+      <div class="modal-footer">
+      	<button type="submit" class="btn btn-primary" name="confrimpay" onclick="return confirm('该订单确认已付款吗？'); return false;"  value="yes">确认退款</button>
+      	
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭窗口</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
 					
 			</form>
 		

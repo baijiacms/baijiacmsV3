@@ -93,7 +93,7 @@
 		<?php  if($item['status']==0) { ?>
 		    <div class="sub1"  onclick="location.href='<?php  echo mobile_url('pay', array('orderid' => $item['id'], 'topay' => '1'))?>';">订单付款</div>
 
-                   <div class="sub2 order_delete"  onclick="if(confirm('确定此关闭订单吗？')){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'orderclose','orderid' => $item['id']))?>';}">关闭订单</div>
+                   <div class="sub2 order_delete"  onclick="$.confirm({title: '',content: '确定此关闭订单吗？',  confirm: function(){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'orderclose','orderid' => $item['id']))?>';}});">关闭订单</div>
  <?php  }?>
                  <div class="sub1" style="border: 1px solid green;background: green;"  onclick="location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'detail','orderid' => $item['id']))?>';">订单详情</div>
 
@@ -146,7 +146,7 @@
         	  <div class="sub1" style="border: 1px solid green;background: green;"  onclick="location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'detail','orderid' => $item['id'],'is_system'=>1))?>';">订单详情</div>
 
         	     		<?php  if($item['zong_status']==2) { ?>
-                  <div class="sub1 order_complate"  onclick="if(confirm('确认收货？')){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'zong_confirm','orderid' => $item['id']))?>';}">确认收货</div>
+                  <div class="sub1 order_complate"  onclick="$.confirm({title: '',content: '确认收货？',  confirm: function(){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'zong_confirm','orderid' => $item['id']))?>';}});">确认收货</div>
 	<?php  }  ?>
             	<?php if($_CMS['addons_bj_hx']){ if($item['zong_status']!=3&&$item['zong_status']>0&&!empty($item['isverify'])) { ?>
      <div class="sub1" style="border: 1px solid green;background: green;" onclick="location.href='<?php  echo create_url('mobile',array('name' => 'bj_hx','do' => 'verifyshow','orderid' => $item['id']))?>'">订单消费码</div>
@@ -204,7 +204,7 @@
         	                   <div class="sub1" style="border: 1px solid green;background: green;"  onclick="location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'detail','orderid' => $item['id'],'is_be'=>1))?>';">订单详情</div>
         	     
         	     		<?php  if($item['be_status']==2) { ?>
-        	      <div class="sub1 order_complate"  onclick="if(confirm('确认收货？')){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'be_confirm','orderid' => $item['id']))?>';}">确认收货</div>
+        	      <div class="sub1 order_complate"  onclick="$.confirm({title: '',content: '确认收货？',  confirm: function(){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'be_confirm','orderid' => $item['id']))?>';}})">确认收货</div>
             	
             			<?php  } ?>
             	<?php if($_CMS['addons_bj_hx']){ if($item['be_status']!=3&&$item['be_status']>0&&!empty($item['isverify'])) { ?>

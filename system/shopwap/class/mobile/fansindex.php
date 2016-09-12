@@ -36,39 +36,12 @@ if(!empty($weixinthirdlogin)&&!empty($weixinthirdlogin['id']))
 $nologout=true;
 }
 }
-				if($_CMS['addons_bj_color'])
-					{
-						$nologout=true;
-					}
-			
-			
+		
 			
 			
 				$hasqrcode=false;
 
-	   if($_CMS['addons_bj_tbk'])
-        {
-        	$spread = mysqld_select("SELECT * FROM " . table('bj_tbk_qrcode')." where beid=:beid order by active desc limit 1",array(':beid'=>$_CMS['beid']) );
-			if(!empty($spread['id']))
-			{
-				$hasqrcode=true;
-			}
-			
-			   	bj_tbk_shareinfo();
-        	if(is_login_account())
-        	{
-        		$bj_tbk_member_relect = mysqld_select("SELECT fmr.* FROM " .table('bj_tbk_member_relect')." as fmr where fmr.openid=:openid and fmr.beid=:beid ",array(":openid"=>$member['openid'],':beid'=>$_CMS['beid']  ));
-
-        				
-       		
-       		
-        	}
-     
-        	
-        	$parent_member = mysqld_select("SELECT member.mobile,member.nickname,member.openid FROM " . table('bj_tbk_member_relect')." relect left join  " . table('member')." member on member.openid=relect.parentid where relect.openid=:openid and relect.beid=:beid ",array(":openid"=>$member['openid'],':beid'=>$_CMS['beid'] ) );	
-		
-        	
-        }
+	  
            $where = "openid = '".$member['openid']."' and (is_be=1 or is_system=1)";
 
 			    	

@@ -1,0 +1,29 @@
+/*--公共css--*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}
+body,button,input,select,textarea{font:12px/1.5 tahoma,arial,"宋体",}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+ul,ol{list-style:none}
+a{text-decoration:none}
+img{ border:none; display:block;}
+.fl{ float:left;}
+.fr{ float:right;}
+.hidden{ display:none;}
+a{color:gray;}
+a:hover{text-decoration:none;}
+fieldset,img,input,textarea,select{border:0}
+button,input,select,textarea{font-size:100%}
+table{border-collapse:collapse;border-spacing:0}
+.red{color:red;}
+.red20{ color:red; font-size:20px;}
+.colorf40{ color:#f40;}
+.font20{ font-size:20px;color:#333;}
+.font16{ font-size:16px;color:#333;}
+.wei100{ width:100px;}
+.wei160{width:160px;}
+.gray{ color:gray; }
+.ui-page { -webkit-backface-visibility: hidden;}
+:root ,body{height:100%;}
+body{display:-webkit-box;display:box;-webkit-box-orient:vertical; color:#333; width:100%; min-width:320px; height:100%; background: #eee url(1.jpg) repeat-y ;}
+.notp .ui-content{padding:0px;}
+.notp input.ui-input-text{ margin:0px; padding:0px 0.4em;}
+input.ui-input-text, textarea.ui-input-text{ font-weight:100;}

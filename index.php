@@ -1,4 +1,5 @@
 <?php
+
 if(!file_exists(str_replace("\\",'/', dirname(__FILE__)).'/config/install.link'))
 {
 	if((empty($_REQUEST['name'])||!empty($_REQUEST['name'])&&$_REQUEST['name']!='public'))

@@ -46,6 +46,7 @@
 					   	$data['createtime']=time();
         		mysqld_insert('system_store',$data);
         		  $store_id = mysqld_insertid();
+        		  refreshBeSetting($store_id,array('shop_openreg'=>1));//开启注册
         message("添加成功",create_url('site', array('name' => 'manager','do' => 'store','op'=>'display')),"success");
         	}else
         	{

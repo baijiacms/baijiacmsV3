@@ -103,6 +103,9 @@
       	 $conditiondata[':userid']=$_GP['userid'];
       }
       
+
+      
+      
       $allow_usercredit=false;
 $allow_usergold=false;
 $allow_edituser=false;
@@ -121,20 +124,7 @@ $allow_edituser=true;
       	 $condition=$condition.' and mobile like :mobile';
       	 $conditiondata[':mobile']='%'.$_GP['mobile'].'%';
       }
-       if(empty($cfg['bj_color_enable'])){
-          if(!empty($_GP['weixinname']))
-      {
-      	
-      	 $condition=$condition.' and openid in (select wxfans.openid from ' . table('weixin_wxfans').' wxfans where wxfans.nickname like :weixinname and wxfans.beid=\''.$_CMS['beid'].'\')';
-      	 $conditiondata[':weixinname']='%'.$_GP['weixinname'].'%';
-      }
-           if(!empty($_GP['alipayname']))
-      {
-      	
-      	 $condition=$condition.' and openid in (select alifans.openid from ' . table('alipay_alifans').' alifans where alifans.nickname like :alipayname and alifans.beid=\''.$_CMS['beid'].'\')';
-      	 $conditiondata[':alipayname']='%'.$_GP['alipayname'].'%';
-      }
-    }
+
       $status=1;
           if(empty($_GP['showstatus'])||$_GP['showstatus']==1)
       {
@@ -172,8 +162,9 @@ $allow_edituser=true;
       $pager = pagination($total, $pindex, $psize);
       
       		foreach($list as  $index=>$item){
+      			
       				 $list[$index]['weixin']= mysqld_select("SELECT * FROM " . table('weixin_wxfans') . " WHERE openid = :openid and beid=:beid limit 1", array(':openid' => $item['openid'],":beid"=>$_CMS['beid']));
 		        	$list[$index]['alipay'] = mysqld_selectall("SELECT * FROM " . table('alipay_alifans') . " WHERE openid = :openid and beid=:beid", array(':openid' => $item['openid'],":beid"=>$_CMS['beid']));
-		     
+		   
       		}
 			include page('list'); 

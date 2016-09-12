@@ -12,8 +12,10 @@
           
           <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/font/font.css">
   <script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>
+  
+	<script src="__RESOURCE__/alert/jquery-confirm.min.js?x=1" type="text/javascript"></script>
+	<link href="__RESOURCE__/alert/jquery-confirm.min.css?x=5" rel="stylesheet" type="text/css" />
     </head>
-    
     <body>
     	 <form id='formorder' name="input" onsubmit="return check()" method="post">
 <div class='fui-page-group'><div class='fui-page order-create-page'>
@@ -151,20 +153,20 @@
             function check(){
             	 	<?php  if(empty($item['isverify'])){ ?>
                 if($(".address_item").length<=0){
-                    alert("请添加收货地址!");
+                    $.alert("请添加收货地址!");
                     return false;
                 }      
                 <?php  }else{ ?>
                 	  if($("#verify_address_name").val()==''){
-                    alert("请添加联系人!");
+                    $.alert("请添加联系人!");
                     return false;
                 }   
                   if($("#verify_address_tell").val()==''){
-                    alert("请添加联系电话!");
+                    $.alert("请添加联系电话!");
                     return false;
                 }        
                 	<?php } ?>
-          
+         
           
                  	return true;
             }

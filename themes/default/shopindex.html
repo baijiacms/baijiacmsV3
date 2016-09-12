@@ -145,7 +145,10 @@ body {margin:0px; background:#f9f9f9; }
                         <div class="fe-mod-8-main-img">
                             <img style="height: 652px;" src="<?php echo ATTACHMENT_WEBROOT;?><?php echo $item['thumb']?>" ng-src="<?php echo ATTACHMENT_WEBROOT;?><?php echo $item['thumb']?>" class="goodimg">
                             <div class="saleimg sale-rx" ng-class="Item.params.option"></div>
-                            <div class="fe-mod-8-main-price ng-binding" ng-show="Item.params.price != 0">￥ <?php echo $item['marketprice'];?> <?php if(!empty($item['productprice'])){?><span class="ng-binding" style="text-decoration: line-through; font-size: 12px; color: #eee;">￥<?php echo $item['productprice'];?></span><?php } ?></div>
+                           <!-- <div class="fe-mod-8-main-price ng-binding" ng-show="Item.params.price != 0">￥ <?php echo $item['marketprice'];?> <?php if(!empty($item['productprice'])){?><span class="ng-binding" style="text-decoration: line-through; font-size: 12px; color: #eee;">￥<?php echo $item['productprice'];?></span><?php } ?></div>-->
+                        </div>
+                          <div class="fe-mod-8-main-name " style="line-height: 24px; height: 24px;    color: #fff;background:rgba(101, 96, 96, 0.8);     padding-left: 3px;   text-align: left;" ng-show="Item.params.showname == 1">
+                          ￥ <?php echo $item['marketprice'];?> <?php if(!empty($item['productprice'])){?><span class="ng-binding" style="text-decoration: line-through; font-size: 12px; color: #eee;">￥<?php echo $item['productprice'];?></span><?php } ?>
                         </div>
                         <div class="fe-mod-8-main-name" ng-show="Item.params.showname == 1">
                             <div class="fe-mod-8-main-name-buy buy-4" ng-class="Item.params.buysub" ng-show="Item.params.buysub"></div>
@@ -177,7 +180,10 @@ body {margin:0px; background:#f9f9f9; }
                         <div class="fe-mod-8-main-img">
                             <img style="height: 652px;" src="<?php echo ATTACHMENT_WEBROOT;?><?php echo $item['thumb']?>" ng-src="<?php echo ATTACHMENT_WEBROOT;?><?php echo $item['thumb']?>" class="goodimg">
                             <div class="saleimg <?php if(!empty($item['istime'])){?>sale-xs<?php }else {?><?php if(!empty($item['issendfree'])){?>sale-by<?php }else{?><?php if(!empty($item['isnew'])){?>sale-xp<?php }?><?php }?><?php }?>" ng-class="Item.params.option"></div>
-                            <div class="fe-mod-8-main-price ng-binding" ng-show="Item.params.price != 0">￥<?php echo $item['marketprice'];?><?php if(!empty($item['productprice'])){?><span class="ng-binding" style="text-decoration: line-through; font-size: 12px; color: #eee;" ng-show="true">￥<?php echo $item['productprice'];?></span><?php }?></div>
+                          <!--  <div class="fe-mod-8-main-price ng-binding" ng-show="Item.params.price != 0">￥<?php echo $item['marketprice'];?><?php if(!empty($item['productprice'])){?><span class="ng-binding" style="text-decoration: line-through; font-size: 12px; color: #eee;" ng-show="true">￥<?php echo $item['productprice'];?></span><?php }?></div>-->
+                        </div>
+                          <div class="fe-mod-8-main-name " style="line-height: 24px; height: 24px;    color: #fff;background:rgba(101, 96, 96, 0.8);     padding-left: 3px;   text-align: left;" ng-show="Item.params.showname == 1">
+                          ￥<?php echo $item['marketprice'];?><?php if(!empty($item['productprice'])){?><span class="ng-binding" style="text-decoration: line-through; font-size: 12px; color: #eee;" ng-show="true">￥<?php echo $item['productprice'];?></span><?php }?>
                         </div>
                         <div class="fe-mod-8-main-name" ng-show="Item.params.showname == 1">
                             <div class="fe-mod-8-main-name-buy buy-4" ng-class="Item.params.buysub" ng-show="Item.params.buysub"></div>

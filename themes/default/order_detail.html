@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="__RESOURCE__/plus/css/style_normal.css">
          
 	<script type="text/javascript" src="__RESOURCE__/js/jquery-1.11.3.min.js"></script>   
+	
+	<script src="__RESOURCE__/alert/jquery-confirm.min.js" type="text/javascript"></script>
+	<link href="__RESOURCE__/alert/jquery-confirm.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
 <title>订单详情</title>
@@ -231,7 +234,7 @@ select { width:100px;height:40px;position:absolute;left:0; -webkit-appearance: n
 		<?php  if($shoporder['status']==0) { ?>
 		    <div class="paysub"  onclick="location.href='<?php  echo mobile_url('pay', array('orderid' => $shoporder['id'], 'topay' => '1'))?>';">订单付款</div>
 
-                   <div class="paysub1 order_cancel"  onclick="if(confirm('确定此关闭订单吗？')){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'orderclose','orderid' => $shoporder['id']))?>';}">关闭订单</div>
+                   <div class="paysub1 order_cancel"  onclick="$.confirm({title: '',content: '确定此关闭订单吗？',  confirm: function(){location.href='<?php  echo create_url('mobile',array('name' => 'shopwap','do' => 'myorder','op'=>'orderclose','orderid' => $shoporder['id']))?>';}});">关闭订单</div>
  <?php  }?>
 	
 	

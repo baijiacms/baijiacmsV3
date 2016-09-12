@@ -51,7 +51,6 @@ function member_login_weixin($weixin_openid)
 										save_member_login($member['openid']);
 					}else
 					{
-					bj_tbk_shareinfo();
 								$openid=member_create_new("","",$weixin_wxfans['nickname']);
 								
 								mysqld_update('weixin_wxfans',array('openid'=>$openid),array('weixin_openid'=>$weixin_openid,'beid'=>$_CMS['beid']));	
@@ -171,7 +170,6 @@ function member_create_new($mobile,$pwd,$nickname="")
 			$pwd=	md5($pwd);
 			}
 	
-				bj_tbk_shareinfo($openid);
 			$data = array(
 							'nickname'=>$nickname,
 							'realname'=>$nickname,
@@ -183,7 +181,6 @@ function member_create_new($mobile,$pwd,$nickname="")
                     'experience'=> 0 ,
                     'openid' =>$openid,'beid'=>$_CMS['beid']);
 				mysqld_insert('member', $data);
-			bj_tbk_reg_member($openid,$oldsessionid);
 				return $openid;
 }
 function member_create_new_sample($nickname)

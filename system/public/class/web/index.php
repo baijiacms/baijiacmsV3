@@ -30,8 +30,7 @@
               	system_create_sp_order($orderid);	
               }
               
-            mysqld_update('bj_tbk_order', array('gstatus' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
-          
+           
                    
                  	 if($_CMS['addons_bj_message']) {
 	 	
@@ -40,10 +39,7 @@
 	 	
               bj_message_sendddqrshtz( $order['be_ordersn'],$order['openid'],$orderid);
   }
-    	 if($_CMS['addons_bj_tbk'])
-			        {
-			        	bj_tbk_sendxjdlshtz($orderid);
-			        }
+   
           	 	
           	 	
           	}
@@ -55,7 +51,6 @@
           	 	$orderid=$goods['orderid'];
           	 	$ogid=$goods['id'];
           	 	 mysqld_update('shop_order_goods', array('status' =>  1,'restatus' =>1), array('id' =>$goods['id']));
-                  mysqld_update('bj_tbk_order', array('gstatus' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'ogid'=>$ogid));
               
                 	system_check_order_status($orderid);
         		  		

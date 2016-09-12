@@ -33,9 +33,10 @@
 		
         <div class="header-nav fl" style="margin-left:3px">
             <ul class="header-nav-list clearfix">
-                     	<li class="fl <?php if(empty($_GP['smenu'])||"shop"==$_GP['smenu']){ ?>active<?php   }?>"><a href="<?php  echo create_url('site',array('name' => 'index','do' => 'main','smenu'=>'shop'))?>" >商城</a></li>      
+              	<li class="fl <?php if(empty($_GP['smenu'])||"home"==$_GP['smenu']){ ?>active<?php   }?>"><a href="<?php  echo create_url('site',array('name' => 'index','do' => 'main','smenu'=>'home'))?>" >首页</a></li>                
+                      	<li class="fl <?php if("shop"==$_GP['smenu']){ ?>active<?php   }?>"><a href="<?php  echo create_url('site',array('name' => 'index','do' => 'main','smenu'=>'shop'))?>" >商城</a></li>     
                       	              	              	
-                  <?php if(!empty($modulelist)&&count($modulelist)>0){?><li class="fl <?php if("extends"==$_GP['smenu']){ ?>active<?php   }?>"><a href="<?php  echo create_url('site',array('name' => 'index','do' => 'main','smenu'=>'extends'))?>" >扩展</a></li>  <?php   }?>
+                      	              	              	<li class="fl <?php if("extends"==$_GP['smenu']){ ?>active<?php   }?>"><a href="<?php  echo create_url('site',array('name' => 'index','do' => 'main','smenu'=>'extends'))?>" >扩展</a></li>  
               	<li class="fl <?php if("setting"==$_GP['smenu']){ ?>active<?php   }?>"><a href="<?php  echo create_url('site',array('name' => 'index','do' => 'main','smenu'=>'setting'))?>" >配置</a></li>                
           
             </ul>
@@ -44,14 +45,14 @@
 
         <div class="fr">
            <ul class="header-nav-list clearfix">
-          
+             
              <li class="fl">
-    <a   href="<?php  echo WEBSITE_ROOT.'index_pc.php';?>" target="_blank">
+    <a   href="http://<?php  echo $system_store['website'].WEBSITE_FOOTER.'/index_pc.php';?>" target="_blank">
         <span>PC端商城</span>
     </a> 
 </li>
 <li class="fl">
-    <a   href="<?php  echo WEBSITE_ROOT.'index.php';?>" target="_blank">
+    <a   href="http://<?php  echo $system_store['website'].WEBSITE_FOOTER.$document_root.'/index.php';?>" target="_blank">
         <span>移动端商城</span>
     </a> 
 </li>
@@ -98,14 +99,18 @@
 <div class="inner clearfix" style="min-width: 1200px;width:99%;">
 <div class="content-left fl">
   
-   
+   	<?php if(empty($_GP['smenu'])||"home"==$_GP['smenu']){ ?>
+          	  <?php   require "smenu_home.php";?> 
+          	  <?php   }?> 
           	
-          	  	<?php if(empty($_GP['smenu'])||"shop"==$_GP['smenu']){ ?>
+          	  	<?php if("shop"==$_GP['smenu']){ ?>
           	  <?php   require "smenu_shop.php";?> 
           	  <?php   }?> 
           	  
           
           	  
+          	            
+          	 
           	  
           	  	<?php if("setting"==$_GP['smenu']){ ?>
           	  <?php   require "smenu_setting.php";?> 
@@ -123,13 +128,17 @@
 <!--
 <h1 class="content-right-title">标题</h1>-->
 <iframe class="content-right fl" scrolling="yes"  frameborder="0" style="min-height:660px;overflow:visible; height:100%;"   name="main" id="iframepage" src="
+ 	<?php if(empty($_GP['smenu'])||"home"==$_GP['smenu']){ ?><?php  echo create_url('site',  array('name' => 'index','do'=>'center'))?><?php   }?> 
           	
-          	  	<?php if(empty($_GP['smenu'])||"shop"==$_GP['smenu']){ ?><?php  echo create_url('site',  array('name' => 'shop','do'=>'order','op' => 'display', 'status' => -99))?><?php   }?> 
+          	  	<?php if("shop"==$_GP['smenu']){ ?><?php  echo create_url('site',  array('name' => 'shop','do'=>'order','op' => 'display', 'status' => -99))?><?php   }?> 
           	  
-          	  	
-          	       
+          	  	<?php if("statistical"==$_GP['smenu']){ ?><?php  echo create_url('site', array('name' => 'addon6','do' => 'salereport'))?><?php   }?> 
           	  
-          	  	<?php if("setting"==$_GP['smenu']){ ?><?php  echo create_url('site', array('name' => 'shop','do' => 'config'))?><?php   }?> "></iframe>
+          	            
+          	  
+          	  	<?php if("setting"==$_GP['smenu']){ ?><?php  echo create_url('site', array('name' => 'shop','do' => 'config'))?><?php   }?> 
+          	  
+          	  <?php if("extends"==$_GP['smenu']){ ?><?php  echo create_url('site', array('name' => 'addon7','do' => 'awardlist'))?><?php   }?> "></iframe>
 
 <!-- end content-right -->
 </div>

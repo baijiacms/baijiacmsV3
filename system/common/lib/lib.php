@@ -19,10 +19,6 @@ require(WEB_ROOT.'/system/common/lib/lib_sms.php');
 require(WEB_ROOT.'/system/common/lib/lib_biz.php');
 
 
-$_CMS['addons_bj_tbk']=true;
-
-require(WEB_ROOT.'/system/bj_tbk/lib/lib_bj_tbk.php');
-require(WEB_ROOT.'/system/bj_tbk/lib/lib_bj_tbk_message.php');
-require(WEB_ROOT.'/system/bj_tbk/lib/lib_bj_tbk_qrcode.php');
 
 require(WEB_ROOT.'/system/common/lib/lib_login.php');
+

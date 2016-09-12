@@ -11,6 +11,15 @@
 											<?php  echo $member['openid'];?>
 										</div>
 									</div>
+										<?php if(!empty($color)){ ?>
+									     <div class="form-group">
+										<label class="col-sm-2 control-label no-padding-left" >彩之云端用户ID：</label>
+
+										<div class="col-sm-9">
+												<?php  echo $color['userid'];?>
+										</div>
+									</div>
+									<?php } ?>
 										  <div class="form-group">
 										<label class="col-sm-2 control-label no-padding-left" > 微信OPENID:</label>
 

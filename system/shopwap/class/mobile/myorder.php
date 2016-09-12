@@ -22,12 +22,11 @@
 	         	{
          		mysqld_update('shop_order', array('be_status' => -1), array('id' => $orderid, 'openid' => $openid,'beid'=>$_CMS['beid']  ));
  						}
- 						
+ 					
  				
          		mysqld_update('shop_order', array('status' => -1, 'updatetime'=>time()), array('id' => $orderid,'beid'=>$_CMS['beid']  ));
  					
- 						   mysqld_update('bj_tbk_order', array('gstatus' => -1, 'updatetime'=>time()), array('orderid' => $orderid,'beid'=>$_CMS['beid']));
-             
+ 						   
              
  						message('订单关闭成功！', mobile_url('myorder'), 'success');
            
@@ -40,46 +39,7 @@
           
        	}
        	
-         if ($op == 'zong_confirm') {//ok
-            $orderid = intval($_GP['orderid']);
-            $order = mysqld_select("SELECT * FROM " . table('shop_order') . " WHERE id = :id AND openid = :openid and beid=:beid and zong_status=2 ", array(':beid'=>$_CMS['beid'],':id' => $orderid, ':openid' => $openid ));
-            if (empty($order)) {
-                message('抱歉，您的订单不存在或是已经被取消！', mobile_url('myorder'), 'error');
-            }
-             if($order['zong_status']!=2) {
-             	 message('订单不是待收货状态无法确认收货。');
-            }
-            
-            	$this->setOrderCredit($openid,$order['id'],true,'订单:'.$order['zong_ordersn'].'收货新增积分');
-              
-             mysqld_update('shop_order', array('zong_status' => 3,'zong_has_gfinish'=>1, 'updatetime'=>time()), array('id' => $orderid, 'openid' => $openid ,'beid'=>$_CMS['beid']));
-             mysqld_update('shop_order_goods', array('status' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>1));
-          
-           
-             
-          
-              mysqld_update('bj_tbk_order', array('gstatus' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>1));
-           
-             
-                $order = mysqld_select("SELECT * FROM " . table('shop_order') . " WHERE id = :id AND openid = :openid and beid=:beid", array(':beid'=>$_CMS['beid'],':id' => $orderid, ':openid' => $openid ));
-           
-							$settings=globaSetting();
-							
-							if($order['status']==3)
-							{
-								 if($_CMS['addons_bj_tbk'])
-			        {
-			        	bj_tbk_sendxjdlshtz($orderid);
-			        }
- 							if($_CMS['addons_bj_message']) {
-	 	
-
-              bj_message_sendddqrshtz( $order['zong_ordersn'],$order['openid'],$orderid);
-						  }
-						}
-  
-            message('确认收货完成！', mobile_url('myorder'), 'success');
-        }
+         
         
          if ($op == 'be_confirm') {//ok
             $orderid = intval($_GP['orderid']);
@@ -95,21 +55,17 @@
              mysqld_update('shop_order', array('be_status' => 3,'be_has_gfinish'=>1, 'updatetime'=>time()), array('id' => $orderid, 'openid' => $openid ,'beid'=>$_CMS['beid']));
              mysqld_update('shop_order_goods', array('status' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
            
-           
+ 
             
            
-              mysqld_update('bj_tbk_order', array('gstatus' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
-          
+             
                 $order = mysqld_select("SELECT * FROM " . table('shop_order') . " WHERE id = :id AND openid = :openid and beid=:beid", array(':beid'=>$_CMS['beid'],':id' => $orderid, ':openid' => $openid ));
            
 							$settings=globaSetting();
 							
 							if($order['status']==3)
 							{
-								 if($_CMS['addons_bj_tbk'])
-			        {
-			        	bj_tbk_sendxjdlshtz($orderid);
-			        }
+					
  							if($_CMS['addons_bj_message']) {
 	 	
 
@@ -119,39 +75,7 @@
   
             message('确认收货完成！', mobile_url('myorder'), 'success');
         }
-          if ($op == 'zong_returnpay') {//ok
-            $orderid = intval($_GP['orderid']);
-            $item = mysqld_select("SELECT * FROM " . table('shop_order') . " WHERE status=1 and id = :id AND openid = :openid and beid=:beid  ", array(':beid'=>$_CMS['beid'],':id' => $orderid, ':openid' => $openid ));
-           $returnordersn=$item['zong_ordersn'];
-         	$returnprice=$item['zong_goodsprice']+$item['zong_dispatchprice'];
-         		$dispatchprice=$item['zong_dispatchprice'];
-            if (empty($item)) {
-                message('抱歉，您的订单不存在或是已经被取消！', mobile_url('myorder'), 'error');
-            }
-         if($item['zong_status']!=0||$item['status'] != 1) {
-            	message("订单不是未发货状态，不能进行退款申请");
-            }
-              $shop_order_goods_list = mysqld_selectall("SELECT * FROM " . table('shop_order_goods') . " WHERE orderid = :orderid and beid=:beid and is_system=1", array(':orderid' => $orderid,':beid'=>$_CMS['beid'] ));
-          
-              $ordersn = $item['zong_ordersn'];
-             $opname="退款";
-        if (checksubmit("submit")) {
-           	    if (!empty($item['zong_status'])) {
-                message('订单不是未发货状态不能申请退款。', mobile_url('myorder'), 'error');
-            }
-            mysqld_update('shop_order', array('zong_status' => -2,'rsreson' => $_GP['rsreson'], 'updatetime'=>time()), array('beid'=>$_CMS['beid'],'id' => $orderid, 'openid' => $openid ));
-					
-								 if($_CMS['addons_bj_message']) {
-              bj_message_sendtksqtz( $order['ordersn'],$order['zong_price'],$order['openid'],$orderid);
-  }
-							   mysqld_update('bj_tbk_order', array('gstatus' => -2, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>1));
-             
-           
-            message('申请退款成功，请等待审核！', mobile_url('myorder',array('status' =>99)), 'success');
-          }
-             include themePage('order_detail_returnpay');
-              exit;
-        }
+        
         
               if ($op == 'be_returnpay') {//ok
             $orderid = intval($_GP['orderid']);
@@ -177,13 +101,13 @@
            	{
            		 message('货到付款订单不能进行退款操作!', refresh(), 'error');
            	}
+         
             mysqld_update('shop_order', array('be_status' => -2,'be_rsreson' => $_GP['rsreson'], 'updatetime'=>time()), array('beid'=>$_CMS['beid'],'id' => $orderid, 'openid' => $openid ));
 			
 								 if($_CMS['addons_bj_message']) {
               bj_message_sendtksqtz( $order['ordersn'],$order['be_price'],$order['openid'],$orderid);
   }
-  				      mysqld_update('bj_tbk_order', array('gstatus' => -2, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
-             
+  				      
            
 								
             message('申请退款成功，请等待审核！', mobile_url('myorder',array('status' => 99)), 'success');
@@ -265,8 +189,7 @@
            		}
 							
 						}
-							   mysqld_update('bj_tbk_order', array('gstatus' => -3, 'updatetime'=>time()), array('orderid' => $orderid,'ogid'=>$ogsid));
-             
+							  
             
  					system_check_order_status($orderid);
 						
@@ -350,8 +273,7 @@
 							
 						}
 							system_check_order_status($orderid);
-						 mysqld_update('bj_tbk_order', array('updatetime'=>time()), array('orderid' => $orderid,'ogid'=>$ogsid));
-             
+					  
           	
             message('申请换货成功，请等待审核！', mobile_url('myorder',array('status' => intval($_GP['fromstatus']))), 'success');
              }

@@ -3,7 +3,30 @@ defined('SYSTEM_IN') or exit('Access Denied');
 
 require WEB_ROOT.'/system/member/lib/rank.php';
 class shopwapAddons  extends BjSystemModule {
-
+	public function do_diypage()
+	{
+						global $_CMS,$_GP;
+						if(!empty($_GP['id']))
+						{
+	       		 $diyshop = mysqld_select("SELECT * FROM " . table('bj_tbk_diyshopindex')." where beid=:beid and id=:id",array(':beid'=> $_CMS['beid'],':id'=>$_GP['id'] ) );
+  		}else
+  		{
+  			
+  			 $diyshop = mysqld_select("SELECT * FROM " . table('bj_tbk_diyshopindex')." where beid=:beid and pagetype=0 order by active desc limit 1",array(':beid'=> $_CMS['beid'] ) );
+  		
+  		}
+  		
+  		
+  			if(!empty($diyshop['id']))
+  			{
+  		
+							$data=str_replace('__ATTACHMENT__',ATTACHMENT_WEBROOT,$diyshop['datas']);
+				 			$diyshop['datas']=$data;
+							include page('diypage_html');
+							exit;
+							
+			}
+	}
 		public function do_index_pc()
 	{
 					$settings=globaSetting();
@@ -119,7 +142,7 @@ class shopwapAddons  extends BjSystemModule {
 	}
 	public function do_index()
 	{
-				header("location:".mobile_url('shopindex'));		
+				return $this->do_shopindex();	
 	}
 	public function do_regedit()
 	{
@@ -127,10 +150,10 @@ class shopwapAddons  extends BjSystemModule {
 	}
 	public function do_logout()
 	{
-		if(empty($_CMS['addons_bj_color']))
-					{
+			global $_CMS;
+	
 							member_logout();
-					}
+		
 	}
 	public function do_login()
 	{

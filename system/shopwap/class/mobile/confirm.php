@@ -62,6 +62,7 @@ $goodscredit=0;
 	{
 		require "confirm_many_goods.php";
 	}
+		$has_system_goods=false;
    if($has_system_goods==false&&$has_be_goods==false)
 	{
 		message("未找到相关商品",mobile_url('myorder'),'error');	
@@ -258,7 +259,7 @@ $goodscredit=0;
 
    				$paytype=$this->getPaytypebycode($payment['code']);**/
    				
-   			
+   		
             $data = array(
                 'openid' => $openid,	
                 'ordersn' => $ordersns,
@@ -296,7 +297,7 @@ $goodscredit=0;
                 'createtime' => time()		,
                 'updatetime' => time()			
             );
-       
+         
             
         $system_store = mysqld_select("select compid,saleid from " . table("system_store") . " where id=:beid", array(':beid'=>$_CMS['beid']));
                 
@@ -377,7 +378,6 @@ $goodscredit=0;
               $ogid = mysqld_insertid();
                     
 		
-			 				 bj_tbk_create_commission_order($orderid,$ogid,$_CMS['beid']);
             }
           }
               
@@ -386,6 +386,7 @@ $goodscredit=0;
 					{
             $is_fh_order_first=true;
                  //插入分部订单商品
+                 $ordertools=0;
             foreach ($be_allgoods as $row) {
                 if (empty($row)) {
                     continue;
@@ -411,9 +412,13 @@ $goodscredit=0;
 							$d['beid']=$_CMS['beid'];
                 mysqld_insert('shop_order_goods', $d);
               $ogid = mysqld_insertid();
-                    	  
-			      bj_tbk_create_commission_order($orderid,$ogid,$_CMS['beid']);
+                    $ordertools=$ordertools+1;	
             }
+            
+            
+            
+           
+            
           }
               
               
@@ -422,13 +427,7 @@ $goodscredit=0;
                if($_CMS['addons_bj_message']) {
               bj_message_sendddtjtz($ordersns,($data['price']),$openid,$orderid);
   }
-    if($_CMS['addons_bj_tbk'])
-			        {
-			        	$parentmember=bj_tbk_get_parentmember();
-			        	 $weixin_wxfans = mysqld_select('select * from '.table('weixin_wxfans')." where openid=:openid and beid=:beid limit 1",array(":openid"=>$openid,':beid'=>$_CMS['beid']));
-			        	bj_tbk_sendgmsptz($ordersns,$goodsprice,$openid,$parentmember['openid']);
-			      
-			        }
+
 			        
             //清空购物车
             if (!$direct) {
@@ -442,6 +441,5 @@ $goodscredit=0;
             exit;
         }
   
-
   
        include themePage('confirm');

@@ -13,11 +13,9 @@
                         <dd class="subshop_1 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'member','do' => 'rank'))?>" target="main">会员等级管理 </a>
                                     </dd>      
-                                  <?php if(false){ ?>  
                                    <dd class="subshop_1 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'member','do' => 'outchargegold'))?>" target="main">余额提现申请 </a>
-                                    </dd>            
-                                     <?php } ?>
+                                    </dd>          
                                               
                    </dl>    
 
@@ -39,7 +37,7 @@
                                    <dd class="subshop_1 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'shop','do' => 'category','op'=>'display'))?>" target="main">管理分类 </a>
                                     </dd>            
-                             
+                           
 					 
                                               
                    </dl>                 
@@ -78,7 +76,9 @@
               <dd class="subshop_0 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'shopwap','do' => 'themes','op'=>'display'))?>" target="main">模板设置 </a>
                                     </dd>  
-                             
+                              <dd class="subshop_1 ">
+                    <a  href="<?php  echo create_url('site', array('name' => 'shop','do' => 'diyshop','op'=>'display'))?>" target="main">DIY页面 </a>
+                                    </dd>  
                         <dd class="subshop_1 ">
                     <a  href="<?php  echo create_url('site', array('name' => 'shopwap','do' => 'fansindex_menu','op'=>'display'))?>" target="main">个人中心菜单 </a>
                                     </dd>    

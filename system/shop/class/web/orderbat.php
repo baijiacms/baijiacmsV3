@@ -45,6 +45,7 @@
 						                	}
 						                     
                  		updateOrderStock($item['id']);
+            
 						                mysqld_update('shop_order', array(
 						                    'be_status' => 2,'be_updatetime'=>time(),
 						                    'be_express' => $express,

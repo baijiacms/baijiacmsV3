@@ -17,7 +17,7 @@ if(is_file(WEB_ROOT.'/config/debug.php'))
 	require WEB_ROOT.'/config/debug.php';
 }
 define('SAPP_NAME', '微商城');
-define('CORE_VERSION', 20160709);
+define('CORE_VERSION', 20160710);
 defined('SYSTEM_VERSION') or define('SYSTEM_VERSION', CORE_VERSION);
 header('Content-type: text/html; charset=UTF-8');
 define('SYSTEM_WEBROOT', WEB_ROOT);
@@ -121,7 +121,7 @@ require WEB_ROOT.'/includes/baijiacms.init.inc.php';
 
 
 
-$system_module = array('common', 'index', 'member', 'modules', 'public', 'shop', 'shopwap', 'user', 'weixin','alipay','manager','bj_tbk');
+$system_module = array('common', 'index', 'member', 'modules', 'public', 'shop', 'shopwap', 'user', 'weixin','alipay','manager');
 if(in_array($modulename, $system_module) )
 {
 	$_CMS['isaddons']=false;

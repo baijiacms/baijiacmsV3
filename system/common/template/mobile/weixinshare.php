@@ -26,7 +26,7 @@ wx.error(function(res){
 	{
 		if(res.errMsg='config:invalid signature')
 		{
-	//alert(res.errMsg);
+//alert(res.errMsg);
 			//alert("转发接口失效，请联系管理员");
 		}
 	}

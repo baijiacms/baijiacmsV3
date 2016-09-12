@@ -662,20 +662,7 @@ $system_setting=globaSystemSetting();
 		{
 				$settings=globaSystemSetting();
 				$filesource=$file['tmp_name'];
-			if(!empty($settings['image_compress_openscale']))
-			{
-						if(!file_move($file['tmp_name'], $filename)) {
-					return error(-1, '保存上传文件失败');
-				}
-					$filesource=$filename;
-				$scal=$settings['image_compress_scale'];
-				$quality_command='';
-				if(intval($scal)>0)
-				{
-					$quality_command=' -quality '.intval($scal);
-				}
-					system('convert '.$quality_command.' '.$filename.' '.$filename);
-			}
+	
 		if($system_setting['system_isnetattach']==1)
 		{
 	require_once(WEB_ROOT.'/system/common/lib/lib_ftp.php');
@@ -706,18 +693,7 @@ $system_setting=globaSystemSetting();
 	if(!file_move($file['tmp_name'], $filename)) {
 		return error(-1, '保存上传文件失败');
 	}
-	$settings=globaSystemSetting();
-	if(!empty($settings['image_compress_openscale']))
-	{
-		
-		$scal=$settings['image_compress_scale'];
-		$quality_command='';
-		if(intval($scal)>0)
-		{
-			$quality_command=' -quality '.intval($scal);
-		}
-			system('convert'.$quality_command.' '.$filename.' '.$filename);
-	}
+	
 	
 	}
 	$result['success'] = true;
