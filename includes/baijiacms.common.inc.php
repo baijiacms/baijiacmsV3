@@ -248,7 +248,7 @@ function themePage($filename) {
 		{
 			mkdirs($path);
 		}
-		$content = preg_replace('/__RESOURCE__/', WEBSITE_ROOT.'themes/default/__RESOURCE__', $str);
+		$content = preg_replace('/__RESOURCE__/', WEBSITE_ROOT.'themes/'.$theme.'/__RESOURCE__', $str);
 		
 			file_put_contents($cachefile, $content);
 			return $cachefile;
