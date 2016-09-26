@@ -7,6 +7,7 @@
  * 
  * 这里举例使用log文件形式记录回调信息。
 */
+error_reporting(0);
 	$payment = mysqld_select("SELECT * FROM " . table('payment') . " WHERE  enabled=1 and code='weixin' and beid=:beid limit 1",array(":beid"=>$_CMS['beid']));
    $configs=unserialize($payment['configs']);
           
