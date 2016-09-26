@@ -4,7 +4,7 @@
 // +----------------------------------------------------------------------
 // | Copyright (c) 2015 http://www.baijiacms.com All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 百家cms <QQ:1987884799> <http://www.baijiacms.com>
+// | Author: baijiacms <http://www.baijiacms.com>
 // +----------------------------------------------------------------------
 	$id=	$_CMS[WEB_SESSION_ACCOUNT]['id'];
 		 					 $username=	$_CMS[WEB_SESSION_ACCOUNT]['username'];

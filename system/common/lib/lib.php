@@ -4,7 +4,7 @@
 // +----------------------------------------------------------------------
 // | Copyright (c) 2015 http://www.baijiacms.com All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 百家cms <QQ:1987884799> <http://www.baijiacms.com>
+// | Author: baijiacms <http://www.baijiacms.com>
 // +----------------------------------------------------------------------
 defined('SYSTEM_IN') or exit('Access Denied');
 require(WEB_ROOT.'/system/common/lib/lib_core.php');
