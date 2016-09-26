@@ -8,4 +8,4 @@
 PHP运行环境新手推荐工具下载地址：
 https://www.apachefriends.org/download.html
 
-如果您遇到到使用上面的问题，请在公众号右下角点击”留言反馈“，反馈给我们，谢谢！
+如果您遇到到使用上面的问题，请在Issues反馈给我们，谢谢！
