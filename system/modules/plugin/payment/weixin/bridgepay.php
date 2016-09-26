@@ -34,7 +34,7 @@
 		$package['openid'] = $weixin_openid;
 				}else
 				{
-						$package['notify_url'] =WEBSITE_ROOT.'notify/weixin_native_notify.php';
+						$package['notify_url'] =WEBSITE_ROOT.'notify/weixin_notify.php';
 						$package['product_id'] = $order['ordersn'].'-'.$order['id'];
 						$package['trade_type'] = 'NATIVE';
 				}

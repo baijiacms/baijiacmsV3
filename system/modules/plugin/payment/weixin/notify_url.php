@@ -45,12 +45,12 @@
 			if ($array_data["return_code"] == "FAIL") {
 			//此处应该更新一下订单状态，商户自行增删操作
 			  	mysqld_insert('paylog', array('typename'=>'通信出错','pdate'=>$xml,'ptype'=>'error','paytype'=>'weixin',"beid"=>$_CMS['beid']));
-      exit;
+  
 		}
 		elseif($array_data["result_code"] == "FAIL"){
 			//此处应该更新一下订单状态，商户自行增删操作
 			  	mysqld_insert('paylog', array('typename'=>'业务出错','pdate'=>$xml,'ptype'=>'error','paytype'=>'weixin',"beid"=>$_CMS['beid']));
-       exit;
+     
 		}
 		elseif($array_data["result_code"] == "SUCCESS"){
 				mysqld_insert('paylog', array('typename'=>'微支付成功返回','pdate'=>$xml,'ptype'=>'success','paytype'=>'weixin',"beid"=>$_CMS['beid']));
@@ -95,21 +95,24 @@
 	        require_once WEB_ROOT.'/system/shopwap/class/mobile/order_notice_mail.php';  
 	             mailnotice($orderid);
 						message('支付成功！',$store_website.create_url('mobile',array('name' => 'shopwap','do' => 'myorder','status'=>1)),'success');
-						}else
-						{
-										
-									message('该订单不是支付状态无法支付');
-		
 						}
+						
+						if($order['status']>=0)
+							{
+								header("Content-type: text/xml;charset=utf-8");
+								echo "<xml>";
+								echo "<return_code><![CDATA[SUCCESS]]></return_code>";
+								echo "<return_msg><![CDATA[OK]]></return_msg>";
+								echo "</xml>";
+								exit;
+							}
 					}else
 					{
 						mysqld_insert('paylog', array('typename'=>'未找到相关订单','pdate'=>$xml,'ptype'=>'error','paytype'=>'weixin',"beid"=>$_CMS['beid']));
 						$paylog_weixin['presult']='error';
 						$paylog_weixin['reason']='未找到相关订单';
 	      	mysqld_insert('paylog_weixin', $paylog_weixin);
-						message('未找到相关订单');
 					}
-					exit;
 				}else
 				{//余额充值
 						$paylog_weixin['order_table']='gold_order';
@@ -139,24 +142,27 @@
               bj_message_sendyeczcg( $order['price'],$order['openid']);
   }
      					
-							}else
+							}
+							if($order['status']>=0)
 							{
-							
-								}
-							exit;
+								header("Content-type: text/xml;charset=utf-8");
+								echo "<xml>";
+								echo "<return_code><![CDATA[SUCCESS]]></return_code>";
+								echo "<return_msg><![CDATA[OK]]></return_msg>";
+								echo "</xml>";
+								exit;
+							}
 						}else
 						{
 							mysqld_insert('paylog', array('typename'=>'余额充值未找到订单','pdate'=>$xml,'ptype'=>'error','paytype'=>'weixin',"beid"=>$_CMS['beid']));
 												$paylog_weixin['presult']='error';
 						$paylog_weixin['reason']='未找到相关订单';
 	      	mysqld_insert('paylog_weixin', $paylog_weixin);
-     		message('未找余额充值订单');
-		      exit;
+     	
 						}
 					
 				}
-		}else{}
-		
+		}
 	mysqld_insert('paylog', array('typename'=>'微支付出现错误','pdate'=>$xml,'ptype'=>'error','paytype'=>'weixin',"beid"=>$_CMS['beid']));
 		}else
 		{
@@ -164,6 +170,5 @@
 	mysqld_insert('paylog', array('typename'=>'签名验证失败','pdate'=>$xml,'ptype'=>'error','paytype'=>'weixin',"beid"=>$_CMS['beid']));
 		}
 	
-
-      
+exit('fail');
 ?>
