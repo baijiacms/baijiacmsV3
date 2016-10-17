@@ -2,7 +2,7 @@
 defined('SYSTEM_IN') or exit('Access Denied');
 function mailnotice($orderid)
 	{
-		
+		global $_CMS,$_GP;
 	if(empty($orderid))
 	{
 return;	
@@ -14,8 +14,8 @@ return;
 return;
 	}
 		   
-	 $order = mysqld_select("select * from " . table('shop_order') . " where id='".$orderid."' and beid=:beid",array(':beid'=>$_CMS['beid']));
-     $ordergoods = mysqld_selectall("SELECT goodsid, total,price,optionname FROM " . table('shop_order_goods') . " WHERE orderid = '{$orderid}' and beid=:beid", array(':beid'=>$_CMS['beid']), 'goodsid');
+	 $order = mysqld_select("select * from " . table('shop_order') . " where id=:id and beid=:beid",array(':id'=>$orderid,':beid'=>$_CMS['beid']));
+     $ordergoods = mysqld_selectall("SELECT goodsid, total,price,optionname FROM " . table('shop_order_goods') . " WHERE orderid = :id and beid=:beid", array(':id'=>$orderid,':beid'=>$_CMS['beid']), 'goodsid');
            
 	        if (!empty($ordergoods)) {
                 $goods = mysqld_selectall("SELECT id, title, thumb, marketprice, total,credit FROM " . table('shop_goods') . " WHERE beid=:beid and id IN ('" . implode("','", array_keys($ordergoods)) . "')",array(':beid'=>$_CMS['beid']));
