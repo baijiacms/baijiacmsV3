@@ -9,7 +9,20 @@ class publicAddons  extends BjSystemModule {
 		$this->__web(__FUNCTION__);
 	}
 
-	
+		public function setOrderCredit($openid,$id , $minus = true,$remark='') {
+  	 			$order = mysqld_select("SELECT * FROM " . table('shop_order') . " WHERE id=:id",array(":id"=>$id));
+  	 		
+       		if(!empty($order['credit']))
+       		{
+            if ($minus) {
+           
+            	member_credit($openid,$order['credit'],'addcredit',$remark);
+                
+            } else {
+               member_credit($openid,$order['credit'],'usecredit',$remark);
+            }
+          }
+    }
 
 }
 
