@@ -25,21 +25,7 @@
                  mysqld_update('shop_order_goods', array('status' => 1, 'updatetime'=>time()), array('orderid' => $orderid,'is_system'=>0));
           
                
-                 if(empty($order['be_has_gfinish']))
-              {
-              	system_create_sp_order($orderid);	
-              }
-              
            
-                   
-                 	 if($_CMS['addons_bj_message']) {
-	 	
- $order = mysqld_select("select * from " . table('shop_order') . " where id='".$orderid."' ");
- 
-	 	
-              bj_message_sendddqrshtz( $order['be_ordersn'],$order['openid'],$orderid);
-  }
-   
           	 	
           	 	
           	}
