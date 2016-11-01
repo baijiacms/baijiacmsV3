@@ -1,19 +1,53 @@
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?v=20150120"></script>
+<?php  if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false&&is_use_weixin()) {
+		$settings=globaSetting();
+		$member=get_member_account(true,true);
+	
+	      		
+        					$dzddes=	$settings['shop_description'];
+        				
+        				
+        					$dzdtitle=	$settings['shop_title'];
+        				$dzdpic=	ATTACHMENT_WEBROOT.$settings['weixin_logo'];
+        					
+       if(empty($weixin_share_arraydate))
+       {
+				$weixin_share_arraydate=array('name'=>'shopwap','do'=>'shopindex');
+			}else
+			{
+					if(!empty($detail_dzdtitle))
+						{
+								$dzdtitle=$detail_dzdtitle;
+						}
+							if(!empty($detail_dzddes))
+						{
+							$dzddes=$detail_dzddes;
+						}
+							if(!empty($detail_dzdpic))
+						{
+								$dzdpic=$detail_dzdpic;
+						}	
+				
+			}
+		$wx_weixin_share=	weixin_share_2($weixin_share_arraydate,$dzdtitle,$dzdpic,$dzddes,$settings);
+	
+	 ?>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
 <script type="text/javascript">
 var wxData = {
-            "imgUrl" : "<?php echo $shopwap_weixin_share['imgUrl'];?>",
-            "link" : "<?php echo $shopwap_weixin_share['link'];?>",
-            "desc" : "<?php echo $shopwap_weixin_share['description'];?>",
-            "title" : "<?php echo $shopwap_weixin_share['title'];?>"
+            "imgUrl" : "<?php echo $wx_weixin_share['imgUrl'];?>",
+            "link" : "<?php echo $wx_weixin_share['link'];?>",
+            "desc" : "<?php echo $wx_weixin_share['description'];?>",
+            "title" : "<?php echo $wx_weixin_share['title'];?>"
 };
 wx.config({
     debug: false,
-    appId: "<?php echo $shopwap_weixin_share['appId'];?>",
-    timestamp: <?php echo $shopwap_weixin_share['timestamp'];?>, 
-    nonceStr: "<?php echo $shopwap_weixin_share['nonceStr'];?>", 
-    signature: "<?php echo $shopwap_weixin_share['signature'];?>",
+    appId: "<?php echo $wx_weixin_share['appId'];?>",
+    timestamp: <?php echo $wx_weixin_share['timestamp'];?>, 
+    nonceStr: "<?php echo $wx_weixin_share['nonceStr'];?>", 
+    signature: "<?php echo $wx_weixin_share['signature'];?>",
      jsApiList: [
         'checkJsApi',
+     		'openAddress',
         'onMenuShareTimeline',
         'onMenuShareAppMessage',
         'onMenuShareQQ',
@@ -22,16 +56,15 @@ wx.config({
       ]
 });
 wx.error(function(res){	
-	if('<?php echo $shopwap_weixin_share['signature']?>'!='')
+	if('<?php echo $wx_weixin_share['signature'];?>'!='')
 	{
 		if(res.errMsg='config:invalid signature')
 		{
-//alert(res.errMsg);
+	//alert(res.errMsg);
 			//alert("转发接口失效，请联系管理员");
 		}
 	}
 });	
-
 var shareData = {
       title: wxData.title,
       link: wxData.link,
@@ -46,6 +79,8 @@ wx.ready(function () {
 		wx.onMenuShareQQ(shareData);
 		wx.onMenuShareWeibo(shareData);
 		wx.onMenuShareQZone(shareData);
+		<?php if($useWeixinAddr){ ?>
+getaddress();
+<?php } ?>
 });
-</script>
-
+</script><?php } ?>
