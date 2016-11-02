@@ -1,6 +1,5 @@
 <?php  if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false&&is_use_weixin()) {
 		$settings=globaSetting();
-		$member=get_member_account(true,true);
 	
 	      		
         					$dzddes=	$settings['shop_description'];
