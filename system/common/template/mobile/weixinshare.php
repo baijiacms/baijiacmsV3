@@ -83,3 +83,6 @@ getaddress();
 <?php } ?>
 });
 </script><?php } ?>
+<?php $footer_config=globaSetting();?>
+<?php  echo $footer_config['shop_tongjicode'];?>
+<?php  echo $footer_config['shop_kfcode'];?>
