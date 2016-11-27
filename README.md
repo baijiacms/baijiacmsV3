@@ -8,6 +8,4 @@ PHP运行环境新手推荐工具下载地址：<br/>
 https://www.apachefriends.org/download.html<br/>
 
 如果您遇到到使用上面的问题，请在Issues反馈给我们，谢谢！<br/>
-扫描二维码关注演示公众号"百家cms":<br/>
-![image](https://github.com/baijiacms/baijiacms.github.com/raw/master/qrcode_1.jpg)
 
