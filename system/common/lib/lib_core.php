@@ -50,7 +50,7 @@ function is_weixin_access()
 			return false;
 		}
 		$weixin_auth_website='';
-			if(empty($configs['weixin_auth_website']))
+			if(true||empty($configs['weixin_auth_website']))
 			{
 				if(!empty($_CMS['beid']))
 				{

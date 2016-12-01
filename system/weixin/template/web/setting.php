@@ -10,13 +10,7 @@
 										     <input type="text" name="weixinname" class="col-xs-10 col-sm-4" value="<?php  echo $settings['weixinname'];?>" />&nbsp&nbsp;
 										</div>
 									</div>
-									 <div class="form-group">
-										<label class="col-sm-2 control-label no-padding-left" > 授权回调页面域名:</label>
-
-										<div class="col-sm-9">
-										     <input type="text" name="weixin_auth_website" class="col-xs-10 col-sm-4" value="<?php if(empty($settings['weixin_auth_website'])){?><?php echo $system_store['website'];?><?php }else{ ?><?php  echo $settings['weixin_auth_website'];?><?php } ?>" />&nbsp;
-										</div>
-									</div>
+								
 									
 									  <div class="form-group">
 										<label class="col-sm-2 control-label no-padding-left" > 接口地址：</label>

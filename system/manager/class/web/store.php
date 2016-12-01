@@ -19,6 +19,10 @@
         
             
         	   if (checksubmit('submit')) {
+        	   	       if(empty($_GP['website']))
+		       {
+		       	message("请输入相关域名");	
+		       }
         	$website_store = mysqld_select("SELECT * FROM " . table('system_store')." where `deleted`=0 and `website`=:website",array(":website"=>$_GP['website']));
     
         	   		
@@ -26,12 +30,20 @@
 				'isclose'=>
 				intval($_GP['isclose']));
 			
-       $data['website']=$_GP['website'];
-       $data['website2']=$_GP['website2'];
-       $data['website3']=$_GP['website3'];
-       $data['fullwebsite']=$_GP['fullwebsite'];
+         	if (strexists($_GP['website'], 'http://') || strexists($_GP['website'], 'https://')|| strexists($_GP['website'], '/')) {
+	   	message("绑定域名不能包含http://等字样，格式应是:www.baidu.com");	
+	}
+	      $data['website']=$_GP['website'];
 		
-                
+                  if(empty($_GP['fullwebsite']))
+       {
+       	 $data['fullwebsite']=str_replace('http://'.$_GP['website'].'/','http://'.$_GP['website'].'/',WEBSITE_ROOT);
+       }else
+       {
+      	   	 
+       	 $data['fullwebsite']=$_GP['fullwebsite'];
+       }
+		
                 if(!empty($website_store['id'])&&$website_store['id']!=$store['id'])
                 {
                 	

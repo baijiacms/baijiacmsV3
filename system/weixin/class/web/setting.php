@@ -9,13 +9,12 @@ $settings=globaSetting();
  if (checksubmit()) {
             $cfg = array(
                'weixinname' => $_GP['weixinname'],
-                'weixintoken' => $_GP['weixintoken'],
-                'EncodingAESKey' => $_GP['EncodingAESKey'],
-						  	'weixin_appId' => $_GP['weixin_appId'],
-				   		  'weixin_appSecret' => $_GP['weixin_appSecret'],
+                'weixintoken' => trim($_GP['weixintoken']),
+                'EncodingAESKey' => trim($_GP['EncodingAESKey']),
+						  	'weixin_appId' => trim($_GP['weixin_appId']),
+				   		  'weixin_appSecret' => trim($_GP['weixin_appSecret']),
 				   		  'weixin_autoreg'=> $_GP['weixin_autoreg'],
 				   		  'weixin_autoaddress'=> $_GP['weixin_autoaddress'],
-				   		  'weixin_auth_website'=> $_GP['weixin_auth_website'],
 				   		  'weixin_noaccess'=> intval($_GP['weixin_noaccess'])
             );
         

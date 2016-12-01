@@ -13,7 +13,9 @@
 										<label class="col-sm-2 control-label no-padding-left" > 绑定域名</label>
 
 										<div class="col-sm-9">
-													<input type="text" name="website" class="col-xs-10 col-sm-3" value="<?php echo $store['website'];?>" 		 />如：<font style="color:red">***.baijiacms.com</font>，请注意格式（***部分可为你定义的英文）不含二级目录和http。<br/>如果有二级目录情况“完整域名”填写含二级目录的域名。
+													<input type="text" name="website" class="col-xs-10 col-sm-3" value="<?php echo $store['website'];?>" 		 />
+									<span class="help-block">如：***.baijiacms.com，请注意格式（***部分可为你定义的英文）不含二级目录和http。</span>
+                   
 										</div>
 									</div>
 												
@@ -21,7 +23,9 @@
 										<label class="col-sm-2 control-label no-padding-left" > 完整域名(选填)</label>
 
 										<div class="col-sm-9">
-													<input type="text" name="fullwebsite" class="col-xs-10 col-sm-3" value="<?php echo $store['fullwebsite'];?>" 		 />在二级目录情况下需填写，如：http://***.baijiacms.com/demo/，请注意格式（***部分可为你定义的英文）。
+													<input type="text" name="fullwebsite" class="col-xs-10 col-sm-3" value="<?php echo $store['fullwebsite'];?>" 		 />
+									 <span class="help-block">可空，系统自动完善。如特殊情况需手动修改，请注意格式如：http://***/demo/，请注意格式（***部分可为你定义的域名）。</span>
+                   
 										</div>
 									</div>
 									<?php if(false){?>
